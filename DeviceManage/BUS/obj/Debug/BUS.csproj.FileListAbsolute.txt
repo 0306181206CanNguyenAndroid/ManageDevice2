@@ -1,0 +1,16 @@
+D:\Document D\ManageDevice\DeviceManage\BUS\bin\Debug\BUS.dll.config
+D:\Document D\ManageDevice\DeviceManage\BUS\bin\Debug\BUS.dll
+D:\Document D\ManageDevice\DeviceManage\BUS\bin\Debug\BUS.pdb
+D:\Document D\ManageDevice\DeviceManage\BUS\bin\Debug\DAO.dll
+D:\Document D\ManageDevice\DeviceManage\BUS\bin\Debug\DTO.dll
+D:\Document D\ManageDevice\DeviceManage\BUS\bin\Debug\DAO.pdb
+D:\Document D\ManageDevice\DeviceManage\BUS\bin\Debug\DAO.dll.config
+D:\Document D\ManageDevice\DeviceManage\BUS\bin\Debug\DTO.pdb
+D:\Document D\ManageDevice\DeviceManage\BUS\bin\Debug\DTO.dll.config
+D:\Document D\ManageDevice\DeviceManage\BUS\obj\Debug\BUS.csproj.AssemblyReference.cache
+D:\Document D\ManageDevice\DeviceManage\BUS\obj\Debug\BUS.Properties.Resources.resources
+D:\Document D\ManageDevice\DeviceManage\BUS\obj\Debug\BUS.csproj.GenerateResource.cache
+D:\Document D\ManageDevice\DeviceManage\BUS\obj\Debug\BUS.csproj.CoreCompileInputs.cache
+D:\Document D\ManageDevice\DeviceManage\BUS\obj\Debug\BUS.csproj.CopyComplete
+D:\Document D\ManageDevice\DeviceManage\BUS\obj\Debug\BUS.dll
+D:\Document D\ManageDevice\DeviceManage\BUS\obj\Debug\BUS.pdb

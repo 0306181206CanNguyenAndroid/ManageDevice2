@@ -1,0 +1,13 @@
+D:\Document D\ManageDevice\DeviceManage\DAO\bin\Debug\DAO.dll.config
+D:\Document D\ManageDevice\DeviceManage\DAO\bin\Debug\DAO.dll
+D:\Document D\ManageDevice\DeviceManage\DAO\bin\Debug\DAO.pdb
+D:\Document D\ManageDevice\DeviceManage\DAO\bin\Debug\DTO.dll
+D:\Document D\ManageDevice\DeviceManage\DAO\bin\Debug\DTO.pdb
+D:\Document D\ManageDevice\DeviceManage\DAO\bin\Debug\DTO.dll.config
+D:\Document D\ManageDevice\DeviceManage\DAO\obj\Debug\DAO.csproj.AssemblyReference.cache
+D:\Document D\ManageDevice\DeviceManage\DAO\obj\Debug\DAO.Properties.Resources.resources
+D:\Document D\ManageDevice\DeviceManage\DAO\obj\Debug\DAO.csproj.GenerateResource.cache
+D:\Document D\ManageDevice\DeviceManage\DAO\obj\Debug\DAO.csproj.CoreCompileInputs.cache
+D:\Document D\ManageDevice\DeviceManage\DAO\obj\Debug\DAO.csproj.CopyComplete
+D:\Document D\ManageDevice\DeviceManage\DAO\obj\Debug\DAO.dll
+D:\Document D\ManageDevice\DeviceManage\DAO\obj\Debug\DAO.pdb

@@ -33,6 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="QRCoder, Version=1.4.3.0, Culture=neutral, PublicKeyToken=c4ed5b9ae8358a28, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.4.3\lib\net40\QRCoder.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,16 +49,185 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="AddDeviceFromShipment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AddDeviceFromShipment.Designer.cs">
+      <DependentUpon>AddDeviceFromShipment.cs</DependentUpon>
     </Compile>
+    <Compile Include="DelegateClass.cs" />
+    <Compile Include="DeviceDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeviceDetail.Designer.cs">
+      <DependentUpon>DeviceDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceMangement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeviceMangement.Designer.cs">
+      <DependentUpon>DeviceMangement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDevice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDevice.Designer.cs">
+      <DependentUpon>frmDevice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQR_Code.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQR_Code.Designer.cs">
+      <DependentUpon>frmQR_Code.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQuanLyChucVu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQuanLyChucVu.Designer.cs">
+      <DependentUpon>frmQuanLyChucVu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQuanLyGiaoVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQuanLyGiaoVien.Designer.cs">
+      <DependentUpon>frmQuanLyGiaoVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQuanLyKhoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQuanLyKhoa.Designer.cs">
+      <DependentUpon>frmQuanLyKhoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQuanLyLoaiThietBi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQuanLyLoaiThietBi.Designer.cs">
+      <DependentUpon>frmQuanLyLoaiThietBi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQuanLyPhongMay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQuanLyPhongMay.Designer.cs">
+      <DependentUpon>frmQuanLyPhongMay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQuanLyTaiKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQuanLyTaiKhoan.Designer.cs">
+      <DependentUpon>frmQuanLyTaiKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQuanLyThanhLy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQuanLyThanhLy.Designer.cs">
+      <DependentUpon>frmQuanLyThanhLy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQuanLyThuongHieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQuanLyThuongHieu.Designer.cs">
+      <DependentUpon>frmQuanLyThuongHieu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSetSpecsForDeviceType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetSpecsForDeviceType.Designer.cs">
+      <DependentUpon>frmSetSpecsForDeviceType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmShipment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmShipment.Designer.cs">
+      <DependentUpon>frmShipment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTaoTaiKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTaoTaiKhoan.Designer.cs">
+      <DependentUpon>frmTaoTaiKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTrangChu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTrangChu.Designer.cs">
+      <DependentUpon>frmTrangChu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTrangChuGiaoVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTrangChuGiaoVien.Designer.cs">
+      <DependentUpon>frmTrangChuGiaoVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Message.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SettingClass.cs" />
+    <EmbeddedResource Include="AddDeviceFromShipment.resx">
+      <DependentUpon>AddDeviceFromShipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeviceDetail.resx">
+      <DependentUpon>DeviceDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeviceMangement.resx">
+      <DependentUpon>DeviceMangement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDevice.resx">
+      <DependentUpon>frmDevice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQR_Code.resx">
+      <DependentUpon>frmQR_Code.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQuanLyChucVu.resx">
+      <DependentUpon>frmQuanLyChucVu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQuanLyGiaoVien.resx">
+      <DependentUpon>frmQuanLyGiaoVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQuanLyKhoa.resx">
+      <DependentUpon>frmQuanLyKhoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQuanLyLoaiThietBi.resx">
+      <DependentUpon>frmQuanLyLoaiThietBi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQuanLyPhongMay.resx">
+      <DependentUpon>frmQuanLyPhongMay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQuanLyTaiKhoan.resx">
+      <DependentUpon>frmQuanLyTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQuanLyThanhLy.resx">
+      <DependentUpon>frmQuanLyThanhLy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQuanLyThuongHieu.resx">
+      <DependentUpon>frmQuanLyThuongHieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetSpecsForDeviceType.resx">
+      <DependentUpon>frmSetSpecsForDeviceType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmShipment.resx">
+      <DependentUpon>frmShipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTaoTaiKhoan.resx">
+      <DependentUpon>frmTaoTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTrangChu.resx">
+      <DependentUpon>frmTrangChu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTrangChuGiaoVien.resx">
+      <DependentUpon>frmTrangChuGiaoVien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -62,7 +236,9 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -75,6 +251,197 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\accept.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_device.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_file.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_Thongso.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_user2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buy.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buy1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buy2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\create.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_pc1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_user1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\device_info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_pc1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_pc2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_user.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\laptop_3131622.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\management_Position.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\no_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\no_image1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\no_notice.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\note.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notice.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\option1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\password1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\password2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pen_189869.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\profile_3135715.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\QR1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\QR2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\return1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\return2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search_file1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search_pc1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\send.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\send1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stock1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stock2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sua.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Them.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\thoat.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\woman_4140047.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\xoa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\DefaultImage\device.jpg" />
+    <Content Include="Resources\DefaultImage\device_error.jpg" />
+    <Content Include="Resources\DefaultImage\error.jpg" />
+    <Content Include="Resources\DefaultImage\file_error.jpg" />
+    <Content Include="Resources\DefaultImage\no_image.png" />
+    <Content Include="Resources\DefaultImage\no_image1.png" />
+    <Content Include="Resources\DefaultImage\pc.jpg" />
+    <Content Include="Resources\DefaultImage\search_error.jpg" />
+    <Content Include="Resources\DefaultImage\user.jpg" />
+    <Content Include="Resources\ImageDevice\2023-06-23_30233_AM_Máy Tính.jpg" />
+    <Content Include="Resources\ImageDevice\2023-06-23_30648_AM_Máy Tính.jpg" />
+    <Content Include="Resources\ImageDevice\2023-06-23_43506_PM_Máy Tính Asus22.jpg" />
+    <Content Include="Resources\ImageDevice\2023-06-23_51704_PM_Máy Tính.jpg" />
+    <Content Include="Resources\ImageDevice\2023-06-23_53734_PM_Iphone.jpg" />
+    <Content Include="Resources\ImageDevice\2023-06-28_14445_AM_Iphone.jpg" />
+    <Content Include="Resources\ImageDevice\2023-06-28_15028_AM_Máy Tính.jpg" />
+    <Content Include="Resources\ImageDevice\2023-06-28_20135_AM_Máy Tính.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BUS\BUS.csproj">
+      <Project>{7df155b6-b9a5-4e29-9739-3f6326e3cddc}</Project>
+      <Name>BUS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{ab7dc067-c7e7-43e3-bdba-a73dced7547c}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
