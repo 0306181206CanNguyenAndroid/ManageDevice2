@@ -249,5 +249,76 @@ namespace DAO.DataLayerBase
                 }
             }return ojbBrand;
         }
+
+        public static bool CheckBrandInDevice(int BrandId)
+        {
+            using (SqlConnection conn = new SqlConnection(PathString.ConnectionString))
+            {
+
+                string sql = "checkBrand_Device";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@BrandId", BrandId);
+                conn.Open();
+                int count = (int)cmd.ExecuteScalar();
+                conn.Close();
+                //kiểm tra
+                if (count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        public static bool CheckBrandInDeviceDevice_Deltail(int BrandId)
+        {
+            using (SqlConnection conn = new SqlConnection(PathString.ConnectionString))
+            {
+
+                string sql = "checkBrand_Device_Detail";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@BrandId", BrandId);
+                conn.Open();
+                int count = (int)cmd.ExecuteScalar();
+                conn.Close();
+                //kiểm tra
+                if (count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        public static bool CheckBrandInDeviceShipment(int BrandId)
+        {
+            using (SqlConnection conn = new SqlConnection(PathString.ConnectionString))
+            {
+
+                string sql = "checkBrand_Shipment";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@BrandId", BrandId);
+                conn.Open();
+                int count = (int)cmd.ExecuteScalar();
+                conn.Close();
+                //kiểm tra
+                if (count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
     }
 }

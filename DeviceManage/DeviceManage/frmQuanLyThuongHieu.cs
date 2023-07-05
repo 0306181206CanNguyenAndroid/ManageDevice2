@@ -127,13 +127,20 @@ namespace DeviceManage
                     DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Xóa", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
+                        if (BrandBus.DeleteBrand(Id))
+                        {
+                            dgvThuongHieu.Rows[rowIndex].Visible = false;
+                            MessageBox.Show("Xóa Thành Công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtTenThuongHieu.Text = "";
+                            rtbDiaChi.Text = "";
+                            dgvThuongHieu.DataSource = BrandBus.GetBrandAfterDelete();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không Được Phép Xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                         //dgvPhongMay.CurrentCell = dgvPhongMay.Rows[0].Cells[0];
-                        BrandBus.DeleteBrand(Id);
-                        dgvThuongHieu.Rows[rowIndex].Visible = false;
-                        MessageBox.Show("Xóa Thành Công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtTenThuongHieu.Text = "";
-                        rtbDiaChi.Text = "";
-                        dgvThuongHieu.DataSource = BrandBus.GetBrandAfterDelete();
+                       
                     }
                 }
 

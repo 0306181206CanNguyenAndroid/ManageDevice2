@@ -8,6 +8,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BUS.BusinessObject;
+
 namespace BUS.BusinessOjectBase
 {
     public class BrandBusBase
@@ -39,8 +41,18 @@ namespace BUS.BusinessOjectBase
         {
             return BrandDAO.GetBrandAfterDelete();
         }
-        public static void DeleteBrand(int id) { 
+        public static bool DeleteBrand(int id) {
+            if (BrandDAO.CheckBrandInDevice(id)){
+                return false;
+            }else if (BrandDAO.CheckBrandInDeviceDevice_Deltail(id))
+            {
+                return false;
+            }else if(BrandDAO.CheckBrandInDeviceShipment(id))
+            {
+                return false;
+            }
             BrandDAO.DeleteBrand(id);
+            return true;
         }
 
         public static DataTable SearchBrandByName(string Name)
