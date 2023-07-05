@@ -49,6 +49,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessObjectBase\BrandBusBase.cs" />
+    <Compile Include="BusinessObjectBase\DecentralizationBusBase.cs" />
+    <Compile Include="BusinessObjectBase\DeviceBusBase.cs" />
+    <Compile Include="BusinessObjectBase\DeviceDetailBusBase.cs" />
+    <Compile Include="BusinessObjectBase\DeviceErrorBusBase.cs" />
+    <Compile Include="BusinessObjectBase\DeviceRegistrationBusBase.cs" />
+    <Compile Include="BusinessObjectBase\DeviceType_SpecsBusBase.cs" />
+    <Compile Include="BusinessObjectBase\Device_TypeBusBase.cs" />
+    <Compile Include="BusinessObjectBase\FacultyBusBase.cs" />
+    <Compile Include="BusinessObjectBase\LocationBusBase.cs" />
+    <Compile Include="BusinessObjectBase\PositionBusBase.cs" />
+    <Compile Include="BusinessObjectBase\RoomBusBase.cs" />
+    <Compile Include="BusinessObjectBase\ShipmentBusBase.cs" />
+    <Compile Include="BusinessObjectBase\ShipmentDetailBusBase.cs" />
+    <Compile Include="BusinessObjectBase\SpecsBusBase.cs" />
+    <Compile Include="BusinessObjectBase\TeacherBusBase.cs" />
+    <Compile Include="BusinessObjectBase\UserBusBase.cs" />
+    <Compile Include="BusinessObject\BrandBus.cs" />
+    <Compile Include="BusinessObject\DecentralizationBus.cs" />
+    <Compile Include="BusinessObject\DeviceBus.cs" />
+    <Compile Include="BusinessObject\DeviceDetail.cs" />
+    <Compile Include="BusinessObject\DeviceErrorBus.cs" />
+    <Compile Include="BusinessObject\DeviceRegistrationBus.cs" />
+    <Compile Include="BusinessObject\DeviceType_SpecsBus.cs" />
+    <Compile Include="BusinessObject\Device_TypeBus.cs" />
+    <Compile Include="BusinessObject\FacultyBus.cs" />
+    <Compile Include="BusinessObject\LocationBus.cs" />
+    <Compile Include="BusinessObject\PositionBus.cs" />
+    <Compile Include="BusinessObject\RoomBus.cs" />
+    <Compile Include="BusinessObject\ShipmentBus.cs" />
+    <Compile Include="BusinessObject\ShipmentDetailBus.cs" />
+    <Compile Include="BusinessObject\SpecsBus.cs" />
+    <Compile Include="BusinessObject\TeacherBus.cs" />
+    <Compile Include="BusinessObject\UserBus.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,5 +113,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

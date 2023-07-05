@@ -55,6 +55,48 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModelBase\BrandModelBase.cs" />
+    <Compile Include="ModelBase\DecentralizationModelBase.cs" />
+    <Compile Include="ModelBase\DeviceDetailModel.cs" />
+    <Compile Include="ModelBase\DeviceErrorModelBase.cs" />
+    <Compile Include="ModelBase\DeviceModelBase.cs" />
+    <Compile Include="ModelBase\DeviceRegistrationModelBase.cs" />
+    <Compile Include="ModelBase\DeviceType_SpecsModel.cs" />
+    <Compile Include="ModelBase\Device_TypeModelBase.cs" />
+    <Compile Include="ModelBase\FacultyModelBase.cs" />
+    <Compile Include="ModelBase\LocationModelBase.cs" />
+    <Compile Include="ModelBase\PositionModelBase.cs" />
+    <Compile Include="ModelBase\RoomModelBase.cs" />
+    <Compile Include="ModelBase\ShipmentDetailModelBase.cs" />
+    <Compile Include="ModelBase\ShipmentModelBase.cs" />
+    <Compile Include="ModelBase\SpecsModelBase.cs" />
+    <Compile Include="ModelBase\SystemAccessrightsgroupdetailModelBase.cs" />
+    <Compile Include="ModelBase\SystemAccessrightsgroupModelBase.cs" />
+    <Compile Include="ModelBase\SystemAccessrightsModelBase.cs" />
+    <Compile Include="ModelBase\SystemDecentralizationModelBase.cs" />
+    <Compile Include="ModelBase\TeacherModelBase.cs" />
+    <Compile Include="ModelBase\UserModelBase.cs" />
+    <Compile Include="Model\BrandModel.cs" />
+    <Compile Include="Model\DecentralizationModel.cs" />
+    <Compile Include="Model\DeviceDetailModel.cs" />
+    <Compile Include="Model\DeviceErrorModel.cs" />
+    <Compile Include="Model\DeviceModel.cs" />
+    <Compile Include="Model\DeviceRegistrationModel.cs" />
+    <Compile Include="Model\DeviceSpecsModel.cs" />
+    <Compile Include="Model\DeviceType_SpecsModel.cs" />
+    <Compile Include="Model\Device_TypeModel.cs" />
+    <Compile Include="Model\FacultyModel.cs" />
+    <Compile Include="Model\LocationModel.cs" />
+    <Compile Include="Model\PositionModel.cs" />
+    <Compile Include="Model\RoomModel.cs" />
+    <Compile Include="Model\ShipmentDetailModel.cs" />
+    <Compile Include="Model\ShipmentModel.cs" />
+    <Compile Include="Model\SystemAccessrightsgroupdetailModel.cs" />
+    <Compile Include="Model\SystemAccessrightsgroupModel.cs" />
+    <Compile Include="Model\SystemAccessrightsModel.cs" />
+    <Compile Include="Model\SystemDecentralizationModel.cs" />
+    <Compile Include="Model\TeacherModel.cs" />
+    <Compile Include="Model\UserModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -79,5 +121,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
