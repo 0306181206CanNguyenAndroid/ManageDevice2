@@ -49,14 +49,63 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataLayerBase\BrandDAOBase.cs" />
+    <Compile Include="DataLayerBase\DecentralizationDAOBase.cs" />
+    <Compile Include="DataLayerBase\DeviceDataLayerBase.cs" />
+    <Compile Include="DataLayerBase\DeviceDetailDataLayerBase.cs" />
+    <Compile Include="DataLayerBase\DeviceErrorDAOBase.cs" />
+    <Compile Include="DataLayerBase\DeviceRegistrationDAOBase.cs" />
+    <Compile Include="DataLayerBase\DeviceType_SpecsDataLayerBase.cs" />
+    <Compile Include="DataLayerBase\Device_TypeDAOBase.cs" />
+    <Compile Include="DataLayerBase\FacultyDAOBase.cs" />
+    <Compile Include="DataLayerBase\FacultyDataLayerBase.cs" />
+    <Compile Include="DataLayerBase\LocationDAOBase.cs" />
+    <Compile Include="DataLayerBase\PositionDAOBase.cs" />
+    <Compile Include="DataLayerBase\RoomDAOBase.cs" />
+    <Compile Include="DataLayerBase\ShipmentDAOBase.cs" />
+    <Compile Include="DataLayerBase\ShipmentDetailDAOBase.cs" />
+    <Compile Include="DataLayerBase\SpecsDataLayerBase.cs" />
+    <Compile Include="DataLayerBase\SystemAccessrightsDataLayerBase.cs" />
+    <Compile Include="DataLayerBase\SystemAccessrightsgroupDataLayerBase.cs" />
+    <Compile Include="DataLayerBase\SystemAccessrightsgroupdetailDataLayerBase.cs" />
+    <Compile Include="DataLayerBase\SystemDecentralizationDataLayerBase.cs" />
+    <Compile Include="DataLayerBase\SystemUserDataLayerBase.cs" />
+    <Compile Include="DataLayerBase\TeacherDAOBase.cs" />
+    <Compile Include="DataLayerBase\UserDataLayerBase.cs" />
+    <Compile Include="DataLayer\BrandDAO.cs" />
+    <Compile Include="DataLayer\DecentralizationDAO.cs" />
+    <Compile Include="DataLayer\DeviceDataLayer.cs" />
+    <Compile Include="DataLayer\DeviceDetailDataLayer.cs" />
+    <Compile Include="DataLayer\DeviceErrorDataLayer.cs" />
+    <Compile Include="DataLayer\DeviceRegistrationDataLayer.cs" />
+    <Compile Include="DataLayer\DeviceType_SpecsDataLayer.cs" />
+    <Compile Include="DataLayer\Device_TypeDao.cs" />
+    <Compile Include="DataLayer\FacultyDAO.cs" />
+    <Compile Include="DataLayer\FacultyDataLayer.cs" />
+    <Compile Include="DataLayer\LocationDataLayer.cs" />
+    <Compile Include="DataLayer\PositionDao.cs" />
+    <Compile Include="DataLayer\RoomDAO.cs" />
+    <Compile Include="DataLayer\ShipmentDataLayer.cs" />
+    <Compile Include="DataLayer\ShipmentDetailDataLayer.cs" />
+    <Compile Include="DataLayer\SpecsDataLayer.cs" />
+    <Compile Include="DataLayer\SystemAccessrightsDataLayer.cs" />
+    <Compile Include="DataLayer\SystemAccessrightsgroupDataLayer.cs" />
+    <Compile Include="DataLayer\SystemAccessrightsgroupdetailDataLayer.cs" />
+    <Compile Include="DataLayer\SystemDecentralizationDataLayer.cs" />
+    <Compile Include="DataLayer\SystemUserDataLayer.cs" />
+    <Compile Include="DataLayer\TeacherDAO.cs" />
+    <Compile Include="DataLayer\UserDataLayer.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="PathString.cs" />
+    <Compile Include="ProcString.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QRCodeWriter.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -79,5 +128,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
