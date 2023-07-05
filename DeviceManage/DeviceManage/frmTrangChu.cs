@@ -135,7 +135,7 @@ namespace DeviceManage
 
         private void btnBaoCaoThongKe_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new frmBaoCaoThongKe());
+            OpenChildForm(new frmBaoCaoThongKe());
             lbl_text.Text=btnBaoCaoThongKe.Text;
         }
     }

@@ -7,3 +7,12 @@ D:\Document D\ManageDevice\DeviceManage\DTO\obj\Debug\DTO.csproj.GenerateResourc
 D:\Document D\ManageDevice\DeviceManage\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
 D:\Document D\ManageDevice\DeviceManage\DTO\obj\Debug\DTO.dll
 D:\Document D\ManageDevice\DeviceManage\DTO\obj\Debug\DTO.pdb
+D:\Thanh Binh\ManageDevice2\DeviceManage\DTO\bin\Debug\DTO.dll.config
+D:\Thanh Binh\ManageDevice2\DeviceManage\DTO\bin\Debug\DTO.dll
+D:\Thanh Binh\ManageDevice2\DeviceManage\DTO\bin\Debug\DTO.pdb
+D:\Thanh Binh\ManageDevice2\DeviceManage\DTO\obj\Debug\DTO.csproj.AssemblyReference.cache
+D:\Thanh Binh\ManageDevice2\DeviceManage\DTO\obj\Debug\DTO.Properties.Resources.resources
+D:\Thanh Binh\ManageDevice2\DeviceManage\DTO\obj\Debug\DTO.csproj.GenerateResource.cache
+D:\Thanh Binh\ManageDevice2\DeviceManage\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+D:\Thanh Binh\ManageDevice2\DeviceManage\DTO\obj\Debug\DTO.dll
+D:\Thanh Binh\ManageDevice2\DeviceManage\DTO\obj\Debug\DTO.pdb
