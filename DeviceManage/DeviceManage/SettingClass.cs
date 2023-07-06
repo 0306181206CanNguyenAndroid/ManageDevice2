@@ -23,6 +23,11 @@ namespace DeviceManage
         public static string TextTitle_Warning = "Cảnh báo!";
         #endregion
 
+        #region Constant
+        public static int Status_Error =1;
+        public static int Status_Nomal =0;
+        public static int Status_Fixing =2;
+        #endregion
         public static string GetMD5(string chuoi)
         {
             string str_md5 = "";

@@ -220,6 +220,7 @@
             this.dgvThuongHieu.RowTemplate.Height = 33;
             this.dgvThuongHieu.Size = new System.Drawing.Size(426, 250);
             this.dgvThuongHieu.TabIndex = 3;
+            this.dgvThuongHieu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvThuongHieu_CellClick);
             // 
             // Id
             // 

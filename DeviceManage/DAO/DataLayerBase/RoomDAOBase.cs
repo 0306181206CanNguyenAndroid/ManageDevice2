@@ -10,6 +10,7 @@ using DTO.ModelBase;
 using System.Data.SqlClient;
 using DAO;
 using DAO.DataLayer;
+using System.Xml.Linq;
 
 namespace DAO.DataLayerBase
 {
@@ -253,6 +254,51 @@ namespace DAO.DataLayerBase
             }
             return dt;
         }
+
+        //LayThietBiTheoPhong
+
+        public static DataTable LayThietBiTheoPhong(int? RoomId)
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection connection = new SqlConnection(PathString.ConnectionString))
+            {
+                SqlCommand cmd = new SqlCommand("LayThietBiTheoPhong", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                
+                if(RoomId != null)
+                {
+                    cmd.Parameters.AddWithValue("@RoomId", RoomId);
+                }else
+                    cmd.Parameters.AddWithValue("@RoomId", DBNull.Value);
+                connection.Open();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public static DataTable LayThietBiTheoTrangThai(int? Status)
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection connection = new SqlConnection(PathString.ConnectionString))
+            {
+                SqlCommand cmd = new SqlCommand("LayThietBiTheoPhong", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                if (Status != null)
+                {
+                    cmd.Parameters.AddWithValue("@Status", Status);
+                }
+                else
+                    cmd.Parameters.AddWithValue("@Status", DBNull.Value);
+                connection.Open();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
 
     }
 }

@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\DeviceManage"
+    "\\DeviceManage",
+    "\\DeviceManage\\DeviceManage"
   ],
-  "SelectedNode": "\\DeviceManage\\DeviceManage.sln",
+  "SelectedNode": "\\DeviceManage\\DeviceManage\\reportThietBiTheoPhong.cs",
   "PreviewInSolutionExplorer": false
 }

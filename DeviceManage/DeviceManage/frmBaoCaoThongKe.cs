@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DeviceManage.Reportting;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,16 +16,28 @@ namespace DeviceManage
         public frmBaoCaoThongKe()
         {
             InitializeComponent();
+            ThongKeTheoPhong();
+            ThongKeTheoTrangThai();
         }
 
-        private void thốngKêThiếtBịTheoPhòngToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ThongKeTheoPhong()
         {
-            reportThietBiTheoPhong thietBiTheoPhong = new reportThietBiTheoPhong();
+            ThongKeThietBiTheoRoom thietBiTheoPhong = new ThongKeThietBiTheoRoom();
             thietBiTheoPhong.TopLevel = false;
             thietBiTheoPhong.AutoScroll = true;
-            thietBiTheoPhong.Dock= DockStyle.Fill;
-            this.pnContent.Controls.Add(thietBiTheoPhong);
+            thietBiTheoPhong.Dock=DockStyle.Fill;
+            this.panel3.Controls.Add(thietBiTheoPhong);
             thietBiTheoPhong.Show();
+        }
+
+        private void ThongKeTheoTrangThai()
+        {
+            reportThietBiTheoThangThai thietBiTheoThangThai = new reportThietBiTheoThangThai();
+            thietBiTheoThangThai.TopLevel = false;
+            thietBiTheoThangThai.AutoScroll = true;
+            thietBiTheoThangThai.Dock=DockStyle.Fill;
+            this.panel2.Controls.Add(thietBiTheoThangThai);
+            thietBiTheoThangThai.Show();
         }
     }
 }

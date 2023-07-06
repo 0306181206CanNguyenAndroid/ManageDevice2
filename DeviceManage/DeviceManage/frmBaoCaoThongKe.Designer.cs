@@ -28,59 +28,88 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
-            this.thốngKêThiếtBịTheoPhòngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pnContent = new System.Windows.Forms.Panel();
-            this.menuStrip2.SuspendLayout();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip2
+            // tabControl1
             // 
-            this.menuStrip2.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
-            this.menuStrip2.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.thốngKêThiếtBịTheoPhòngToolStripMenuItem});
-            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1194, 36);
-            this.menuStrip2.TabIndex = 1;
-            this.menuStrip2.Text = "menuStrip2";
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1170, 631);
+            this.tabControl1.TabIndex = 2;
             // 
-            // thốngKêThiếtBịTheoPhòngToolStripMenuItem
+            // tabPage1
             // 
-            this.thốngKêThiếtBịTheoPhòngToolStripMenuItem.Name = "thốngKêThiếtBịTheoPhòngToolStripMenuItem";
-            this.thốngKêThiếtBịTheoPhòngToolStripMenuItem.Size = new System.Drawing.Size(271, 32);
-            this.thốngKêThiếtBịTheoPhòngToolStripMenuItem.Text = "Thống Kê Thiết Bị Theo Phòng ";
-            this.thốngKêThiếtBịTheoPhòngToolStripMenuItem.Click += new System.EventHandler(this.thốngKêThiếtBịTheoPhòngToolStripMenuItem_Click);
+            this.tabPage1.Controls.Add(this.panel3);
+            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1162, 598);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Thông Kê Thiết Bị Theo Phòng";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // pnContent
+            // tabPage2
             // 
-            this.pnContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnContent.Location = new System.Drawing.Point(0, 36);
-            this.pnContent.Name = "pnContent";
-            this.pnContent.Size = new System.Drawing.Size(1194, 596);
-            this.pnContent.TabIndex = 2;
+            this.tabPage2.Controls.Add(this.panel2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1162, 598);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Thống Kê Thiết Bị Theo Trạng Thái";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // panel3
+            // 
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1156, 592);
+            this.panel3.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1156, 592);
+            this.panel2.TabIndex = 0;
             // 
             // frmBaoCaoThongKe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1194, 632);
-            this.Controls.Add(this.pnContent);
-            this.Controls.Add(this.menuStrip2);
+            this.Controls.Add(this.tabControl1);
             this.Name = "frmBaoCaoThongKe";
             this.Text = "frmBaoCaoThongKe";
-            this.menuStrip2.ResumeLayout(false);
-            this.menuStrip2.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip2;
-        private System.Windows.Forms.ToolStripMenuItem thốngKêThiếtBịTheoPhòngToolStripMenuItem;
-        private System.Windows.Forms.Panel pnContent;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Panel panel2;
     }
 }

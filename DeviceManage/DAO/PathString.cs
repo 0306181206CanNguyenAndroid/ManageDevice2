@@ -12,6 +12,6 @@ namespace DAO
         //public static string ConnectionString = @"Data Source=DESKTOP-604HU4V\MASS;Initial Catalog=MiniSmart;Integrated Security=True";
 
         //public static string ConnectionString = @"Data Source=DESKTOP-DIDL55M;Initial Catalog=Devicement;Integrated Security=True";
-        public static string ConnectionString = @"Data Source=DESKTOP-I8KN5HP;Initial Catalog=Devicement;Integrated Security=True";
+        public static string ConnectionString = @"Data Source=DESKTOP-I8KN5HP;Initial Catalog=Devicement_SQL;Integrated Security=True";
     } 
 }
