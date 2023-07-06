@@ -60,5 +60,13 @@ namespace BUS.BusinessOjectBase
         {
             return RoomDAO.SearchRoomByName(Name);
         }
+
+        public static DataTable LayThongTinTheoPhong(int? RoomId) {
+            return RoomDAO.LayThietBiTheoPhong(RoomId);
+        }
+        public static DataTable LayThietBiTheoTrangThai(int? Status)
+        {
+            return RoomDAO.LayThietBiTheoTrangThai(Status);
+        }
     }
 }

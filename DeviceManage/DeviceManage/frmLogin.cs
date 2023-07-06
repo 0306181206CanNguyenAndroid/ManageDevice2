@@ -20,6 +20,8 @@ namespace DeviceManage
         public frmLogin()
         {
             InitializeComponent();
+            txtTenDangNhap.Text = "Admin";
+            txtMatKhau.Text = "1234567";
         }
         private void T_logout(object sender, Action_LogoutSuccessEventArgs e)
         {

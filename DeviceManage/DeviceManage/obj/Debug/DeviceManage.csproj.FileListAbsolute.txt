@@ -134,4 +134,6 @@ D:\Thanh Binh\ManageDevice2\DeviceManage\DeviceManage\bin\Debug\ru\Microsoft.Rep
 D:\Thanh Binh\ManageDevice2\DeviceManage\DeviceManage\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 D:\Thanh Binh\ManageDevice2\DeviceManage\DeviceManage\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
 D:\Thanh Binh\ManageDevice2\DeviceManage\DeviceManage\obj\Debug\DeviceManage.frmBaoCaoThongKe.resources
-D:\Thanh Binh\ManageDevice2\DeviceManage\DeviceManage\obj\Debug\DeviceManage.reportThietBiTheoPhong.resources
+D:\Thanh Binh\ManageDevice2\DeviceManage\DeviceManage\bin\Debug\Reportting\rptThongKeThietBiTheoPhong.rdlc
+D:\Thanh Binh\ManageDevice2\DeviceManage\DeviceManage\obj\Debug\DeviceManage.reportThietBiTheoThangThai.resources
+D:\Thanh Binh\ManageDevice2\DeviceManage\DeviceManage\obj\Debug\DeviceManage.ThongKeThietBiTheoRoom.resources

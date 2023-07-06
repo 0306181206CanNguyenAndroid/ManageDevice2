@@ -124,6 +124,7 @@ namespace DeviceManage
                 if(logout!=null)
                 {
                     logout(this, new Action_LogoutSuccessEventArgs { });
+                    GC.Collect();
                 }
                 this.Dispose();
             }

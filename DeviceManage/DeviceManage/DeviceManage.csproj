@@ -227,17 +227,21 @@
     <Compile Include="Message.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="reportThietBiTheoPhong.cs">
+    <Compile Include="reportThietBiTheoThangThai.cs">
       <SubType>Form</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="reportThietBiTheoPhong.Designer.cs">
-      <DependentUpon>reportThietBiTheoPhong.cs</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Compile Include="reportThietBiTheoThangThai.Designer.cs">
+      <DependentUpon>reportThietBiTheoThangThai.cs</DependentUpon>
     </Compile>
     <Compile Include="Reportting\ThongKeThietBiTheoPhong.cs" />
     <Compile Include="SettingClass.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="ThongKeThietBiTheoRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThongKeThietBiTheoRoom.Designer.cs">
+      <DependentUpon>ThongKeThietBiTheoRoom.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddDeviceFromShipment.resx">
       <DependentUpon>AddDeviceFromShipment.cs</DependentUpon>
     </EmbeddedResource>
@@ -308,12 +312,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="reportThietBiTheoPhong.resx">
-      <DependentUpon>reportThietBiTheoPhong.cs</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <EmbeddedResource Include="reportThietBiTheoThangThai.resx">
+      <DependentUpon>reportThietBiTheoThangThai.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportting\rptThongKeThietBiTheoPhong.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThongKeThietBiTheoRoom.resx">
+      <DependentUpon>ThongKeThietBiTheoRoom.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DeviceManage.Reportting.ThongKeThietBiTheoPhong.datasource" />
