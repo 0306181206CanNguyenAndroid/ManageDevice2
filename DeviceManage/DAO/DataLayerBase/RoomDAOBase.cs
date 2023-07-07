@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using DAO;
 using DAO.DataLayer;
 using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DAO.DataLayerBase
 {
@@ -277,12 +278,12 @@ namespace DAO.DataLayerBase
             }
             return dt;
         }
-        public static DataTable LayThietBiTheoTrangThai(int? Status)
+        public static DataTable LayThietBiTheoTrangThai(int? Status, int? deviceTypeId)
         {
             DataTable dt = new DataTable();
             using (SqlConnection connection = new SqlConnection(PathString.ConnectionString))
             {
-                SqlCommand cmd = new SqlCommand("LayThietBiTheoPhong", connection);
+                SqlCommand cmd = new SqlCommand("LayThietBiTheoTrangThai", connection);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 if (Status != null)
@@ -291,6 +292,13 @@ namespace DAO.DataLayerBase
                 }
                 else
                     cmd.Parameters.AddWithValue("@Status", DBNull.Value);
+
+                if (deviceTypeId != null)
+                {
+                    cmd.Parameters.AddWithValue("@deviceTypeId", deviceTypeId);
+                }
+                else
+                    cmd.Parameters.AddWithValue("@deviceTypeId", DBNull.Value);
                 connection.Open();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
 
@@ -299,6 +307,33 @@ namespace DAO.DataLayerBase
             return dt;
         }
 
+        public static DataTable LayThietBiBinhThuong(int? Status,int? deviceTypeId)
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection connection = new SqlConnection(PathString.ConnectionString))
+            {
+                SqlCommand cmd = new SqlCommand("LayThietBiBinhThuong", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
 
+                if (Status != null)
+                {
+                    cmd.Parameters.AddWithValue("@Status", Status);
+                }
+                else
+                    cmd.Parameters.AddWithValue("@Status", DBNull.Value);
+
+                if (deviceTypeId != null)
+                {
+                    cmd.Parameters.AddWithValue("@deviceTypeId", deviceTypeId);
+                }
+                else
+                    cmd.Parameters.AddWithValue("@deviceTypeId", DBNull.Value);
+                connection.Open();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                da.Fill(dt);
+            }
+            return dt;
+        }
     }
 }

@@ -234,6 +234,7 @@
       <DependentUpon>reportThietBiTheoThangThai.cs</DependentUpon>
     </Compile>
     <Compile Include="Reportting\ThongKeThietBiTheoPhong.cs" />
+    <Compile Include="Reportting\ThongKeThietBiTheoTrangThai.cs" />
     <Compile Include="SettingClass.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="ThongKeThietBiTheoRoom.cs">
@@ -318,11 +319,15 @@
     <EmbeddedResource Include="Reportting\rptThongKeThietBiTheoPhong.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportting\rptThongKeThietBiTheoTrangThai.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="ThongKeThietBiTheoRoom.resx">
       <DependentUpon>ThongKeThietBiTheoRoom.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DeviceManage.Reportting.ThongKeThietBiTheoPhong.datasource" />
+    <None Include="Properties\DataSources\DeviceManage.Reportting.ThongKeThietBiTheoTrangThai.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

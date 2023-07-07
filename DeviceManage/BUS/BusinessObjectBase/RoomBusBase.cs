@@ -64,9 +64,13 @@ namespace BUS.BusinessOjectBase
         public static DataTable LayThongTinTheoPhong(int? RoomId) {
             return RoomDAO.LayThietBiTheoPhong(RoomId);
         }
-        public static DataTable LayThietBiTheoTrangThai(int? Status)
+        public static DataTable LayThietBiTheoTrangThai(int? Status, int? deviceTypeId)
         {
-            return RoomDAO.LayThietBiTheoTrangThai(Status);
+            return RoomDAO.LayThietBiTheoTrangThai(Status,deviceTypeId);
+        }
+        public static DataTable LayThietBiBinhThuong(int? Status, int? deviceTypeId)
+        {
+            return RoomDAO.LayThietBiBinhThuong(Status, deviceTypeId);
         }
     }
 }

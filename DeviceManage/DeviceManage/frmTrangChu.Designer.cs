@@ -73,7 +73,7 @@
             this.panel_Left.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.panel_Left.Name = "panel_Left";
             this.panel_Left.Size = new System.Drawing.Size(314, 997);
-            this.panel_Left.TabIndex = 0;
+            this.panel_Left.TabIndex = 1;
             // 
             // btnQlLoaiThietBi
             // 
@@ -199,7 +199,7 @@
             this.pictureBox_Logo.Name = "pictureBox_Logo";
             this.pictureBox_Logo.Size = new System.Drawing.Size(314, 218);
             this.pictureBox_Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_Logo.TabIndex = 0;
+            this.pictureBox_Logo.TabIndex = 1;
             this.pictureBox_Logo.TabStop = false;
             this.pictureBox_Logo.Click += new System.EventHandler(this.pictureBox_Logo_Click);
             // 
