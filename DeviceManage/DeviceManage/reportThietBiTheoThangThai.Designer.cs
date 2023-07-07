@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gbTrangThai = new System.Windows.Forms.GroupBox();
-            this.rdError = new System.Windows.Forms.RadioButton();
-            this.rdNormal = new System.Windows.Forms.RadioButton();
             this.btnXemTKTheoTrangThai = new System.Windows.Forms.Button();
+            this.rdNormal = new System.Windows.Forms.RadioButton();
+            this.rdError = new System.Windows.Forms.RadioButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.rptThietBiTheoTrangThai = new Microsoft.Reporting.WinForms.ReportViewer();
             this.gbTrangThai.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,16 +51,21 @@
             this.gbTrangThai.TabStop = false;
             this.gbTrangThai.Text = "Trạng Thái";
             // 
-            // rdError
+            // btnXemTKTheoTrangThai
             // 
-            this.rdError.AutoSize = true;
-            this.rdError.Location = new System.Drawing.Point(159, 46);
-            this.rdError.Name = "rdError";
-            this.rdError.Size = new System.Drawing.Size(130, 24);
-            this.rdError.TabIndex = 0;
-            this.rdError.TabStop = true;
-            this.rdError.Text = "Thiết Bị Hỏng";
-            this.rdError.UseVisualStyleBackColor = true;
+            this.btnXemTKTheoTrangThai.BackColor = System.Drawing.Color.Transparent;
+            this.btnXemTKTheoTrangThai.BackgroundImage = global::DeviceManage.Properties.Resources.search;
+            this.btnXemTKTheoTrangThai.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnXemTKTheoTrangThai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnXemTKTheoTrangThai.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnXemTKTheoTrangThai.Location = new System.Drawing.Point(603, 30);
+            this.btnXemTKTheoTrangThai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnXemTKTheoTrangThai.Name = "btnXemTKTheoTrangThai";
+            this.btnXemTKTheoTrangThai.Size = new System.Drawing.Size(80, 40);
+            this.btnXemTKTheoTrangThai.TabIndex = 18;
+            this.toolTip1.SetToolTip(this.btnXemTKTheoTrangThai, "Xem Thống Kê");
+            this.btnXemTKTheoTrangThai.UseVisualStyleBackColor = false;
+            this.btnXemTKTheoTrangThai.Click += new System.EventHandler(this.btnXemTKTheoTrangThai_Click);
             // 
             // rdNormal
             // 
@@ -73,39 +78,36 @@
             this.rdNormal.Text = "Bình Thường";
             this.rdNormal.UseVisualStyleBackColor = true;
             // 
-            // btnXemTKTheoTrangThai
+            // rdError
             // 
-            this.btnXemTKTheoTrangThai.BackColor = System.Drawing.Color.Transparent;
-            this.btnXemTKTheoTrangThai.BackgroundImage = global::DeviceManage.Properties.Resources.search;
-            this.btnXemTKTheoTrangThai.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnXemTKTheoTrangThai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnXemTKTheoTrangThai.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnXemTKTheoTrangThai.Location = new System.Drawing.Point(603, 30);
-            this.btnXemTKTheoTrangThai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnXemTKTheoTrangThai.Name = "btnXemTKTheoTrangThai";
-            this.btnXemTKTheoTrangThai.Size = new System.Drawing.Size(121, 40);
-            this.btnXemTKTheoTrangThai.TabIndex = 18;
-            this.btnXemTKTheoTrangThai.UseVisualStyleBackColor = false;
+            this.rdError.AutoSize = true;
+            this.rdError.Location = new System.Drawing.Point(159, 46);
+            this.rdError.Name = "rdError";
+            this.rdError.Size = new System.Drawing.Size(130, 24);
+            this.rdError.TabIndex = 0;
+            this.rdError.TabStop = true;
+            this.rdError.Text = "Thiết Bị Hỏng";
+            this.rdError.UseVisualStyleBackColor = true;
             // 
             // toolTip1
             // 
             this.toolTip1.ToolTipTitle = "Xem Thống Kê";
             // 
-            // reportViewer1
+            // rptThietBiTheoTrangThai
             // 
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportViewer1.Location = new System.Drawing.Point(0, 110);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(971, 511);
-            this.reportViewer1.TabIndex = 1;
+            this.rptThietBiTheoTrangThai.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rptThietBiTheoTrangThai.Location = new System.Drawing.Point(0, 110);
+            this.rptThietBiTheoTrangThai.Name = "rptThietBiTheoTrangThai";
+            this.rptThietBiTheoTrangThai.ServerReport.BearerToken = null;
+            this.rptThietBiTheoTrangThai.Size = new System.Drawing.Size(971, 511);
+            this.rptThietBiTheoTrangThai.TabIndex = 1;
             // 
             // reportThietBiTheoThangThai
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(971, 621);
-            this.Controls.Add(this.reportViewer1);
+            this.Controls.Add(this.rptThietBiTheoTrangThai);
             this.Controls.Add(this.gbTrangThai);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "reportThietBiTheoThangThai";
@@ -124,6 +126,6 @@
         private System.Windows.Forms.RadioButton rdNormal;
         private System.Windows.Forms.Button btnXemTKTheoTrangThai;
         private System.Windows.Forms.ToolTip toolTip1;
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private Microsoft.Reporting.WinForms.ReportViewer rptThietBiTheoTrangThai;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using BUS.BusinessObject;
 using DeviceManage.Reportting;
+using DTO.Model;
 using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace DeviceManage
         public ThongKeThietBiTheoRoom()
         {
             InitializeComponent();
+            
         }
         public List<ThongKeThietBiTheoPhong> danhsach = null;
 
@@ -27,6 +29,7 @@ namespace DeviceManage
 
             //this.rptThietbiTheoPhong.RefreshReport();
         }
+
 
         private void HienThiThietBiTheoPhong()
         {
@@ -50,11 +53,12 @@ namespace DeviceManage
                             thietBiTheoPhong.Device_SpecsName = dr["Info"].ToString();
                             thietBiTheoPhong.Device_TypeName = dr["DeviceTypeName"].ToString();
                             thietBiTheoPhong.RoomName = dr["RoomName"].ToString();
-                            thietBiTheoPhong.NgayMua = ((DateTime)dr["NgayMua"]);
+                            thietBiTheoPhong.NgayMua = dr["NgayMua"]!= DBNull.Value ? ((DateTime)dr["NgayMua"]): (DateTime?)null;
                             thietBiTheoPhong.SoLuong = (int)dr["SL"];
                             danhsach.Add(thietBiTheoPhong);
                         }
                     }
+                    else MessageClass.Message_Event("Không Có Thiết Nào Trong Phòng", "Thông Báo",false);
 
                 }
 
@@ -78,7 +82,16 @@ namespace DeviceManage
             cbNameRom.DataSource = RoomBus.GetRoomAfterDelete();
             cbNameRom.DisplayMember = "Name";
             cbNameRom.ValueMember = "Id";
+
+
+            
+
             //this.reportViewer1.RefreshReport();
+        }
+
+        private void cbSapXep_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

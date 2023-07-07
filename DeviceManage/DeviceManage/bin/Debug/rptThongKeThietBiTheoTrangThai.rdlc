@@ -6,8 +6,8 @@
         <Source>Embedded</Source>
         <Value>Logo</Value>
         <Sizing>FitProportional</Sizing>
-        <Height>1.10069in</Height>
-        <Width>1.06597in</Width>
+        <Height>1.04861in</Height>
+        <Width>0.96528in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -34,10 +34,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.16889in</Top>
-        <Left>1.86333in</Left>
-        <Height>0.35417in</Height>
-        <Width>4.30556in</Width>
+        <Top>0.32167in</Top>
+        <Left>1.95361in</Left>
+        <Height>0.32639in</Height>
+        <Width>4.49306in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -56,7 +56,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Thống Kê Danh Sách Thiết Bị Theo Phòng</Value>
+                <Value>Thống Kê Danh Sách Thiết Bị Theo Trạng Thái</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -66,10 +66,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox2</rd:DefaultName>
-        <Top>0.75222in</Top>
-        <Left>2.64111in</Left>
+        <Top>0.9675in</Top>
+        <Left>2.38417in</Left>
         <Height>0.25in</Height>
-        <Width>2.86806in</Width>
+        <Width>3.66667in</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -88,28 +88,31 @@
               <Width>1in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.99306in</Width>
+              <Width>1in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.04861in</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>1.13889in</Width>
+              <Width>1.84028in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.79861in</Width>
+              <Width>1in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.67361in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.22222in</Height>
+              <Height>0.25in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox8">
+                    <Textbox Name="Textbox17">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -120,10 +123,12 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox8</rd:DefaultName>
+                      <rd:DefaultName>Textbox17</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -150,7 +155,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox3</rd:DefaultName>
@@ -180,7 +187,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox5</rd:DefaultName>
@@ -206,11 +215,13 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Tên Loại Thiết Bị</Value>
+                              <Value>Loại Thiết Bị</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox7</rd:DefaultName>
@@ -236,11 +247,13 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Ngày Mua</Value>
+                              <Value>Tên Lỗi</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox11</rd:DefaultName>
@@ -266,11 +279,13 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Số Lượng</Value>
+                              <Value>Mô Tả</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox13</rd:DefaultName>
@@ -287,10 +302,42 @@
                     </Textbox>
                   </CellContents>
                 </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox15">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Hướng Khắc Phục(nếu có)</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox15</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.22222in</Height>
+              <Height>0.25in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -414,21 +461,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="NgayMua">
+                    <Textbox Name="ErrorName">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!NgayMua.Value</Value>
+                              <Value>=Fields!ErrorName.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>NgayMua</rd:DefaultName>
+                      <rd:DefaultName>ErrorName</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -444,21 +491,51 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="SoLuong">
+                    <Textbox Name="ErrorDescription">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!SoLuong.Value</Value>
+                              <Value>=Fields!ErrorDescription.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>SoLuong</rd:DefaultName>
+                      <rd:DefaultName>ErrorDescription</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Remediation">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Remediation.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Remediation</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -484,6 +561,7 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -493,22 +571,14 @@
             </TablixMember>
             <TablixMember>
               <Group Name="Details" />
-              <SortExpressions>
-                <SortExpression>
-                  <Value>=Fields!RoomName.Value</Value>
-                </SortExpression>
-                <SortExpression>
-                  <Value>=Fields!NgayMua.Value</Value>
-                </SortExpression>
-              </SortExpressions>
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>ThongKeThietBiTheoPhongDataset</DataSetName>
-        <Top>1.48139in</Top>
-        <Left>0.98833in</Left>
-        <Height>0.44444in</Height>
-        <Width>6.97917in</Width>
+        <DataSetName>ThongKeThietBiTheoTrangThaiDataset</DataSetName>
+        <Top>2.16194in</Top>
+        <Left>0.60639in</Left>
+        <Height>0.5in</Height>
+        <Width>8.51389in</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
@@ -517,10 +587,10 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>2.9375in</Height>
+    <Height>4.0625in</Height>
     <Style />
   </Body>
-  <Width>8.16889in</Width>
+  <Width>9.12028in</Width>
   <Page>
     <LeftMargin>1in</LeftMargin>
     <RightMargin>1in</RightMargin>
@@ -535,11 +605,11 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>251b35ab-bf6f-48b2-b352-0f00017de67a</rd:DataSourceID>
+      <rd:DataSourceID>3790819b-5951-4fc0-93fd-4b3bdd06cd5b</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="ThongKeThietBiTheoPhongDataset">
+    <DataSet Name="ThongKeThietBiTheoTrangThaiDataset">
       <Query>
         <DataSourceName>DeviceManageReportting</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
@@ -557,35 +627,27 @@
           <DataField>DeviceName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="DeviceTypeName">
-          <DataField>DeviceTypeName</DataField>
+        <Field Name="ErrorDescription">
+          <DataField>ErrorDescription</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Info">
-          <DataField>Info</DataField>
+        <Field Name="ErrorName">
+          <DataField>ErrorName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="NgayMua">
-          <DataField>NgayMua</DataField>
-          <rd:TypeName>System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        <Field Name="Remediation">
+          <DataField>Remediation</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="RoomName">
           <DataField>RoomName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="SL">
-          <DataField>SL</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="SoLuong">
-          <DataField>SoLuong</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DeviceManage.Reportting</rd:DataSetName>
-        <rd:TableName>ThongKeThietBiTheoPhong</rd:TableName>
-        <rd:ObjectDataSourceType>DeviceManage.Reportting.ThongKeThietBiTheoPhong, DeviceManage, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:TableName>ThongKeThietBiTheoTrangThai</rd:TableName>
+        <rd:ObjectDataSourceType>DeviceManage.Reportting.ThongKeThietBiTheoTrangThai, DeviceManage, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -625,5 +687,5 @@ x8KaRYf6myjB9SK1o4kjULGoVR2AqZ8Qwpq1Cml6gqLe7PFNM+Duq3GGv5Y4FPZTkiuw0/4R6LaYM7vc
     </EmbeddedImage>
   </EmbeddedImages>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>c8119f24-ba20-4af3-937b-ab1aa74f45b0</rd:ReportID>
+  <rd:ReportID>26b386d6-dc89-423f-891c-e0af8985ccd3</rd:ReportID>
 </Report>

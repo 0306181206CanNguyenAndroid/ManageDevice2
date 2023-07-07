@@ -14,6 +14,10 @@ D:\Document D\ManageDevice\DeviceManage\BUS\obj\Debug\BUS.csproj.CoreCompileInpu
 D:\Document D\ManageDevice\DeviceManage\BUS\obj\Debug\BUS.csproj.CopyComplete
 D:\Document D\ManageDevice\DeviceManage\BUS\obj\Debug\BUS.dll
 D:\Document D\ManageDevice\DeviceManage\BUS\obj\Debug\BUS.pdb
+D:\Thanh Binh\ManageDevice2\DeviceManage\BUS\bin\Debug\SqlServerTypes\x64\msvcr120.dll
+D:\Thanh Binh\ManageDevice2\DeviceManage\BUS\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
+D:\Thanh Binh\ManageDevice2\DeviceManage\BUS\bin\Debug\SqlServerTypes\x86\msvcr120.dll
+D:\Thanh Binh\ManageDevice2\DeviceManage\BUS\bin\Debug\SqlServerTypes\x86\SqlServerSpatial140.dll
 D:\Thanh Binh\ManageDevice2\DeviceManage\BUS\bin\Debug\BUS.dll.config
 D:\Thanh Binh\ManageDevice2\DeviceManage\BUS\bin\Debug\BUS.dll
 D:\Thanh Binh\ManageDevice2\DeviceManage\BUS\bin\Debug\BUS.pdb
@@ -30,7 +34,3 @@ D:\Thanh Binh\ManageDevice2\DeviceManage\BUS\obj\Debug\BUS.csproj.CoreCompileInp
 D:\Thanh Binh\ManageDevice2\DeviceManage\BUS\obj\Debug\BUS.csproj.CopyComplete
 D:\Thanh Binh\ManageDevice2\DeviceManage\BUS\obj\Debug\BUS.dll
 D:\Thanh Binh\ManageDevice2\DeviceManage\BUS\obj\Debug\BUS.pdb
-D:\Thanh Binh\ManageDevice2\DeviceManage\BUS\bin\Debug\SqlServerTypes\x64\msvcr120.dll
-D:\Thanh Binh\ManageDevice2\DeviceManage\BUS\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
-D:\Thanh Binh\ManageDevice2\DeviceManage\BUS\bin\Debug\SqlServerTypes\x86\msvcr120.dll
-D:\Thanh Binh\ManageDevice2\DeviceManage\BUS\bin\Debug\SqlServerTypes\x86\SqlServerSpatial140.dll

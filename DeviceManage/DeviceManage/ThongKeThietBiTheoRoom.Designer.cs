@@ -39,7 +39,7 @@
             // cbNameRom
             // 
             this.cbNameRom.FormattingEnabled = true;
-            this.cbNameRom.Location = new System.Drawing.Point(244, 34);
+            this.cbNameRom.Location = new System.Drawing.Point(134, 39);
             this.cbNameRom.Name = "cbNameRom";
             this.cbNameRom.Size = new System.Drawing.Size(184, 28);
             this.cbNameRom.TabIndex = 6;
@@ -48,7 +48,7 @@
             // 
             this.btnXemThongKe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnXemThongKe.BackColor = System.Drawing.Color.Lime;
-            this.btnXemThongKe.Location = new System.Drawing.Point(555, 29);
+            this.btnXemThongKe.Location = new System.Drawing.Point(851, 29);
             this.btnXemThongKe.Name = "btnXemThongKe";
             this.btnXemThongKe.Size = new System.Drawing.Size(153, 33);
             this.btnXemThongKe.TabIndex = 5;
@@ -59,7 +59,7 @@
             // lblTenPhong
             // 
             this.lblTenPhong.AutoSize = true;
-            this.lblTenPhong.Location = new System.Drawing.Point(111, 42);
+            this.lblTenPhong.Location = new System.Drawing.Point(34, 42);
             this.lblTenPhong.Name = "lblTenPhong";
             this.lblTenPhong.Size = new System.Drawing.Size(94, 20);
             this.lblTenPhong.TabIndex = 4;
@@ -74,7 +74,7 @@
             this.rptThietbiTheoPhong.Location = new System.Drawing.Point(0, 83);
             this.rptThietbiTheoPhong.Name = "rptThietbiTheoPhong";
             this.rptThietbiTheoPhong.ServerReport.BearerToken = null;
-            this.rptThietbiTheoPhong.Size = new System.Drawing.Size(800, 365);
+            this.rptThietbiTheoPhong.Size = new System.Drawing.Size(1096, 365);
             this.rptThietbiTheoPhong.TabIndex = 7;
             // 
             // groupBox1
@@ -85,16 +85,16 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(800, 77);
+            this.groupBox1.Size = new System.Drawing.Size(1096, 77);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Chọn Phòng";
             // 
             // ThongKeThietBiTheoRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1096, 450);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.rptThietbiTheoPhong);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
