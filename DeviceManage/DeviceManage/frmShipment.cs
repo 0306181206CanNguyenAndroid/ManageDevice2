@@ -19,12 +19,20 @@ namespace DeviceManage
         public frmShipment()
         {
             InitializeComponent();
+            user = 1;
+            Setting();
+            LoadForm();
+        }
+        public frmShipment(int UserId)
+        {
+            InitializeComponent();
+            user = UserId;
             Setting();
             LoadForm();
         }
         #region Model
 
-        public UserModel user = null;
+        public int user = 0;
         public ShipmentModel currentShipment = null;
         public ShipmentDetailModel currentShipmentDetail = null;
         private List<ShipmentModel> listShipment = null;
@@ -75,6 +83,12 @@ namespace DeviceManage
         private void LoadShipmentSource()
         {
             listShipment = ShipmentBus.SelectAllDynamicWhere(null, null, null, null, null, null, null, null, null, false, null);
+            foreach(ShipmentModel dh in listShipment)
+            {
+                TeacherModel t = TeacherBus.SelectTeacherById(dh.ApproverId);
+                dh.Person = t.FullName;
+                dh.TotalPrice = ShipmentBus.GetTotalPrice(dh.Id);
+            }
         }
 
         private void LoadDataGridViewShipment()
@@ -169,8 +183,8 @@ namespace DeviceManage
         private ShipmentModel GetShipmentData()
         {
             ShipmentModel ship = new ShipmentModel();
-            //TeacherModel teacher = TeacherBus.SelectTeacherByUserId(user.Id,false);
-            TeacherModel teacher = TeacherBus.SelectTeacherByUserId(1,false);
+            TeacherModel teacher = TeacherBus.SelectTeacherByUserId(user,false);
+            //TeacherModel teacher = TeacherBus.SelectTeacherByUserId(1,false);
             ship.ApproverId = teacher != null ? teacher.Id : 1;
             ship.ImportDate = dtp_ImportDate.Value;
             ship.Invoice = txt_Invoice.Text.Trim();
@@ -183,12 +197,18 @@ namespace DeviceManage
             ship.CreatedUserId = 1;
             return ship;
         }
+
+        private void UpdateListDetail(object sender, ActionAddDeviceFromShipmentEventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
         private void btn_AddDevice_Click(object sender, EventArgs e)
         {
             if(currentShipment!=null)
             {
                 //AddDeviceFromShipment frmAddDevice = new AddDeviceFromShipment(currentShipment,user.Id);
                 AddDeviceFromShipment frmAddDevice = new AddDeviceFromShipment(currentShipment,1);
+                frmAddDevice.addDevice += UpdateListDetail;
                 frmAddDevice.Show();
             }
             else
@@ -202,21 +222,38 @@ namespace DeviceManage
             {
                 if(currentShipment!=null)
                 {
-                    ShipmentModel sh = ShipmentBus.SelectByPrimaryKey(currentShipment.Id);
-                    sh.IsDeleted = true;
-                    ShipmentBus.Update(sh);
-                    listShipment.Remove(currentShipment);
-                    btn_Del.Enabled = false;
-                    LoadDataGridViewShipment();
-                    currentShipment = null;
-                    dtgv_Shipment.ClearSelection();
+                    if (MessageClass.Message_Event_YesNo("xóa phiếu nhập"))
+                    {
+                        ShipmentModel sh = ShipmentBus.SelectByPrimaryKey(currentShipment.Id);
+                        sh.IsDeleted = true;
+                        ShipmentBus.Delete(sh.Id);
+                        listShipment.Remove(currentShipment);
+                        btn_Del.Enabled = false;
+                        LoadDataGridViewShipment();
+                        currentShipment = null;
+                        dtgv_Shipment.ClearSelection();
+                    }
                 }
             }
         }
 
         private void btn_Update_Click(object sender, EventArgs e)
         {
-
+            if (CheckInfoShipment())
+            {
+                try
+                {
+                    ShipmentModel phieu = GetShipmentData();
+                    ShipmentBus.Update(phieu);
+                    
+                    listShipment.Add(phieu);
+                    LoadDataGridViewShipment();
+                }
+                catch (Exception ex)
+                {
+                    MessageClass.Message_Event(ex.Message, SettingClass.TextTitle_ThongBao, true);
+                }
+            }
         }
 
 
@@ -249,5 +286,15 @@ namespace DeviceManage
             }
         }
         #endregion
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtp_ImportDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

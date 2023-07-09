@@ -310,3 +310,17 @@ as
 		)
 	end
 go
+
+create proc Device_SearchByKeyWord(@keywork nvarchar(100) = null)
+as
+	begin
+		select* from [D_Device]
+		where @keywork is null or
+		([Name] like '%' + @keywork + '%') or
+		([Note] like '%' + @keywork + '%') or
+		([Price] like '%' + @keywork + '%') or
+		([WarrantyPeriod] like '%' + @keywork + '%') or
+		([CreatedDate] like '%' + @keywork + '%')
+
+	end
+	go

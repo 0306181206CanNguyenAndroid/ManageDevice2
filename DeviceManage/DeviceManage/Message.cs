@@ -23,7 +23,7 @@ namespace DeviceManage
 
         public static void Message_CheckData(string content, string title)
         {
-            MessageBox.Show(content + " không hợp lệ!", title, MessageBoxButtons.OK);
+            MessageBox.Show(content + " không hợp lệ!", title, MessageBoxButtons.OK,MessageBoxIcon.Warning);
         }
 
         public static void Message_Event(string content, string title)
@@ -31,7 +31,7 @@ namespace DeviceManage
             MessageBox.Show(": " + content, title, MessageBoxButtons.OK);
         }
 
-        public static bool Message_Event_YesNo(string requiment, string title)
+        public static bool Message_Event_YesNo(string requiment)
         {
             if (MessageBox.Show("Bạn có thật sự muốn "+requiment+"?", "Thông Báo", MessageBoxButtons.YesNo)
                 == System.Windows.Forms.DialogResult.Yes)

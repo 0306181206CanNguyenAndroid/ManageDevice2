@@ -29,7 +29,6 @@ namespace DeviceManage
         /// </summary>
         private void InitializeComponent()
         {
-            this.cb_ListImg = new System.Windows.Forms.ComboBox();
             this.cbNhaCungCap = new System.Windows.Forms.ComboBox();
             this.cbLoaiTbi = new System.Windows.Forms.ComboBox();
             this.txtTenTbi = new System.Windows.Forms.TextBox();
@@ -45,21 +44,21 @@ namespace DeviceManage
             this.lb_Image = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ptb_Device = new System.Windows.Forms.PictureBox();
+            this.cb_Device = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.dtgv_ListDetail = new System.Windows.Forms.DataGridView();
+            this.Specs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SpecsId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.num_NumberAdd = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.txt_ShipmentCode = new System.Windows.Forms.TextBox();
-            this.cb_Device = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.btnThemTbi = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.Specs = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Icon = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnThemTbi = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_Device)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_ListDetail)).BeginInit();
@@ -67,49 +66,41 @@ namespace DeviceManage
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // cb_ListImg
-            // 
-            this.cb_ListImg.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_ListImg.FormattingEnabled = true;
-            this.cb_ListImg.Location = new System.Drawing.Point(6, 48);
-            this.cb_ListImg.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cb_ListImg.Name = "cb_ListImg";
-            this.cb_ListImg.Size = new System.Drawing.Size(160, 24);
-            this.cb_ListImg.TabIndex = 2;
-            this.cb_ListImg.SelectedIndexChanged += new System.EventHandler(this.cb_ListImg_SelectedIndexChanged);
-            // 
             // cbNhaCungCap
             // 
+            this.cbNhaCungCap.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbNhaCungCap.FormattingEnabled = true;
-            this.cbNhaCungCap.Location = new System.Drawing.Point(222, 201);
+            this.cbNhaCungCap.Location = new System.Drawing.Point(222, 212);
             this.cbNhaCungCap.Margin = new System.Windows.Forms.Padding(2);
             this.cbNhaCungCap.Name = "cbNhaCungCap";
-            this.cbNhaCungCap.Size = new System.Drawing.Size(198, 24);
+            this.cbNhaCungCap.Size = new System.Drawing.Size(198, 27);
             this.cbNhaCungCap.TabIndex = 4;
             // 
             // cbLoaiTbi
             // 
+            this.cbLoaiTbi.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbLoaiTbi.FormattingEnabled = true;
-            this.cbLoaiTbi.Location = new System.Drawing.Point(222, 126);
+            this.cbLoaiTbi.Location = new System.Drawing.Point(192, 25);
             this.cbLoaiTbi.Margin = new System.Windows.Forms.Padding(2);
             this.cbLoaiTbi.Name = "cbLoaiTbi";
-            this.cbLoaiTbi.Size = new System.Drawing.Size(198, 24);
+            this.cbLoaiTbi.Size = new System.Drawing.Size(240, 27);
             this.cbLoaiTbi.TabIndex = 3;
             this.cbLoaiTbi.SelectedIndexChanged += new System.EventHandler(this.cbLoaiTbi_SelectedIndexChanged);
             // 
             // txtTenTbi
             // 
-            this.txtTenTbi.Location = new System.Drawing.Point(222, 48);
+            this.txtTenTbi.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTenTbi.Location = new System.Drawing.Point(222, 138);
             this.txtTenTbi.Margin = new System.Windows.Forms.Padding(2);
             this.txtTenTbi.Name = "txtTenTbi";
-            this.txtTenTbi.Size = new System.Drawing.Size(198, 22);
+            this.txtTenTbi.Size = new System.Drawing.Size(198, 27);
             this.txtTenTbi.TabIndex = 3;
             // 
             // lblNhaCungCap
             // 
             this.lblNhaCungCap.AutoSize = true;
             this.lblNhaCungCap.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.lblNhaCungCap.Location = new System.Drawing.Point(222, 170);
+            this.lblNhaCungCap.Location = new System.Drawing.Point(222, 181);
             this.lblNhaCungCap.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNhaCungCap.Name = "lblNhaCungCap";
             this.lblNhaCungCap.Size = new System.Drawing.Size(146, 24);
@@ -120,7 +111,7 @@ namespace DeviceManage
             // 
             this.lblLoaiTbi.AutoSize = true;
             this.lblLoaiTbi.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.lblLoaiTbi.Location = new System.Drawing.Point(222, 95);
+            this.lblLoaiTbi.Location = new System.Drawing.Point(18, 27);
             this.lblLoaiTbi.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLoaiTbi.Name = "lblLoaiTbi";
             this.lblLoaiTbi.Size = new System.Drawing.Size(134, 24);
@@ -131,7 +122,7 @@ namespace DeviceManage
             // 
             this.lblTenTBi.AutoSize = true;
             this.lblTenTBi.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.lblTenTBi.Location = new System.Drawing.Point(222, 19);
+            this.lblTenTBi.Location = new System.Drawing.Point(218, 102);
             this.lblTenTBi.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTenTBi.Name = "lblTenTBi";
             this.lblTenTBi.Size = new System.Drawing.Size(130, 24);
@@ -140,18 +131,19 @@ namespace DeviceManage
             // 
             // txtPrice
             // 
-            this.txtPrice.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.txtPrice.Location = new System.Drawing.Point(6, 284);
+            this.txtPrice.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrice.Location = new System.Drawing.Point(6, 292);
             this.txtPrice.Margin = new System.Windows.Forms.Padding(2);
             this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(179, 30);
+            this.txtPrice.Size = new System.Drawing.Size(179, 27);
             this.txtPrice.TabIndex = 5;
+            this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Price_KeyPress);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(6, 257);
+            this.label3.Location = new System.Drawing.Point(6, 262);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(110, 24);
@@ -162,6 +154,7 @@ namespace DeviceManage
             // 
             this.rtbGhiChuTbi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtbGhiChuTbi.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbGhiChuTbi.Location = new System.Drawing.Point(6, 359);
             this.rtbGhiChuTbi.Margin = new System.Windows.Forms.Padding(2);
             this.rtbGhiChuTbi.Name = "rtbGhiChuTbi";
@@ -184,8 +177,8 @@ namespace DeviceManage
             // 
             this.dtBaoHanh.CalendarFont = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.dtBaoHanh.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.dtBaoHanh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtBaoHanh.Location = new System.Drawing.Point(222, 284);
+            this.dtBaoHanh.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtBaoHanh.Location = new System.Drawing.Point(222, 289);
             this.dtBaoHanh.Margin = new System.Windows.Forms.Padding(2);
             this.dtBaoHanh.Name = "dtBaoHanh";
             this.dtBaoHanh.Size = new System.Drawing.Size(198, 30);
@@ -195,7 +188,7 @@ namespace DeviceManage
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(218, 257);
+            this.label1.Location = new System.Drawing.Point(218, 262);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(154, 24);
@@ -206,7 +199,7 @@ namespace DeviceManage
             // 
             this.lb_Image.AutoSize = true;
             this.lb_Image.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.lb_Image.Location = new System.Drawing.Point(6, 19);
+            this.lb_Image.Location = new System.Drawing.Point(6, 31);
             this.lb_Image.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_Image.Name = "lb_Image";
             this.lb_Image.Size = new System.Drawing.Size(125, 24);
@@ -219,18 +212,17 @@ namespace DeviceManage
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox1.Controls.Add(this.ptb_Device);
             this.groupBox1.Controls.Add(this.txtPrice);
+            this.groupBox1.Controls.Add(this.cb_Device);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.cbNhaCungCap);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.cb_ListImg);
             this.groupBox1.Controls.Add(this.rtbGhiChuTbi);
-            this.groupBox1.Controls.Add(this.cbLoaiTbi);
             this.groupBox1.Controls.Add(this.lblGhiChuTbi);
             this.groupBox1.Controls.Add(this.lb_Image);
             this.groupBox1.Controls.Add(this.dtBaoHanh);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtTenTbi);
             this.groupBox1.Controls.Add(this.lblNhaCungCap);
-            this.groupBox1.Controls.Add(this.lblLoaiTbi);
             this.groupBox1.Controls.Add(this.lblTenTBi);
             this.groupBox1.Location = new System.Drawing.Point(12, 56);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -245,15 +237,38 @@ namespace DeviceManage
             // ptb_Device
             // 
             this.ptb_Device.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ptb_Device.Location = new System.Drawing.Point(6, 95);
-            this.ptb_Device.MaximumSize = new System.Drawing.Size(160, 128);
-            this.ptb_Device.MinimumSize = new System.Drawing.Size(160, 128);
+            this.ptb_Device.Location = new System.Drawing.Point(6, 76);
+            this.ptb_Device.MaximumSize = new System.Drawing.Size(160, 152);
+            this.ptb_Device.MinimumSize = new System.Drawing.Size(160, 152);
             this.ptb_Device.Name = "ptb_Device";
-            this.ptb_Device.Size = new System.Drawing.Size(160, 128);
+            this.ptb_Device.Size = new System.Drawing.Size(160, 152);
             this.ptb_Device.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ptb_Device.TabIndex = 37;
             this.ptb_Device.TabStop = false;
             this.ptb_Device.DoubleClick += new System.EventHandler(this.ptb_Device_DoubleClick);
+            // 
+            // cb_Device
+            // 
+            this.cb_Device.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_Device.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_Device.FormattingEnabled = true;
+            this.cb_Device.Location = new System.Drawing.Point(223, 62);
+            this.cb_Device.Margin = new System.Windows.Forms.Padding(2);
+            this.cb_Device.Name = "cb_Device";
+            this.cb_Device.Size = new System.Drawing.Size(198, 27);
+            this.cb_Device.TabIndex = 1;
+            this.cb_Device.SelectedIndexChanged += new System.EventHandler(this.cb_Device_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.label6.Location = new System.Drawing.Point(222, 31);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(128, 24);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Mẫu thiết bị:";
             // 
             // dtgv_ListDetail
             // 
@@ -268,8 +283,7 @@ namespace DeviceManage
             this.dtgv_ListDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Specs,
             this.Description,
-            this.Icon,
-            this.Id});
+            this.SpecsId});
             this.dtgv_ListDetail.Location = new System.Drawing.Point(477, 74);
             this.dtgv_ListDetail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtgv_ListDetail.MultiSelect = false;
@@ -280,7 +294,34 @@ namespace DeviceManage
             this.dtgv_ListDetail.Size = new System.Drawing.Size(481, 279);
             this.dtgv_ListDetail.TabIndex = 9;
             this.dtgv_ListDetail.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_ListDetail_CellClick);
-            this.dtgv_ListDetail.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgv_ListDetail_CellFormatting);
+            this.dtgv_ListDetail.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_ListDetail_CellValueChanged);
+            // 
+            // Specs
+            // 
+            this.Specs.DataPropertyName = "NameSpecs";
+            this.Specs.FillWeight = 40F;
+            this.Specs.HeaderText = "Thông số";
+            this.Specs.MinimumWidth = 100;
+            this.Specs.Name = "Specs";
+            this.Specs.ReadOnly = true;
+            this.Specs.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Specs.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Description
+            // 
+            this.Description.DataPropertyName = "Description";
+            this.Description.HeaderText = "Giá trị";
+            this.Description.MinimumWidth = 6;
+            this.Description.Name = "Description";
+            // 
+            // SpecsId
+            // 
+            this.SpecsId.DataPropertyName = "SpecsId";
+            this.SpecsId.HeaderText = "Id";
+            this.SpecsId.MinimumWidth = 6;
+            this.SpecsId.Name = "SpecsId";
+            this.SpecsId.ReadOnly = true;
+            this.SpecsId.Visible = false;
             // 
             // label2
             // 
@@ -298,7 +339,7 @@ namespace DeviceManage
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(41, 23);
+            this.label4.Location = new System.Drawing.Point(41, 25);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(158, 24);
@@ -309,7 +350,7 @@ namespace DeviceManage
             // 
             this.num_NumberAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.num_NumberAdd.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.num_NumberAdd.Location = new System.Drawing.Point(217, 22);
+            this.num_NumberAdd.Location = new System.Drawing.Point(217, 24);
             this.num_NumberAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.num_NumberAdd.Maximum = new decimal(new int[] {
             500,
@@ -335,7 +376,7 @@ namespace DeviceManage
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(41, 72);
+            this.label5.Location = new System.Drawing.Point(41, 70);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(121, 24);
@@ -345,33 +386,12 @@ namespace DeviceManage
             // txt_ShipmentCode
             // 
             this.txt_ShipmentCode.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.txt_ShipmentCode.Location = new System.Drawing.Point(45, 104);
+            this.txt_ShipmentCode.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_ShipmentCode.Location = new System.Drawing.Point(45, 102);
             this.txt_ShipmentCode.Margin = new System.Windows.Forms.Padding(2);
             this.txt_ShipmentCode.Name = "txt_ShipmentCode";
-            this.txt_ShipmentCode.Size = new System.Drawing.Size(272, 22);
+            this.txt_ShipmentCode.Size = new System.Drawing.Size(272, 27);
             this.txt_ShipmentCode.TabIndex = 9;
-            // 
-            // cb_Device
-            // 
-            this.cb_Device.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_Device.FormattingEnabled = true;
-            this.cb_Device.Location = new System.Drawing.Point(166, 22);
-            this.cb_Device.Margin = new System.Windows.Forms.Padding(2);
-            this.cb_Device.Name = "cb_Device";
-            this.cb_Device.Size = new System.Drawing.Size(290, 24);
-            this.cb_Device.TabIndex = 1;
-            this.cb_Device.SelectedIndexChanged += new System.EventHandler(this.cb_Device_SelectedIndexChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(18, 22);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(128, 24);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "Mẫu thiết bị:";
             // 
             // label7
             // 
@@ -384,23 +404,6 @@ namespace DeviceManage
             this.label7.TabIndex = 50;
             this.label7.Text = "NHẬP HÀNG";
             // 
-            // btnThemTbi
-            // 
-            this.btnThemTbi.BackColor = System.Drawing.Color.Transparent;
-            this.btnThemTbi.BackgroundImage = global::DeviceManage.Properties.Resources.stock2;
-            this.btnThemTbi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnThemTbi.FlatAppearance.BorderSize = 0;
-            this.btnThemTbi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnThemTbi.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnThemTbi.Location = new System.Drawing.Point(858, 411);
-            this.btnThemTbi.Margin = new System.Windows.Forms.Padding(2);
-            this.btnThemTbi.Name = "btnThemTbi";
-            this.btnThemTbi.Size = new System.Drawing.Size(103, 80);
-            this.btnThemTbi.TabIndex = 11;
-            this.btnThemTbi.TabStop = false;
-            this.btnThemTbi.UseVisualStyleBackColor = false;
-            this.btnThemTbi.Click += new System.EventHandler(this.btnThemTbi_Click);
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.label4);
@@ -409,43 +412,36 @@ namespace DeviceManage
             this.panel1.Controls.Add(this.label5);
             this.panel1.Location = new System.Drawing.Point(477, 358);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(335, 132);
+            this.panel1.Size = new System.Drawing.Size(335, 137);
             this.panel1.TabIndex = 51;
             // 
-            // Specs
+            // dataGridViewImageColumn1
             // 
-            this.Specs.DataPropertyName = "NameSpecs";
-            this.Specs.FillWeight = 40F;
-            this.Specs.HeaderText = "Thông số";
-            this.Specs.MinimumWidth = 100;
-            this.Specs.Name = "Specs";
-            this.Specs.ReadOnly = true;
-            this.Specs.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Specs.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewImageColumn1.DataPropertyName = "SpecsId";
+            this.dataGridViewImageColumn1.FillWeight = 30F;
+            this.dataGridViewImageColumn1.HeaderText = "Tùy chọn";
+            this.dataGridViewImageColumn1.Image = global::DeviceManage.Properties.Resources.Save;
+            this.dataGridViewImageColumn1.MinimumWidth = 6;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn1.Width = 79;
             // 
-            // Description
+            // btnThemTbi
             // 
-            this.Description.DataPropertyName = "Description";
-            this.Description.HeaderText = "Giá trị";
-            this.Description.MinimumWidth = 6;
-            this.Description.Name = "Description";
-            // 
-            // Icon
-            // 
-            this.Icon.DataPropertyName = "SpecsId";
-            this.Icon.FillWeight = 30F;
-            this.Icon.HeaderText = "Tùy chọn";
-            this.Icon.MinimumWidth = 6;
-            this.Icon.Name = "Icon";
-            this.Icon.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.MinimumWidth = 6;
-            this.Id.Name = "Id";
-            this.Id.Visible = false;
+            this.btnThemTbi.BackColor = System.Drawing.Color.Transparent;
+            this.btnThemTbi.BackgroundImage = global::DeviceManage.Properties.Resources.stock2;
+            this.btnThemTbi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnThemTbi.FlatAppearance.BorderSize = 0;
+            this.btnThemTbi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThemTbi.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnThemTbi.Location = new System.Drawing.Point(858, 389);
+            this.btnThemTbi.Margin = new System.Windows.Forms.Padding(2);
+            this.btnThemTbi.Name = "btnThemTbi";
+            this.btnThemTbi.Size = new System.Drawing.Size(103, 80);
+            this.btnThemTbi.TabIndex = 11;
+            this.btnThemTbi.TabStop = false;
+            this.btnThemTbi.UseVisualStyleBackColor = false;
+            this.btnThemTbi.Click += new System.EventHandler(this.btnThemTbi_Click);
             // 
             // AddDeviceFromShipment
             // 
@@ -455,15 +451,16 @@ namespace DeviceManage
             this.ClientSize = new System.Drawing.Size(974, 502);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.cb_Device);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dtgv_ListDetail);
+            this.Controls.Add(this.cbLoaiTbi);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnThemTbi);
+            this.Controls.Add(this.lblLoaiTbi);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AddDeviceFromShipment";
             this.Text = "AddDeviceFromShipment";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddDeviceFromShipment_FormClosed);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_Device)).EndInit();
@@ -477,8 +474,6 @@ namespace DeviceManage
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox cb_ListImg;
         private System.Windows.Forms.ComboBox cbNhaCungCap;
         private System.Windows.Forms.ComboBox cbLoaiTbi;
         private System.Windows.Forms.TextBox txtTenTbi;
@@ -505,9 +500,9 @@ namespace DeviceManage
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Specs;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
-        private System.Windows.Forms.DataGridViewButtonColumn Icon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SpecsId;
     }
 }

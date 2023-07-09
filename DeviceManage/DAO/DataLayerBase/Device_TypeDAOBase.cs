@@ -28,6 +28,42 @@ namespace DAO.DataLayerBase
             conn.Close();
             return CreateDevice_TypefromDataTable(dt);
         }
+
+        public static List<Device_TypeModel> SelectDeviceTypeHasSpecs(bool? isDeleted)
+        {
+            List<Device_TypeModel> objDevice_TypeCol = new List<Device_TypeModel>();
+            string storedProcName = ProcString.procDeviceType_SelectDeviceTypeHasSpecs;
+
+            using (SqlConnection connection = new SqlConnection(PathString.ConnectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(storedProcName, connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@isDeleted", isDeleted);
+
+                    // search parameters
+
+                    using (SqlDataAdapter da = new SqlDataAdapter(command))
+                    {
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+
+                        if (dt != null)
+                        {
+                            if (dt.Rows.Count > 0)
+                            {
+                                objDevice_TypeCol = CreateDevice_TypefromDataTable(dt);
+                                return objDevice_TypeCol;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return objDevice_TypeCol;
+        }
         public static void InsertDevice_Type(Device_TypeModel device_Type)
         {
             SqlConnection conn = new SqlConnection(PathString.ConnectionString);
@@ -650,37 +686,7 @@ namespace DAO.DataLayerBase
                 {
                     foreach (DataRow dr in dt.Rows)
                     {
-                        Device_TypeModel typeModel = new Device_TypeModel();
-                        typeModel.Id = (int)dr["Id"];
-                        if (dr["Name"] != System.DBNull.Value)
-                            typeModel.Name = dr["Name"].ToString();
-                        else
-                            typeModel.Name = null;
-
-                        if (dr["Description"] != System.DBNull.Value)
-                            typeModel.Description = dr["Description"].ToString();
-                        else
-                            typeModel.Description = null;
-
-                        if (dr["CreatedDate"] != System.DBNull.Value)
-                            typeModel.CreatedDate = (DateTime)dr["CreatedDate"];
-                        else
-                            typeModel.CreatedDate = null;
-
-                        if (dr["CreatedUserId"] != System.DBNull.Value)
-                            typeModel.CreatedUserId = (int)dr["CreatedUserId"];
-                        else
-                            typeModel.CreatedUserId = null;
-
-                        if (dr["IsDeleted"] != System.DBNull.Value)
-                            typeModel.IsDeleted = (bool)dr["IsDeleted"];
-                        else
-                            typeModel.IsDeleted = false;
-
-                        if (dr["Status"] != System.DBNull.Value)
-                            typeModel.Status = (int)dr["Status"];
-                        else
-                            typeModel.Status = null;
+                        Device_TypeModel typeModel = CreateDevice_TypefromDataRow(dr);
 
                         device_Types.Add(typeModel);
                     }
@@ -688,6 +694,43 @@ namespace DAO.DataLayerBase
                 
             }
             return device_Types;
+        }
+
+        public static Device_TypeModel CreateDevice_TypefromDataRow(DataRow dr)
+        {
+            Device_TypeModel typeModel = new Device_TypeModel();
+            typeModel.Id = (int)dr["Id"];
+            if (dr["Name"] != System.DBNull.Value)
+                typeModel.Name = dr["Name"].ToString();
+            else
+                typeModel.Name = null;
+
+            if (dr["Description"] != System.DBNull.Value)
+                typeModel.Description = dr["Description"].ToString();
+            else
+                typeModel.Description = null;
+
+            if (dr["CreatedDate"] != System.DBNull.Value)
+                typeModel.CreatedDate = (DateTime)dr["CreatedDate"];
+            else
+                typeModel.CreatedDate = null;
+
+            if (dr["CreatedUserId"] != System.DBNull.Value)
+                typeModel.CreatedUserId = (int)dr["CreatedUserId"];
+            else
+                typeModel.CreatedUserId = null;
+
+            if (dr["IsDeleted"] != System.DBNull.Value)
+                typeModel.IsDeleted = (bool)dr["IsDeleted"];
+            else
+                typeModel.IsDeleted = false;
+
+            if (dr["Status"] != System.DBNull.Value)
+                typeModel.Status = (int)dr["Status"];
+            else
+                typeModel.Status = null;
+
+            return typeModel;
         }
     }
 }

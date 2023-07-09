@@ -10,7 +10,6 @@ using DTO.ModelBase;
 using System.Data.SqlClient;
 using DAO;
 using DAO.DataLayer;
-using DTO.Model;
 
 namespace DAO.DataLayerBase
 {

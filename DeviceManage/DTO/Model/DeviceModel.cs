@@ -10,6 +10,8 @@ namespace DTO.Model
 {
     public class DeviceModel : DeviceModelBase
     {
+        
+        public DeviceModel() { }
         public string BrandName { get; set; }
         public string DeviceTypeName { get; set; }
         public string UserName { get; set; }
@@ -19,6 +21,5 @@ namespace DTO.Model
         public string LocationName { get; set; }
 
         public List<DeviceDetailModel> deviceDetail { get; set; }
-        public DeviceModel() { }
     }
 }

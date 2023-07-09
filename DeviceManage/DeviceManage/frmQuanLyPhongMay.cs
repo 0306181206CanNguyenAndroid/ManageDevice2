@@ -12,7 +12,7 @@ namespace DeviceManage
 {
     public partial class frmQuanLyPhongMay : Form
     {
-        private int selectedRowIndex;
+        //private int selectedRowIndex;
         public UserModel LoginLoginInUser;
         public frmQuanLyPhongMay(UserModel loginLoginInUser)
         {

@@ -25,7 +25,7 @@ namespace DeviceManage
             device = de;
             Setting();
             //AddSpecsByType(de.DeviceTypeId, de.Id);
-            lb_DeviceName.Text = de.Name;
+            txtDeviceName.Text = de.Name;
             ptb_Device.Image = !String.IsNullOrEmpty(de.Image) ? Image.FromFile(SettingClass.path_Folder_Image_Device + de.Image) : Image.FromFile(SettingClass.path_NoImage_Default);
             LoadListDetail();
             Load_Form();
@@ -39,7 +39,7 @@ namespace DeviceManage
         }
         public void Load_Form()
         {
-            lb_DeviceName.Text = device.Name;
+            //lb_DeviceName.Text = device.Name;
             
             Load_ComboboxSpecs();
             Load_DataGridView();
@@ -161,6 +161,23 @@ namespace DeviceManage
                         
                     }
                     
+                }
+            }
+        }
+
+        private void dtgv_ListDetail_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dtgv_ListDetail.CurrentRow != null)
+            {
+                DataGridViewRow dr = dtgv_ListDetail.CurrentRow;
+                var values = dr.Cells["Specs"].Value != null ? dr.Cells["Specs"].Value : 0;
+                foreach (DeviceDetailModel ddm in listDetail)
+                {
+                    if (ddm.Id == (int)values)
+                    {
+                        ddm.Description = dr.Cells["Description"].Value != null ? dr.Cells["Description"].Value.ToString() : "";
+                        return;
+                    }
                 }
             }
         }

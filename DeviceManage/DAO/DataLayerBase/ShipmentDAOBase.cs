@@ -553,5 +553,31 @@ namespace DAO.DataLayerBase
 
             return objShipment;
         }
+
+        public static decimal GetTotalPriceShipment(int shipmentId)
+        {
+            using (SqlConnection connection = new SqlConnection(PathString.ConnectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(ProcString.procShipment_GetTotalPriceShipment, connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@shipmentId", shipmentId);
+                    try
+                    {
+                        decimal total = (decimal)command.ExecuteScalar();
+                        return total;
+                    }
+                    catch (Exception e)
+                    {
+                        return 0;
+                    }
+                    
+                    
+                }
+            }
+        }
     }
 }
