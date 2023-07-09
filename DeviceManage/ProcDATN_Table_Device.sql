@@ -298,3 +298,15 @@ as
 		where ISNULL([IsDeleted],0) = 0
 	end
 go
+---------------------Thêm-------------------
+create proc [dbo].[Device_SelectSampleDeviceByType](@deviceTypeId int)
+as
+	begin
+		select * from [dbo].[D_Device]
+		where Id in (
+			select d.Id from [dbo].[D_Device] d, [dbo].[D_Device_Type] dt
+			where d.DeviceTypeId = dt.Id and ISNULL(d.[IsDeleted],0) = 0 and dt.Id = @deviceTypeId
+			group by d.Id, d.[Name]
+		)
+	end
+go

@@ -12,6 +12,7 @@ namespace DAO
 
         public static string procDevice_SelectByPrimaryKey = "[dbo].[Device_SelectByPrimaryKey]";
         public static string procDevice_GetRecordCount = "[dbo].[Device_GetRecordCount]";
+        public static string procDevice_Device_GetAllDeviceUnUsing = "[dbo].[Device_GetAllDeviceUnUsing]";
         public static string procDevice_GetRecordCountDynamicWhere = "[dbo].[Device_GetRecordCountWhereDynamic]";
         public static string procDevice_SelectSkipAndTake = "[dbo].[Device_SelectSkipAndTake]";
         public static string procDevice_SelectSkipAndTakeDynamicWhere = "[dbo].[Device_SelectSkipAndTakeWhereDynamic]";
@@ -19,6 +20,7 @@ namespace DAO
         public static string procDevice_SelectAll = "[dbo].[Device_SelectAll]";
         public static string procDevice_SelectAllWhereDynamic = "[dbo].[Device_SelectAllWhereDynamic]";
         public static string procDevice_SelectDropDownListData = "[dbo].[Device_SelectDropDownListData]";
+        public static string procDevice_SelectSampleDeviceByType = "[dbo].[Device_SelectSampleDeviceByType]";
         public static string procDevice_Insert = "[dbo].[Device_Insert]";
         public static string procDevice_Update = "[dbo].[Device_Update]";
         public static string procDevice_Delete = "[dbo].[Device_Delete]";
@@ -411,6 +413,13 @@ namespace DAO
         #endregion
 
         #region Parameter
+        public static string prmSpecsId = "@specsId";
+        public static string prmDeviceId = "@deviceId";
+        public static string prmDeviceDetailId = "@deviceDetailId";
+        public static string prmDeviceTypeId = "@deviceTypeId";
+        public static string prmDeviceTypeSpecsId = "@deviceTypeSpecsId";
+        public static string prmFacultyId = "@facultyId";
+        public static string prmErrorId = "@errorId";
         public static string prmName = "@name";
         public static string prmId = "@id";
         public static string prmNote = "@note";

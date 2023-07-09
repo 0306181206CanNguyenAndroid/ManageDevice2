@@ -17,6 +17,11 @@ namespace BUS.BusinessObject
             return DeviceDataLayer.GetAllDeviceUnUsing(quantity);
         }
 
+        public static List<DeviceModel> SelectSampleDeviceByType(int deviceTypeId)
+        {
+            return DeviceDataLayer.SelectSampleDeviceByType(deviceTypeId);
+        }
+
         public static List<DeviceModel> GetAllDeviceInRoom(int roomId)
         {
             List<DeviceModel> list = DeviceDataLayer.GetAllDeviceInRoom(roomId);
