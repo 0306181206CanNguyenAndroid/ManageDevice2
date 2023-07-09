@@ -175,8 +175,9 @@ namespace DAO.DataLayerBase
                 da.SelectCommand = cmd;
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                return dt;
                 conn.Close();
+                return dt;
+                
             }
             
         }

@@ -12,6 +12,10 @@ namespace BUS.BusinessObject
 {
     public class DeviceBus : DeviceBusBase
     {
+        public static List<DeviceModel> Search(string keyword)
+        {
+            return DeviceDataLayer.Device_SearchByKeyWord(keyword);
+        }
         public static List<DeviceModel> GetAllDeviceUnUsing(int quantity)
         {
             return DeviceDataLayer.GetAllDeviceUnUsing(quantity);

@@ -119,7 +119,7 @@ namespace DeviceManage
 
         private void frmTrangChu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageClass.Message_Event_YesNo("thoát chương trình","Lưu ý!"))
+            if (MessageClass.Message_Event_YesNo("Thoát chương trình"))
             {
                 if(logout!=null)
                 {

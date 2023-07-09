@@ -10,10 +10,11 @@ namespace DTO.Model
 {
     public class DeviceType_SpecsModel : DeviceType_SpecsModelBase
     {
+       
+        public DeviceType_SpecsModel() { }
         public string SpecsName { get; set; }
         public string DataType { get; set; }
         public int Ordinal { get; set; }
         public string DeviceTypeName { get; set; }
-        public DeviceType_SpecsModel() { }
     }
 }

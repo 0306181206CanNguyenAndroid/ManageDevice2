@@ -152,7 +152,7 @@ namespace DAO.DataLayerBase
         /// </summary>
         public static List<DeviceType_SpecsModel> SelectSkipAndTakeDynamicWhere(int? id, int? deviceTypeId, int? deviceSpecsId, string description, DateTime? createdDate, int? createdUserId, bool? isDeleted/*, int? status*/, string sortByExpression, int startRowIndex, int rows)
         {
-            List<DeviceType_SpecsModel> objDeviceType_SpecsCol = null;
+            List<DeviceType_SpecsModel> objDeviceType_SpecsCol = new List<DeviceType_SpecsModel>();
             string storedProcName = "[dbo].[DeviceType_Specs_SelectSkipAndTakeWhereDynamic]";
 
             using (SqlConnection connection = new SqlConnection(PathString.ConnectionString))
@@ -209,7 +209,7 @@ namespace DAO.DataLayerBase
         /// </summary>
         public static List<DeviceType_SpecsModel> SelectAllDynamicWhere(int? id, int? deviceTypeId, int? deviceSpecsId, string description, DateTime? createdDate, int? createdUserId, bool? isDeleted/*, int? status*/)
         {
-            List<DeviceType_SpecsModel> objDeviceType_SpecsCol = null;
+            List<DeviceType_SpecsModel> objDeviceType_SpecsCol = new List<DeviceType_SpecsModel>();
             string storedProcName = "[dbo].[DeviceType_Specs_SelectAllWhereDynamic]";
 
             using (SqlConnection connection = new SqlConnection(PathString.ConnectionString))
@@ -250,7 +250,7 @@ namespace DAO.DataLayerBase
 
         public static List<DeviceType_SpecsModel> SelectShared(string storedProcName, string param, object paramValue, bool isUseStoredProc = true, string dynamicSqlScript = null, string sortByExpression = null, int? startRowIndex = null, int? rows = null)
         {
-            List<DeviceType_SpecsModel> objDeviceType_SpecsCol = null;
+            List<DeviceType_SpecsModel> objDeviceType_SpecsCol = new List<DeviceType_SpecsModel>();
 
             using (SqlConnection connection = new SqlConnection(PathString.ConnectionString))
             {
@@ -393,7 +393,7 @@ namespace DAO.DataLayerBase
         /// </summary>
         public static List<DeviceType_SpecsModel> SelectAllSpecsOfDevice(int deviceTypeId, bool isDeleted)
         {
-            List<DeviceType_SpecsModel> objDeviceType_SpecsCol = null;
+            List<DeviceType_SpecsModel> objDeviceType_SpecsCol = new List<DeviceType_SpecsModel>();
             string storedProcName = "[dbo].[DeviceType_Specs_SelectAllSpecsOfDevice]";
 
             using (SqlConnection connection = new SqlConnection(PathString.ConnectionString))

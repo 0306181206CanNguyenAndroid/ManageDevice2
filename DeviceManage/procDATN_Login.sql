@@ -107,3 +107,11 @@ begin
 	set @UserId = SCOPE_IDENTITY()
 	return @UserId
 end
+
+create proc Brand_SelectById(@Id int)
+as 
+begin
+	Select* from [D_Brand]
+	where Id = @Id
+end
+go

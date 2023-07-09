@@ -136,6 +136,8 @@ namespace DeviceManage
             {
                 foreach (DeviceModel device in listDevice)
                 {
+                    BrandModel brand = BrandBus.SelectById(device.BrandId);
+                    device.BrandName = brand.Name;
                     device.deviceDetail = DeviceDetailBus.SelectAllDynamicWhere(null, device.Id, null, null, null, null, null, null, null, false, null);
                     if (device.deviceDetail == null)
                     {
@@ -154,6 +156,7 @@ namespace DeviceManage
         {
             bs.DataSource = listData.ToList();
             dtgvQlThietBi.DataSource = bs;
+            GC.Collect();
         }
 
         public void UploadImage()
@@ -236,33 +239,51 @@ namespace DeviceManage
             if (dtgvQlThietBi.SelectedCells.Count > 0)
             {
                 int deviceId = (int)dtgvQlThietBi.SelectedCells[0].OwningRow.Cells["DeviceId"].Value;
-                foreach (DeviceModel de in listDevice)
-                {
-                    if (de.Id == deviceId)
-                    {
-                        cbLoaiTbi.SelectedValue = de.DeviceTypeId;
-                        cbPhong.SelectedValue = de.RoomId == null ? 1 : de.RoomId.Value;
-                        cbKhoa.SelectedValue = de.FacultyId;
-                        cbNhaCungCap.SelectedValue = de.BrandId;
-                        dtBaoHanh.Value = de.WarrantyPeriod.HasValue ? de.WarrantyPeriod.Value : DateTime.Now;
-                        dtp_DateBuy.Value = de.CreatedDate.Value;
-                        txtPrice.Text = de.Price.ToString();
-                        txtTenTbi.Text = de.Name;
-                        rtbGhiChuTbi.Text = de.Note;
-                        if (String.IsNullOrEmpty(de.Image))
-                        {
-                            ptb_Device.Image = Image.FromFile(SettingClass.path_NoImage_Default);
-                        }
-                        else
-                        {
-                            ptb_Device.Image = Image.FromFile(SettingClass.path_Folder_Image_Device + de.Image);
-                        }
-                        ptb_Device.Tag = de.Image;
+                int col = dtgvQlThietBi.SelectedCells[0].ColumnIndex;
+                //Người dùng nhấn nút xem trên Grid
 
-                        currentDevice = de;
-                        return;
+                if (dtgvQlThietBi.Columns[col] == dtgvQlThietBi.Columns["DeviceDetail"])
+                {
+                    foreach (DeviceModel de in listDevice)
+                    {
+                        if(de.Id == deviceId)
+                        {
+                            Form f = new DeviceDetail(de);
+                            f.Show();
+                        }
                     }
                 }
+                else
+                {
+                    foreach (DeviceModel de in listDevice)
+                    {
+                        if (de.Id == deviceId)
+                        {
+                            cbLoaiTbi.SelectedValue = de.DeviceTypeId;
+                            cbPhong.SelectedValue = de.RoomId == null ? 1 : de.RoomId.Value;
+                            cbKhoa.SelectedValue = de.FacultyId;
+                            cbNhaCungCap.SelectedValue = de.BrandId;
+                            dtBaoHanh.Value = de.WarrantyPeriod.HasValue ? de.WarrantyPeriod.Value : DateTime.Now;
+                            dtp_DateBuy.Value = de.CreatedDate.Value;
+                            txtPrice.Text = de.Price.ToString();
+                            txtTenTbi.Text = de.Name;
+                            rtbGhiChuTbi.Text = de.Note;
+                            if (String.IsNullOrEmpty(de.Image))
+                            {
+                                ptb_Device.Image = Image.FromFile(SettingClass.path_NoImage_Default);
+                            }
+                            else
+                            {
+                                ptb_Device.Image = Image.FromFile(SettingClass.path_Folder_Image_Device + de.Image);
+                            }
+                            ptb_Device.Tag = de.Image;
+
+                            currentDevice = de;
+                            return;
+                        }
+                    }
+                }
+                
 
             }
         }
@@ -433,7 +454,7 @@ namespace DeviceManage
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
                 e.Handled = true;
-        }
+        } 
 
         private bool Check_Null()
         {
@@ -575,6 +596,16 @@ namespace DeviceManage
         {
             Form f = new frmShipment();
             f.Show();
+        }
+
+        private void txtTiemKiemTbi_TextChanged(object sender, EventArgs e)
+        {
+            string find = txtTiemKiemTbi.Text.Trim();
+            if(find!= "")
+            {
+                listDevice = DeviceBus.Search(find);
+                ReLoadDataGridView(listDevice);
+            }
         }
     }
 }

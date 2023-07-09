@@ -10,7 +10,6 @@ using DTO.ModelBase;
 using System.Data.SqlClient;
 using DAO;
 using DAO.DataLayer;
-using DTO.Model;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace DAO.DataLayerBase

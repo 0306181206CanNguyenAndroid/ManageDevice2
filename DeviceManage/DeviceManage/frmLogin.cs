@@ -14,8 +14,6 @@ namespace DeviceManage
 {
     public partial class frmLogin : Form
     {
-        private Button button1;
-        private CheckBox checkBox1;
 
         public frmLogin()
         {

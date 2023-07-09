@@ -15,6 +15,7 @@ namespace DeviceManage
 {
     public partial class AddDeviceFromShipment : Form
     {
+        public event FireEventForActionAddDeviceFromShipment addDevice = null;
         public AddDeviceFromShipment(ShipmentModel ship, int userId)
         {
             InitializeComponent();
@@ -23,7 +24,7 @@ namespace DeviceManage
             Setting();
             Load_Source();
             Load_Form();
-            ptb_Device.Image = Image.FromFile(SettingClass.path_NoImage_Default);
+            //ptb_Device.Image = Image.FromFile(SettingClass.path_NoImage_Default);
             
         }
         public AddDeviceFromShipment()
@@ -43,12 +44,10 @@ namespace DeviceManage
 
         //Khai báo các class lấy dl cho form
         public ShipmentModel shipment = null;
-        public int shipmentId = 0;
         private int UserId = 0;
-        private DeviceModel device;
+        
         private List<DeviceModel> listDevice = null;
         private List<DeviceModel> listSampleDevice = null;
-        private DeviceModel currentDevice = null;
         public DeviceDetailModel currientDetail = null;
 
         List<DeviceDetailModel> listDetail = null;
@@ -59,58 +58,19 @@ namespace DeviceManage
         #endregion
 
         #region Load
+
+        #region Constraint
+        private void txt_Price_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
         private void Setting()
         {
             txtPrice.Text = "0.0";
             dtgv_ListDetail.AutoGenerateColumns = false;
             ptb_Device.SizeMode = PictureBoxSizeMode.Zoom;
-        }
-
-        #region Image
-        private void LoadListImg()
-        {
-            List<DeviceModel> l = new List<DeviceModel>();
-            if (listDevice != null && listDevice.Count > 0)
-            {
-                foreach (DeviceModel d in listDevice)
-                {
-                    if (!String.IsNullOrEmpty(d.Image))
-                    {
-                        bool f = true;
-                        foreach (DeviceModel dd in l)
-                        {
-                            if (dd.Image == d.Image)
-                            {
-                                f = false;
-                            }
-                        }
-                        if (f)
-                        {
-                            l.Add(d);
-                        }
-                    }
-                }
-                cb_ListImg.DisplayMember = "Image";
-                cb_ListImg.ValueMember = "Image";
-                cb_ListImg.DataSource = l.ToList();
-
-            }
-        }
-
-        private void cb_ListImg_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string img = cb_ListImg.SelectedValue.ToString();
-            ptb_Device.Tag = img;
-            try
-            {
-                Image i = Image.FromFile(SettingClass.path_Folder_Image_Device + img);
-                ptb_Device.Image = i;
-            }
-            catch (Exception ex)
-            {
-                ptb_Device.Image = Image.FromFile(SettingClass.path_NoImage_Default);
-            }
-
+            dtBaoHanh.CustomFormat = "dd/MM/yyyy";
         }
         #endregion
 
@@ -126,6 +86,11 @@ namespace DeviceManage
             if (listSampleDevice.Count > 0)
             {
                 DeviceInfoChange(listSampleDevice[0]);
+                Load_DataGridView(deviceTypeId, listSampleDevice[0]);
+            }
+            else
+            {
+                Load_DataGridView(deviceTypeId, null);
             }
         }
 
@@ -133,18 +98,12 @@ namespace DeviceManage
         #endregion
 
         #region DataGrid
-
-        private void LoadDTGVDeviceDetail()
-        {
-            //Load_ComboboxSpecs();
-            Load_DataGridView();
-        }
-
-        public void Load_DataGridView()
+        public void Load_DataGridView(int deviceTypeId, DeviceModel device)
         {
             try
             {
-                DtgvDevice_SourceChange((int)cbLoaiTbi.SelectedValue, (DeviceModel)cb_Device.SelectedItem);
+                DtgvDevice_SourceChange(deviceTypeId, device);
+                currientDetail = listDetail[0];
             }
             catch (Exception e)
             {
@@ -158,13 +117,17 @@ namespace DeviceManage
         private void DtgvDevice_SourceChange(int deviceTypeId, DeviceModel device)
         {
             if (device != null)
-                LoadListDetail(device.Id);
+            {
+                LoadListDetail(device);
+            }
             else
             { 
                 listDetail = null;
                 listDetail = LoadDetailByDeviceType(deviceTypeId);
-                GC.Collect();
             }
+            bsDetail.DataSource = listDetail;
+            dtgv_ListDetail.DataSource = bsDetail;
+            GC.Collect();
         }
         private List<DeviceDetailModel> LoadDetailByDeviceType(int deviveTypeId)
         {
@@ -186,22 +149,22 @@ namespace DeviceManage
             return list;
         }
 
-        //public void Load_ComboboxSpecs()
-        //{
-        //    var cbData = (DataGridViewComboBoxColumn)dtgv_ListDetail.Columns["Specs"];
-        //    cbData.DisplayMember = "NameSpecs";
-        //    cbData.ValueMember = "Id";
-        //    cbData.DataSource = LoadDetailByDeviceType((int)cbLoaiTbi.SelectedValue);
-        //}
-
-        private void LoadListDetail(int deviceId)
+        private void LoadListDetail(DeviceModel device)
         {
-            listDetail = GetDetail(deviceId);
+            listDetail = null;
+            listDetail = GetDetail(device);
         }
 
-        private List<DeviceDetailModel> GetDetail(int deviceId)
+        private List<DeviceDetailModel> GetDetail(DeviceModel device)
         {
-            return DeviceDetailBus.SelectAllDynamicWhere(null, deviceId, null, null, null, null, null, null, null, false, null);
+            List<DeviceDetailModel> list = DeviceDetailBus.SelectAllDynamicWhere(null, device.Id, null, null, null, null, null, null, null, false, null);
+            
+            foreach(DeviceDetailModel ddm in list)
+            {
+                DeviceType_SpecsModel dts = DeviceType_SpecsBus.SelectByPrimaryKey(ddm.DeviceTypeSpecsId);
+                ddm.SpecsId = dts.SpecsId;
+            }
+            return list;
         }
         #endregion
 
@@ -209,24 +172,21 @@ namespace DeviceManage
         private void Load_Form()  
         {
             Load_Source();
-            LoadListImg();
-            LoadDTGVDeviceDetail();
+            
         }
 
         
         private void Load_Source()
         {
-
-
             cbLoaiTbi.DisplayMember = "Name";
             cbLoaiTbi.ValueMember = "Id";
-            cbLoaiTbi.DataSource = Device_TypeBus.GetDevice_TypeAfterDelete();
-
-            LoadDeviceSource((int)cbLoaiTbi.SelectedValue);
+            cbLoaiTbi.DataSource = Device_TypeBus.SelectDeviceTypeHasSpecs(false);
 
             cbNhaCungCap.DisplayMember = "Name";
             cbNhaCungCap.ValueMember = "Id";
             cbNhaCungCap.DataSource = BrandBus.GetBrandAfterDelete();
+
+            LoadDeviceSource((int)cbLoaiTbi.SelectedValue);
         }
 
         #endregion
@@ -235,7 +195,9 @@ namespace DeviceManage
 
         private void cb_Device_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DeviceInfoChange((DeviceModel)cb_Device.SelectedItem);
+            DeviceModel d = (DeviceModel)cb_Device.SelectedItem;
+            DeviceInfoChange(d);
+            Load_DataGridView(d.DeviceTypeId, d);
         }
 
         private void cbLoaiTbi_SelectedIndexChanged(object sender, EventArgs e)
@@ -246,8 +208,9 @@ namespace DeviceManage
 
         private void DeviceInfoChange(DeviceModel device)
         {
-            ptb_Device.Image = String.IsNullOrEmpty(device.Image) ? Image.FromFile(SettingClass.path_Folder_Image_Device + device.Image)
-                : Image.FromFile(SettingClass.path_NoImage_Default);
+            if (!String.IsNullOrEmpty(device.Image))
+                ptb_Device.Image = Image.FromFile(SettingClass.path_Folder_Image_Device + device.Image);
+            else ptb_Device.Image = Image.FromFile(SettingClass.path_NoImage_Default);
             ptb_Device.Tag = device.Image;
 
             txtTenTbi.Text = device.Name;
@@ -278,11 +241,24 @@ namespace DeviceManage
                 for (int i = 0; i < num;i++)
                 {
                     device.Id = DeviceBus.Insert(device);
+                    ShipmentDetailModel shipmentDetail = new ShipmentDetailModel();
+                    shipmentDetail.IsDeleted = false;
+                    shipmentDetail.CreatedDate = shipment.CreatedDate;
+                    shipmentDetail.CreatedUserId = UserId;
+                    shipmentDetail.Status = 0;
+                    shipmentDetail.Code = txt_ShipmentCode.Text.Trim();
+                    shipmentDetail.ShipmentId = shipment.Id;
+                    shipmentDetail.DeviceId = device.Id;
+                    ShipmentDetailBus.Insert(shipmentDetail);
+
+                    foreach (DeviceDetailModel ddm in listDetail)
+                    {
+                        ddm.DeviceId = device.Id;
+                        DeviceDetailBus.Insert(ddm);
+                    }
                 }
-                
-                //AddSpecsByType(device.DeviceTypeId, device.Id);
-                listDevice.Add(DeviceBus.SelectByPrimaryKey(device.Id));
-                currentDevice = null;
+                MessageClass.Message_Event("Nhập thành công! Tiếp tục!", SettingClass.TextTitle_ThongBao, false);
+                txt_ShipmentCode.Text = "";
             }
             catch (Exception ex)
             {
@@ -293,14 +269,22 @@ namespace DeviceManage
 
         private bool Check_Null()
         {
-            if (txtTenTbi.Text.Trim() == "")
+            if (String.IsNullOrEmpty(txtTenTbi.Text.Trim()))
+            {
+                MessageClass.Message_CheckData("Tên thiết bị", "Cảnh báo!");
                 return true;
-            if (txtPrice.Text.Trim() == "")
+            }    
+            if ( String.IsNullOrEmpty(txtPrice.Text.Trim()))
+            {
+                MessageClass.Message_CheckData("Giá thiết bị", "Cảnh báo!");
                 return true;
-            if (txt_ShipmentCode.Text.Trim() == "")
+            }
+            if (String.IsNullOrEmpty(txt_ShipmentCode.Text.Trim()))
+            {
+                MessageClass.Message_CheckData("Mã lô hàng", "Cảnh báo!");
                 return true;
+            }
 
-            //if()
             if (cbLoaiTbi.SelectedItem == null)
                 return true;
             if (cbNhaCungCap.SelectedItem == null)
@@ -313,11 +297,10 @@ namespace DeviceManage
         private DeviceModel GetDeviceInfo()
         {
             DeviceModel device = new DeviceModel();
-            device.Id = currentDevice != null ? currentDevice.Id : 1;
             device.Name = txtTenTbi.Text;
             device.DeviceTypeId = (int)cbLoaiTbi.SelectedValue;
             device.BrandId = (int)cbNhaCungCap.SelectedValue;
-            device.ShipmentId = 1; // test
+            device.ShipmentId = shipment.Id; 
             device.Image = ptb_Device.Tag != null ? ptb_Device.Tag.ToString() : null;
             device.Note = rtbGhiChuTbi.Text;
             device.IsDeleted = false;
@@ -325,7 +308,7 @@ namespace DeviceManage
             device.Status = 0;
             device.WarrantyPeriod = dtBaoHanh.Value;
             device.CreatedDate = DateTime.Now;
-            device.CreatedUserId = 1;
+            device.CreatedUserId = UserId;
 
             return device;
         }
@@ -366,40 +349,12 @@ namespace DeviceManage
 
         #endregion
 
-        
-        private void dtgv_ListDetail_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.ColumnIndex == dtgv_ListDetail.Columns["Icon"].Index)
-            {
-                if (e.Value != null)
-                {
-                    int gender = (int) e.Value;
-                    Button p = new Button();
-                    p.Dock = DockStyle.Fill;
-                    p.BackgroundImageLayout = ImageLayout.Zoom;
-                    p.BackgroundImage = Image.FromFile(SettingClass.path_Folder_Resource + "btn_delete.png");
-                    p.Tag = gender;
-                    p.Click += P_Click;
-                    e.Value = p;
-                }
-            }
-        }
-
         private void P_Click(object sender, EventArgs e)
         {
             throw new NotImplementedException();
-            int specsId = (int) ((Button)sender).Tag;
-            MessageBox.Show("" + specsId);
+            //int specsId = (int) ((Button)sender).Tag;
+            //MessageBox.Show("" + specsId);
         }
-
-        private void txt_Price_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
-                e.Handled = true;
-        }
-        
-
-
 
         private void ptb_Device_DoubleClick(object sender, EventArgs e)
         {
@@ -430,16 +385,16 @@ namespace DeviceManage
         {
             if (dtgv_ListDetail.SelectedCells.Count > 0)
             {
-                int detailId = (int)dtgv_ListDetail.SelectedCells[0].OwningRow.Cells["Specs"].Value;
-
+                int specsId = (int)dtgv_ListDetail.SelectedCells[0].OwningRow.Cells["SpecsId"].Value;
                 foreach (DeviceDetailModel de in listDetail)
                 {
-                    if (de.Id == detailId)
+                    if (de.SpecsId == specsId)
                     {
                         currientDetail = de;
                         return;
                     }
                 }
+                
 
             }
         }
@@ -447,6 +402,33 @@ namespace DeviceManage
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void dtgv_ListDetail_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dtgv_ListDetail.CurrentRow != null)
+            {
+                DataGridViewRow dr = dtgv_ListDetail.CurrentRow;
+                var values = dr.Cells["SpecsId"].Value != null ? dr.Cells["SpecsId"].Value : 0;
+                foreach (DeviceDetailModel ddm in listDetail)
+                {
+                    if(ddm.SpecsId == (int)values)
+                    {
+                        ddm.Description = dr.Cells["Description"].Value != null ? dr.Cells["Description"].Value.ToString() : "";
+                        return;
+                    }
+                }
+            }
+        }
+
+        private void AddDeviceFromShipment_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(addDevice != null)
+            {
+                addDevice(this, new ActionAddDeviceFromShipmentEventArgs{ });
+                GC.Collect();
+                this.Dispose();
+            }
         }
     }
 }

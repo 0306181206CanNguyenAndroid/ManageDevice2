@@ -16,6 +16,11 @@ namespace BUS.BusinessOjectBase
             return Device_TypeDao.getData();
         }
 
+        public static List<Device_TypeModel> SelectDeviceTypeHasSpecs(bool? isDeleted)
+        {
+            return Device_TypeDao.SelectDeviceTypeHasSpecs(isDeleted);
+        }
+
         public static Device_TypeModel SelectByPrimaryKey(int id)
         {
             return Device_TypeDao.SelectByPrimaryKey(id);

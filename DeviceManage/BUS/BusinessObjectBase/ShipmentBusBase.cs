@@ -26,6 +26,11 @@ namespace BUS.BusinessOjectBase
             return ShipmentDataLayer.SelectByPrimaryKey(id);
         }
 
+        public static decimal GetTotalPrice(int shipmentId)
+        {
+            return ShipmentDataLayer.GetTotalPriceShipment(shipmentId);
+        }
+
         /// <summary>
         /// Gets the total number of records in the Shipment table
         /// </summary>

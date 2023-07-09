@@ -7,11 +7,16 @@ using System.Threading.Tasks;
 namespace DeviceManage
 {
     public delegate void FireEventForActionDevicesSuccess(object sender, ActionDevicesSuccessEventArgs e);
+    public delegate void FireEventForActionAddDeviceFromShipment(object sender, ActionAddDeviceFromShipmentEventArgs e);
     public delegate void FireEventForActionAccountsSuccess(object sender, ActionAccountsSuccessEventArgs e);
     public delegate void FireEventForAction_RequestDevices(object sender, RequestDevicesSuccessEventArgs e);
     public delegate void FireEventForAction_RequestEmplyeesManage(object sender, RequestEmplyeesManageSuccessEventArgs e);
     public delegate void FireEventForAction_LogoutSuccess(object sender, Action_LogoutSuccessEventArgs e);
-    
+
+    public class ActionAddDeviceFromShipmentEventArgs : EventArgs
+    {
+
+    }
     public class Action_LogoutSuccessEventArgs : EventArgs
     {
 

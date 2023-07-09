@@ -14,6 +14,7 @@ namespace DAO
         public static string procDevice_GetRecordCount = "[dbo].[Device_GetRecordCount]";
         public static string procDevice_Device_GetAllDeviceUnUsing = "[dbo].[Device_GetAllDeviceUnUsing]";
         public static string procDevice_GetRecordCountDynamicWhere = "[dbo].[Device_GetRecordCountWhereDynamic]";
+        public static string procDevice_SearchByKeyWord = "[dbo].[Device_SearchByKeyWord]";
         public static string procDevice_SelectSkipAndTake = "[dbo].[Device_SelectSkipAndTake]";
         public static string procDevice_SelectSkipAndTakeDynamicWhere = "[dbo].[Device_SelectSkipAndTakeWhereDynamic]";
         public static string procDevice_SelectTotal = "[dbo].[Device_SelectTotals]";
@@ -57,6 +58,7 @@ namespace DAO
         public static string procDeviceType_SelectAll = "[dbo].[DeviceType_SelectAll]";
         public static string procDeviceType_SelectAllWhereDynamic = "[dbo].[DeviceType_SelectAllWhereDynamic]";
         public static string procDeviceType_SelectDropDownListData = "[dbo].[DeviceType_SelectDropDownListData]";
+        public static string procDeviceType_SelectDeviceTypeHasSpecs = "[dbo].[DeviceType_SelectDeviceTypeHasSpecs]";
         public static string procDeviceType_Insert = "[dbo].[DeviceType_Insert]";
         public static string procDeviceType_Update = "[dbo].[DeviceType_Update]";
         public static string procDeviceType_Delete = "[dbo].[DeviceType_Delete]";
@@ -386,6 +388,7 @@ namespace DAO
         public static string procShipment_SelectAll = "[dbo].[Shipment_SelectAll]";
         public static string procShipment_SelectAllWhereDynamic = "[dbo].[Shipment_SelectAllWhereDynamic]";
         public static string procShipment_SelectDropDownListData = "[dbo].[Shipment_SelectDropDownListData]";
+        public static string procShipment_GetTotalPriceShipment = "[dbo].[GetTotalPriceShipment]";
         public static string procShipment_Insert = "[dbo].[Shipment_Insert]";
         public static string procShipment_Update = "[dbo].[Shipment_Update]";
         public static string procShipment_Delete = "[dbo].[Shipment_Delete]";

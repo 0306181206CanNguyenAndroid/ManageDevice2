@@ -15,7 +15,7 @@ namespace DeviceManage
 {
     public partial class frmQuanLyThuongHieu : Form
     {
-        private int RowIndex;
+        //private int RowIndex;
         public UserModel LoginInUser;
         public frmQuanLyThuongHieu(UserModel user)
         {
@@ -72,7 +72,7 @@ namespace DeviceManage
                 txtTenThuongHieu.Text = row.Cells[1].Value.ToString();
                 rtbDiaChi.Text = row.Cells[2].Value.ToString();
             }
-            catch
+            catch(Exception ex)
             {
 
             }
