@@ -180,6 +180,5 @@ as
 	end
 	go
 
-
 --end D_DeviceDetail
 

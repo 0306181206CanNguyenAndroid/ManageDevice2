@@ -11,6 +11,7 @@ namespace DTO.Model
     public class DeviceDetailModel : DeviceDetailModelBase
     {
         public string DataType { get; set; }
+        public int SpecsId { get; set; }
         public DeviceDetailModel() { }
     }
 }
