@@ -71,8 +71,9 @@ namespace DeviceManage
             this.CreatedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WarrantyPeriob = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SpecsId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DeviceDetail = new System.Windows.Forms.DataGridViewImageColumn();
             this.Brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeviceDetail = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeviceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbThongtinTB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_Device)).BeginInit();
@@ -136,6 +137,7 @@ namespace DeviceManage
             // 
             // btn_Buy
             // 
+            this.btn_Buy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Buy.BackColor = System.Drawing.Color.Transparent;
             this.btn_Buy.BackgroundImage = global::DeviceManage.Properties.Resources.buy2;
             this.btn_Buy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -152,6 +154,7 @@ namespace DeviceManage
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(1065, 192);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -162,6 +165,7 @@ namespace DeviceManage
             // 
             // cbPhong
             // 
+            this.cbPhong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbPhong.FormattingEnabled = true;
             this.cbPhong.Location = new System.Drawing.Point(1181, 192);
             this.cbPhong.Name = "cbPhong";
@@ -170,6 +174,7 @@ namespace DeviceManage
             // 
             // ckb_isAddIntoRoom
             // 
+            this.ckb_isAddIntoRoom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ckb_isAddIntoRoom.AutoSize = true;
             this.ckb_isAddIntoRoom.Location = new System.Drawing.Point(1066, 148);
             this.ckb_isAddIntoRoom.Name = "ckb_isAddIntoRoom";
@@ -262,6 +267,7 @@ namespace DeviceManage
             // 
             // txtPrice
             // 
+            this.txtPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPrice.Location = new System.Drawing.Point(1180, 108);
             this.txtPrice.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtPrice.Name = "txtPrice";
@@ -270,6 +276,7 @@ namespace DeviceManage
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(1065, 110);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -280,6 +287,7 @@ namespace DeviceManage
             // 
             // btnDetail
             // 
+            this.btnDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDetail.BackColor = System.Drawing.Color.Lime;
             this.btnDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDetail.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
@@ -433,6 +441,7 @@ namespace DeviceManage
             // 
             // dtBaoHanh
             // 
+            this.dtBaoHanh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtBaoHanh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtBaoHanh.Location = new System.Drawing.Point(1225, 31);
             this.dtBaoHanh.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -442,6 +451,7 @@ namespace DeviceManage
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(1066, 36);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -494,11 +504,13 @@ namespace DeviceManage
             this.CreatedDate,
             this.WarrantyPeriob,
             this.SpecsId,
-            this.DeviceDetail,
             this.Brand,
+            this.DeviceDetail,
+            this.Status,
             this.DeviceId});
             this.dtgvQlThietBi.Location = new System.Drawing.Point(0, 460);
             this.dtgvQlThietBi.Margin = new System.Windows.Forms.Padding(1);
+            this.dtgvQlThietBi.MinimumSize = new System.Drawing.Size(1498, 243);
             this.dtgvQlThietBi.MultiSelect = false;
             this.dtgvQlThietBi.Name = "dtgvQlThietBi";
             this.dtgvQlThietBi.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
@@ -507,6 +519,7 @@ namespace DeviceManage
             this.dtgvQlThietBi.Size = new System.Drawing.Size(1498, 243);
             this.dtgvQlThietBi.TabIndex = 2;
             this.dtgvQlThietBi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvQlThietBi_CellClick);
+            this.dtgvQlThietBi.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgvQlThietBi_CellFormatting);
             // 
             // DeviceImage
             // 
@@ -563,16 +576,6 @@ namespace DeviceManage
             this.SpecsId.Name = "SpecsId";
             this.SpecsId.Visible = false;
             // 
-            // DeviceDetail
-            // 
-            this.DeviceDetail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DeviceDetail.FillWeight = 40F;
-            this.DeviceDetail.HeaderText = "Thông số chi tiết";
-            this.DeviceDetail.Image = global::DeviceManage.Properties.Resources.about;
-            this.DeviceDetail.MinimumWidth = 6;
-            this.DeviceDetail.Name = "DeviceDetail";
-            this.DeviceDetail.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
             // Brand
             // 
             this.Brand.DataPropertyName = "BrandName";
@@ -580,6 +583,26 @@ namespace DeviceManage
             this.Brand.MinimumWidth = 6;
             this.Brand.Name = "Brand";
             this.Brand.ReadOnly = true;
+            // 
+            // DeviceDetail
+            // 
+            this.DeviceDetail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DeviceDetail.FillWeight = 50F;
+            this.DeviceDetail.HeaderText = "Thông số chi tiết";
+            this.DeviceDetail.Image = global::DeviceManage.Properties.Resources.about;
+            this.DeviceDetail.MinimumWidth = 6;
+            this.DeviceDetail.Name = "DeviceDetail";
+            this.DeviceDetail.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.FillWeight = 40F;
+            this.Status.HeaderText = "Trạng thái";
+            this.Status.MinimumWidth = 6;
+            this.Status.Name = "Status";
+            this.Status.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Status.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // DeviceId
             // 
@@ -656,8 +679,9 @@ namespace DeviceManage
         private System.Windows.Forms.DataGridViewTextBoxColumn CreatedDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn WarrantyPeriob;
         private System.Windows.Forms.DataGridViewTextBoxColumn SpecsId;
-        private System.Windows.Forms.DataGridViewImageColumn DeviceDetail;
         private System.Windows.Forms.DataGridViewTextBoxColumn Brand;
+        private System.Windows.Forms.DataGridViewImageColumn DeviceDetail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.DataGridViewTextBoxColumn DeviceId;
     }
 }

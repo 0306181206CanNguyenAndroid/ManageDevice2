@@ -180,27 +180,32 @@ namespace DeviceManage
         {
             if (listSpecs.Count > 0 && currentSpecsId != 0)
             {
-                foreach(SpecsModel spe in listSpecs)
-                {
-                    if(spe.Id == currentSpecsId)
-                    {
-                        listSpecs.Remove(spe);
-                        DeviceType_SpecsBus.Update(getDeviceTypeSpecs(spe, true));
-                        List<DeviceDetailModel> list = DeviceDetailBus.SelectAllDynamicWhere(null, null, spe.Id, null, null, null, null, null, null, false, null);
-                        if(list.Count > 0)
-                        {
-                            foreach(DeviceDetailModel deviceDetailModel in list)
-                            {
-                                deviceDetailModel.IsDeleted = true;
-                                DeviceDetailBus.Update(deviceDetailModel);
-                            }
-                        }
+                RemoveSpecsInList(currentSpecsId);
+            }
+        }
 
-                        LoadDataSource(listSpecs);
-                        currentSpecsId = 0;
-                        dtgvListSpecs.ClearSelection();
-                        return;
+        private void RemoveSpecsInList(int specsId)
+        {
+            foreach (SpecsModel spe in listSpecs)
+            {
+                if (spe.Id == specsId)
+                {
+                    listSpecs.Remove(spe);
+                    DeviceType_SpecsBus.Update(getDeviceTypeSpecs(spe, true));
+                    List<DeviceDetailModel> list = DeviceDetailBus.SelectAllDynamicWhere(null, null, spe.Id, null, null, null, null, null, null, false, null);
+                    if (list.Count > 0)
+                    {
+                        foreach (DeviceDetailModel deviceDetailModel in list)
+                        {
+                            deviceDetailModel.IsDeleted = true;
+                            DeviceDetailBus.Update(deviceDetailModel);
+                        }
                     }
+
+                    LoadDataSource(listSpecs);
+                    currentSpecsId = 0;
+                    dtgvListSpecs.ClearSelection();
+                    return;
                 }
             }
         }
@@ -212,6 +217,15 @@ namespace DeviceManage
                 if (dtgvListSpecs.SelectedCells[0].RowIndex < listSpecs.Count())
                 {
                     int specsId = (int) dtgvListSpecs.SelectedCells[0].OwningRow.Cells["SpecsId"].Value;
+                    int col = dtgvListSpecs.SelectedCells[0].ColumnIndex;
+                    if(dtgvListSpecs.Columns[col] == dtgvListSpecs.Columns["Action"])
+                    {
+                        if (MessageClass.Message_Event_YesNo("xóa thông số này"))
+                        {
+                            RemoveSpecsInList(specsId);
+                        }
+                        return;
+                    }
 
                     currentSpecsId = specsId;
                     return;
@@ -219,6 +233,26 @@ namespace DeviceManage
 
             }
 
+        }
+
+        private void frmSetSpecsForDeviceType_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(listSpecs != null)
+            {
+                int dem = 1;
+                foreach (SpecsModel s in listSpecs)
+                {
+                    var dts = DeviceType_SpecsBus.SelectAllDynamicWhere(null, currentType.Id, s.Id, null, null, null, false);
+                    if(dts.Count > 0)
+                    {
+                        dts[0].Ordinal = dem;
+                        DeviceType_SpecsBus.Update(dts[0]);
+                        
+                    }
+                    dem++;
+
+                }
+            }
         }
     }
 }

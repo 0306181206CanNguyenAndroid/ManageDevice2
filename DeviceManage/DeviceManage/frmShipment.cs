@@ -59,13 +59,27 @@ namespace DeviceManage
         private void LoadForm()
         {
             LoadShipmentSource();
-            currentShipment = listShipment.Count > 0 ? listShipment[0] : null;
+            if(listShipment.Count > 0)
+            {
+                currentShipment = listShipment[0];
+                
+            }
+            #region ShipmentDetail
+            LoadComboboxInvoice();
+            #endregion
+
             LoadBeginData();
             LoadDataGridViewShipment();
             LoadComboboxBrand();
             LoadShipmentDetailSource();
             LoadDataGridViewShipmentDetail();
             
+        }
+        private void LoadComboboxInvoice()
+        {
+            cb_Shipment_Invoice.DisplayMember = "Invoice";
+            cb_Shipment_Invoice.ValueMember = "Id";
+            cb_Shipment_Invoice.DataSource = listShipment;
         }
 
         private void LoadBeginData()
@@ -99,9 +113,14 @@ namespace DeviceManage
 
         private void LoadComboboxBrand()
         {
+            List<BrandModel> brand = BrandBus.GetBrandAfterDelete();
             cb_Brand.DisplayMember = "Name";
             cb_Brand.ValueMember = "Id";
-            cb_Brand.DataSource = BrandBus.GetBrandAfterDelete();
+            cb_Brand.DataSource = brand;
+
+            cb_DeviceBrand.DisplayMember = "Name";
+            cb_DeviceBrand.ValueMember = "Id";
+            cb_DeviceBrand.DataSource = brand;
         }
 
         private void ReloadShipmentDetail()
@@ -120,7 +139,8 @@ namespace DeviceManage
                     {
                         DeviceModel d = DeviceBus.SelectByPrimaryKey(sdtl.DeviceId);
                         sdtl.DeviceName = d.Name;
-                        sdtl.DevicePrice = d.Price.HasValue ? Math.Round(d.Price.Value,1) + " VND" : "0.0 VND";
+                        sdtl.DevicePrice = d.Price.HasValue ? Math.Round(d.Price.Value,1) : 0;
+                        sdtl.BrandId = d.BrandId;
                     }
                 }
             }
@@ -261,10 +281,6 @@ namespace DeviceManage
 
         #endregion
 
-        #region Create and Update Shipment Detail
-
-
-        #endregion
 
         #region ChangeForm
         private void dtgv_Shipment_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -294,6 +310,41 @@ namespace DeviceManage
 
         private void dtp_ImportDate_ValueChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void dtgv_ShipmentDetail_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(dtgv_ShipmentDetail.SelectedRows.Count > 0)
+            {
+                int id = (int) dtgv_ShipmentDetail.SelectedCells[0].OwningRow.Cells["ShipmentDetailId"].Value;
+                foreach(ShipmentDetailModel sd in listShipmentDetails)
+                {
+                    if(sd.Id == id)
+                    {
+                        txt_DevicePrice.Text = sd.DevicePrice + "";
+                        txtDevice.Text = sd.DeviceName;
+                        cb_DeviceBrand.SelectedValue = sd.BrandId.Value;
+                    }
+                }
+            }
+        }
+
+        private void dtgv_Shipment_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == dtgv_Shipment.Columns["Status"].Index)
+            {
+                if (e.Value != null)
+                {
+                    int status = (int)e.Value;
+                    if (status == 0)
+                    {
+                        e.Value = "Mới";
+                    }
+                    else
+                        e.Value = "Hoàn thành";
+                }
+            }
 
         }
     }

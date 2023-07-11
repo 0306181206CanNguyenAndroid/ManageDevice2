@@ -30,7 +30,6 @@ namespace DeviceManage
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmShipment));
             this.tbManageShipment = new System.Windows.Forms.TabControl();
             this.tab_Shipment = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -60,9 +59,9 @@ namespace DeviceManage
             this.dtgv_Shipment = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ShipmentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.User = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tab_ShipmentDetail = new System.Windows.Forms.TabPage();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
@@ -75,11 +74,6 @@ namespace DeviceManage
             this.label5 = new System.Windows.Forms.Label();
             this.txtDevice = new System.Windows.Forms.TextBox();
             this.cb_Shipment_Invoice = new System.Windows.Forms.ComboBox();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.btn_ = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.dtgv_ShipmentDetail = new System.Windows.Forms.DataGridView();
             this.ShipmentDetailId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Device = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -98,7 +92,6 @@ namespace DeviceManage
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_Shipment)).BeginInit();
             this.tab_ShipmentDetail.SuspendLayout();
             this.panel8.SuspendLayout();
-            this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_ShipmentDetail)).BeginInit();
             this.SuspendLayout();
             // 
@@ -445,18 +438,20 @@ namespace DeviceManage
             this.dtgv_Shipment.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.ShipmentName,
-            this.User,
             this.Date,
-            this.Price});
+            this.Price,
+            this.Status});
             this.dtgv_Shipment.Location = new System.Drawing.Point(112, 122);
             this.dtgv_Shipment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtgv_Shipment.Name = "dtgv_Shipment";
+            this.dtgv_Shipment.ReadOnly = true;
             this.dtgv_Shipment.RowHeadersWidth = 51;
             this.dtgv_Shipment.RowTemplate.Height = 29;
             this.dtgv_Shipment.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgv_Shipment.Size = new System.Drawing.Size(1104, 331);
             this.dtgv_Shipment.TabIndex = 0;
             this.dtgv_Shipment.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_Shipment_CellClick);
+            this.dtgv_Shipment.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgv_Shipment_CellFormatting);
             // 
             // Id
             // 
@@ -464,6 +459,7 @@ namespace DeviceManage
             this.Id.HeaderText = "Id";
             this.Id.MinimumWidth = 6;
             this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
             this.Id.Visible = false;
             // 
             // ShipmentName
@@ -472,14 +468,7 @@ namespace DeviceManage
             this.ShipmentName.HeaderText = "Tên phiếu";
             this.ShipmentName.MinimumWidth = 6;
             this.ShipmentName.Name = "ShipmentName";
-            // 
-            // User
-            // 
-            this.User.DataPropertyName = "Person";
-            this.User.FillWeight = 70F;
-            this.User.HeaderText = "Người nhập";
-            this.User.MinimumWidth = 6;
-            this.User.Name = "User";
+            this.ShipmentName.ReadOnly = true;
             // 
             // Date
             // 
@@ -488,6 +477,7 @@ namespace DeviceManage
             this.Date.HeaderText = "Ngày";
             this.Date.MinimumWidth = 6;
             this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
             // 
             // Price
             // 
@@ -496,12 +486,20 @@ namespace DeviceManage
             this.Price.HeaderText = "Thanh toán";
             this.Price.MinimumWidth = 6;
             this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.HeaderText = "Trạng thái";
+            this.Status.MinimumWidth = 6;
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
             // 
             // tab_ShipmentDetail
             // 
             this.tab_ShipmentDetail.BackColor = System.Drawing.Color.DarkOrange;
             this.tab_ShipmentDetail.Controls.Add(this.panel8);
-            this.tab_ShipmentDetail.Controls.Add(this.panel7);
             this.tab_ShipmentDetail.Controls.Add(this.dtgv_ShipmentDetail);
             this.tab_ShipmentDetail.Location = new System.Drawing.Point(4, 33);
             this.tab_ShipmentDetail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -527,7 +525,7 @@ namespace DeviceManage
             this.panel8.Controls.Add(this.cb_Shipment_Invoice);
             this.panel8.Location = new System.Drawing.Point(6, 15);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(458, 310);
+            this.panel8.Size = new System.Drawing.Size(458, 440);
             this.panel8.TabIndex = 23;
             // 
             // label10
@@ -621,74 +619,6 @@ namespace DeviceManage
             this.cb_Shipment_Invoice.Size = new System.Drawing.Size(276, 32);
             this.cb_Shipment_Invoice.TabIndex = 22;
             // 
-            // panel7
-            // 
-            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel7.Controls.Add(this.btn_);
-            this.panel7.Controls.Add(this.button3);
-            this.panel7.Controls.Add(this.button1);
-            this.panel7.Controls.Add(this.button2);
-            this.panel7.Location = new System.Drawing.Point(6, 331);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(458, 82);
-            this.panel7.TabIndex = 22;
-            // 
-            // btn_
-            // 
-            this.btn_.BackColor = System.Drawing.Color.DarkGray;
-            this.btn_.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_.Location = new System.Drawing.Point(12, 6);
-            this.btn_.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_.Name = "btn_";
-            this.btn_.Size = new System.Drawing.Size(61, 46);
-            this.btn_.TabIndex = 16;
-            this.toolTip1.SetToolTip(this.btn_, "Nhập hàng (Ctrl + A)");
-            this.btn_.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.DimGray;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button3.ForeColor = System.Drawing.Color.Aqua;
-            this.button3.Location = new System.Drawing.Point(137, 6);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(61, 46);
-            this.button3.TabIndex = 17;
-            this.toolTip1.SetToolTip(this.button3, "Tạo phiếu (Ctrl + Enter)");
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.DimGray;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.ForeColor = System.Drawing.Color.Aqua;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(235, 6);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 46);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "LƯU";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolTip1.SetToolTip(this.button1, "Lưu thay đổi (Ctrl + S)");
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.GhostWhite;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.ForeColor = System.Drawing.Color.AntiqueWhite;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(390, 6);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(55, 46);
-            this.button2.TabIndex = 18;
-            this.toolTip1.SetToolTip(this.button2, "Xóa phiếu (Ctrl + X)");
-            this.button2.UseVisualStyleBackColor = false;
-            // 
             // dtgv_ShipmentDetail
             // 
             this.dtgv_ShipmentDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -708,8 +638,9 @@ namespace DeviceManage
             this.dtgv_ShipmentDetail.RowHeadersWidth = 51;
             this.dtgv_ShipmentDetail.RowTemplate.Height = 29;
             this.dtgv_ShipmentDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgv_ShipmentDetail.Size = new System.Drawing.Size(752, 398);
+            this.dtgv_ShipmentDetail.Size = new System.Drawing.Size(752, 440);
             this.dtgv_ShipmentDetail.TabIndex = 4;
+            this.dtgv_ShipmentDetail.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_ShipmentDetail_CellClick);
             // 
             // ShipmentDetailId
             // 
@@ -782,7 +713,6 @@ namespace DeviceManage
             this.tab_ShipmentDetail.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_ShipmentDetail)).EndInit();
             this.ResumeLayout(false);
 
@@ -794,9 +724,6 @@ namespace DeviceManage
         private System.Windows.Forms.TabPage tab_ShipmentDetail;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.DataGridView dtgv_ShipmentDetail;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button btn_;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShipmentDetailId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Device;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
@@ -839,12 +766,10 @@ namespace DeviceManage
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtDevice;
         private System.Windows.Forms.ComboBox cb_Shipment_Invoice;
-        private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShipmentName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn User;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
     }
 }
