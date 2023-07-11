@@ -84,15 +84,7 @@ namespace DeviceManage
                     }
                     else MessageClass.Message_Event("Không Có Thiết Nào Trong Phòng", "Thông Báo", false);
                 }
-                //danhsach = new List<ThongKeThietBiTheoTrangThai>();
-                //ThongKeThietBiTheoTrangThai a=new ThongKeThietBiTheoTrangThai();
-                //a.DeviceName = "abc";
-                //a.RoomName = "abc";
-                //a.Device_TypeName = "abc";
-                //a.Device_SpecsName = "abc";
-                //a.ErrorName = "abc";
-                //a.ErrorDescription = "abc";
-                //a.Remediation= "abc";
+                
                 //danhsach.Add(a);
                 this.rptThietBiTheoTrangThai.LocalReport.ReportPath = "rptThongKeThietBiTheoTrangThai.rdlc";
                 var reportDataSource = new ReportDataSource("ThongKeThietBiTheoTrangThaiDataset", danhsach);

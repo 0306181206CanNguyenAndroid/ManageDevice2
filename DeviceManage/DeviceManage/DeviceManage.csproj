@@ -227,12 +227,26 @@
     <Compile Include="Message.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="reportNhapThietBiTheoNgay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reportNhapThietBiTheoNgay.Designer.cs">
+      <DependentUpon>reportNhapThietBiTheoNgay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="reportThietBiThanhLyTheoNgay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reportThietBiThanhLyTheoNgay.Designer.cs">
+      <DependentUpon>reportThietBiThanhLyTheoNgay.cs</DependentUpon>
+    </Compile>
     <Compile Include="reportThietBiTheoThangThai.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="reportThietBiTheoThangThai.Designer.cs">
       <DependentUpon>reportThietBiTheoThangThai.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportting\ThongKeNhapThietBiTheoNgay.cs" />
+    <Compile Include="Reportting\ThongKeThietBiThanhLyTheoNgay.cs" />
     <Compile Include="Reportting\ThongKeThietBiTheoPhong.cs" />
     <Compile Include="Reportting\ThongKeThietBiTheoTrangThai.cs" />
     <Compile Include="SettingClass.cs" />
@@ -313,8 +327,20 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="reportNhapThietBiTheoNgay.resx">
+      <DependentUpon>reportNhapThietBiTheoNgay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportThietBiThanhLyTheoNgay.resx">
+      <DependentUpon>reportThietBiThanhLyTheoNgay.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="reportThietBiTheoThangThai.resx">
       <DependentUpon>reportThietBiTheoThangThai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportting\rptThongKeNhapThietBiTheoNgay.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportting\rptThongKeThietBiThanhLyTheoNgay.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportting\rptThongKeThietBiTheoPhong.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -326,6 +352,8 @@
       <DependentUpon>ThongKeThietBiTheoRoom.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\DeviceManage.Reportting.ThongKeNhapThietBiTheoNgay.datasource" />
+    <None Include="Properties\DataSources\DeviceManage.Reportting.ThongKeThietBiThanhLyTheoNgay.datasource" />
     <None Include="Properties\DataSources\DeviceManage.Reportting.ThongKeThietBiTheoPhong.datasource" />
     <None Include="Properties\DataSources\DeviceManage.Reportting.ThongKeThietBiTheoTrangThai.datasource" />
     <None Include="Properties\Settings.settings">

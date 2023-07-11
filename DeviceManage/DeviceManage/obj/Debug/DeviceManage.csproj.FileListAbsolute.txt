@@ -138,3 +138,7 @@ D:\Thanh Binh\ManageDevice2\DeviceManage\DeviceManage\obj\Debug\DeviceManage.csp
 D:\Thanh Binh\ManageDevice2\DeviceManage\DeviceManage\obj\Debug\DeviceManage.csproj.CopyComplete
 D:\Thanh Binh\ManageDevice2\DeviceManage\DeviceManage\obj\Debug\DeviceManage.exe
 D:\Thanh Binh\ManageDevice2\DeviceManage\DeviceManage\obj\Debug\DeviceManage.pdb
+D:\Thanh Binh\ManageDevice2\DeviceManage\DeviceManage\obj\Debug\DeviceManage.reportThietBiThanhLyTheoNgay.resources
+D:\Thanh Binh\ManageDevice2\DeviceManage\DeviceManage\bin\Debug\Reportting\rptThongKeThietBiThanhLyTheoNgay.rdlc
+D:\Thanh Binh\ManageDevice2\DeviceManage\DeviceManage\obj\Debug\DeviceManage.reportNhapThietBiTheoNgay.resources
+D:\Thanh Binh\ManageDevice2\DeviceManage\DeviceManage\bin\Debug\Reportting\rptThongKeNhapThietBiTheoNgay.rdlc
