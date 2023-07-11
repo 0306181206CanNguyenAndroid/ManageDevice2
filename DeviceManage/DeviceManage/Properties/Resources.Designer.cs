@@ -153,6 +153,36 @@ namespace DeviceManage.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btn_add {
+            get {
+                object obj = ResourceManager.GetObject("btn_add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btn_delete {
+            get {
+                object obj = ResourceManager.GetObject("btn_delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btn_edit {
+            get {
+                object obj = ResourceManager.GetObject("btn_edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap buy {
             get {
                 object obj = ResourceManager.GetObject("buy", resourceCulture);
@@ -196,6 +226,16 @@ namespace DeviceManage.Properties {
         internal static System.Drawing.Bitmap check2 {
             get {
                 object obj = ResourceManager.GetObject("check2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap completed_task {
+            get {
+                object obj = ResourceManager.GetObject("completed-task", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -266,6 +306,16 @@ namespace DeviceManage.Properties {
         internal static System.Drawing.Bitmap device_info {
             get {
                 object obj = ResourceManager.GetObject("device_info", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap documents {
+            get {
+                object obj = ResourceManager.GetObject("documents", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -356,6 +406,16 @@ namespace DeviceManage.Properties {
         internal static System.Drawing.Bitmap Logo {
             get {
                 object obj = ResourceManager.GetObject("Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mail {
+            get {
+                object obj = ResourceManager.GetObject("mail", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -583,6 +643,16 @@ namespace DeviceManage.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap send_message {
+            get {
+                object obj = ResourceManager.GetObject("send-message", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap send1 {
             get {
                 object obj = ResourceManager.GetObject("send1", resourceCulture);
@@ -696,6 +766,16 @@ namespace DeviceManage.Properties {
         internal static System.Drawing.Bitmap xoa {
             get {
                 object obj = ResourceManager.GetObject("xoa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap yes {
+            get {
+                object obj = ResourceManager.GetObject("yes", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

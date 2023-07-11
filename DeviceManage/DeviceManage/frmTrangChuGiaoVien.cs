@@ -91,8 +91,8 @@ namespace DeviceManage
 
         private void btnQLTaiKhoan_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmQuanLyTaiKhoan(LoginInUser));
-            lbl_text.Text = btnQLTaiKhoan.Text;
+            //OpenChildForm(new frmQuanLyTaiKhoan(LoginInUser));
+            //lbl_text.Text = btnQLTaiKhoan.Text;
         }
 
         private void frmTrangChu_FormClosing(object sender, FormClosingEventArgs e)

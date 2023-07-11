@@ -10,11 +10,12 @@ namespace DTO.Model
         public ShipmentDetailModel() { }
 
         public int? DeviceTypeId { get; set; }
+        public int? BrandId { get; set; }
         public int CountNumber { get; set; }
         public string DeviceName { get; set; }
         public string DeviceInfo { get; set; }
         public string Quantity { get; set; }
-        public string DevicePrice { get; set; }
+        public decimal DevicePrice { get; set; }
         public string TotalPrice { get; set; }
     }
 }

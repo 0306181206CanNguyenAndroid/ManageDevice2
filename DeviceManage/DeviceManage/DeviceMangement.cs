@@ -556,7 +556,8 @@ namespace DeviceManage
         {
             if (currentDevice != null)
             {
-                string info = DeviceInfo(currentDevice);
+                //string info = DeviceInfo(currentDevice);
+                string info = currentDevice.Id+"";
                 Form qr = new frmQR_Code(info);
                 qr.Show();
 
@@ -605,6 +606,25 @@ namespace DeviceManage
             {
                 listDevice = DeviceBus.Search(find);
                 ReLoadDataGridView(listDevice);
+            }
+        }
+
+        private void dtgvQlThietBi_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == dtgvQlThietBi.Columns["Status"].Index)
+            {
+                if (e.Value != null)
+                {
+                    int? gender = (int?)e.Value;
+                    if (gender != null)
+                    {
+                        e.Value = gender == 0 ? "Mới" : gender == 1 ? "Chờ bảo trì" : gender == 2 ? "Bảo trì" : "Cũ";
+                    }
+                    else
+                    {
+                        e.Value = "Mới";
+                    }
+                }
             }
         }
     }

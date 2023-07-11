@@ -18,21 +18,6 @@ Create table [System_User]
 	constraint pk_User primary key(Id),
 	--constraint fk_User_User foreign key(CreatedUserId) references [System_User](Id),
 )
---Các log sẽ lưu lịch sử các thao tác của người dùng
---Create table [S_UserLog]
---(
---	[Id] int not null IDENTITY(1,1),
---	[UserId] int null,
---	[Action] int null,
---	[ModifiedDate] DateTime null,
---	[ModifiedUserId] int null,
---	[IsDeleted] bit null,
---	constraint pk_UserLog primary key(Id),
---	--constraint fk_UserLog_User foreign key(UserId) references [System_User](Id),
---)
- 
- --alter table [dbo].[D_Device_Type]
---add [Image] nvarchar(100) null
 
 create table [D_Device_Type]
 (
@@ -236,7 +221,7 @@ Create table D_Malfunction
 	[Id] int not null IDENTITY(1,1),
 	[DeviceId] int not null,
 	[ErrorId] int not null,
-	[MaintenanceTimes] int null,
+	[Severity] int null,
 	[Note] nvarchar(100) null,
 	[CreatedDate] DateTime null,
 	[CreatedUserId] int null,
@@ -270,7 +255,6 @@ Create table [System_Borrow_Device_Letter]
 	[Id] int not null IDENTITY(1,1),
 	[BorrowerId] int not null,
 	[Note] nvarchar(100) null,
-	[RoomId] int not null,
 	[ManagerDeviceId] int null,
 	[CreatedDate] DateTime null,
 	[DueDate] DateTime null,
@@ -289,6 +273,8 @@ Create table [System_Borrow_Device_Detail]
 	[Id] int not null IDENTITY(1,1),
 	[BorrowLetterId] int null,
 	[DeviceId] int null,
+	[OldRoomId] int null,
+	[NewRoomId] int null,
 	[DeviceStatus] int null,
 	[CreatedDate] DateTime null,
 	[CreatedUserId] int null,
@@ -298,6 +284,8 @@ Create table [System_Borrow_Device_Detail]
 	--constraint fk_BorrowDetail_BorrowLetter foreign key(BorrowLetterId) references [System_Borrow_Device_Letter](Id),
 	--constraint fk_BorrowDetail_Device foreign key(DeviceId) references [D_Device](Id),
 	--constraint fk_BorrowDetail_User foreign key(CreatedUserId) references [System_User](Id),
+	--constraint fk_BorrowDetail_RoomOld foreign key(OldRoomId) references [D_Room](Id),
+	--constraint fk_BorrowDetail_RoomNew foreign key(NewRoomId) references [D_Room](Id)
 )
 Create table [D_Position]
 (
@@ -344,6 +332,49 @@ Create table [System_Decentralization]
 	[IsDeleted] bit null,
 	--constraint pk_Decentralization primary key(Id),
 )
+
+Create table [S_RoomManager]
+(
+	[Id] int not null IDENTITY(1,1),
+	[RoomId] int null,
+	[TeacherId] int null, 
+	[CreatedDate] DateTime null,
+	[CreatedUserId] int null,
+	[IsDeleted] bit null,
+	--constraint pk_RoomManage primary key(Id),
+	--constraint fk_RoomManager_Room foreign key([RoomId]) references [dbo].[D_Room](Id),
+	--constraint fk_RoomManager_Room foreign key([TeacherId]) references [dbo].[S_Teacher](Id)
+)
+
+Create table [S_RoomManager]
+(
+	[Id] int not null IDENTITY(1,1),
+	[RoomId] int null,
+	[TeacherId] int null, 
+	[CreatedDate] DateTime null,
+	[CreatedUserId] int null,
+	[IsDeleted] bit null,
+	--constraint pk_RoomManage primary key(Id),
+	--constraint fk_RoomManager_Room foreign key([RoomId]) references [dbo].[D_Room](Id),
+	--constraint fk_RoomManager_Room foreign key([TeacherId]) references [dbo].[S_Teacher](Id)
+)
+
+Create table D_Report
+(
+	[Id] int not null IDENTITY(1,1),
+	[Title] nvarchar(100) null,
+	[Content] nvarchar(1000) null,
+	[Image] varchar(100) null,
+	[QR_Code] varchar(100) null,
+	[Note] nvarchar(250) null,
+	[CreatedDate] DateTime null,
+	[CreatedUserId] int null,
+	[IsDeleted] bit,
+	[Status] int null,
+	constraint pk_DeviceReport primary key(Id),
+	--constraint fk_Report_User foreign key(CreatedUserId) references [System_User](Id),
+)
+
 /*
 
 Create table [D_Liquidation]
@@ -397,107 +428,8 @@ Create table D_NotificationInbox
 	--constraint fk_Inbox_User foreign key(CreatedUserId) references [System_User](Id),
 )
 
-Create table D_Report
-(
-	[Id] int not null IDENTITY(1,1),
-	[Title] nvarchar(100) null,
-	[Content] nvarchar(1000) null,
-	[ErrorCode] varchar(20) null,
-	[PathReport] varchar(100) null,
-	[Description] nvarchar(100) null,
-	[CreatedDate] DateTime null,
-	[CreatedUserId] int null,
-	[IsDeleted] bit,
-	[Status] int null,
-	constraint pk_DeviceReport primary key(Id),
-	--constraint fk_Report_User foreign key(CreatedUserId) references [System_User](Id),
-)
-
-Create table [System_AccessRights]
-(
-	[Id] int not null IDENTITY(1,1),
-	[Code] int null,
-	[Name] nvarchar(100) null,
-	[CreatedDate] DateTime null,
-	[ModifiedDate] DateTime null,
-	[CreatedUserId] int null,
-	[ModifiedUserId] int null,
-	[IsDeleted] bit,
-	[Status] int null,
-	constraint pk_AccessRights primary key(Id),
-	--constraint fk_ _User foreign key(CreatedUserId) references [System_User](Id),
-)
-
-Create table [System_AccessRightsGroup]
-(
-	[Id] int not null IDENTITY(1,1),
-	[Name] nvarchar(100) null,
-	[CreatedDate] DateTime null,
-	[ModifiedDate] DateTime null,
-	[CreatedUserId] int null,
-	[ModifiedUserId] int null,
-	[IsDeleted] bit,
-	[Status] int null,
-	--constraint pk_AccessRightsGroup primary key(Id)
-)
-
-Create table [System_AccessRightsGroupdetail]
-(
-	[Id] int not null IDENTITY(1,1),
-	[GroupId] int null,
-	[AccessRightsApplyId] int null,
-	[CreatedDate] DateTime null,
-	[ModifiedDate] DateTime null,
-	[CreatedUserId] int null,
-	[ModifiedUserId] int null,
-	[IsDeleted] bit,
-	[Status] int null,
-	--constraint pk_AccessRightsGroupDetail primary key(Id),
-)
 
 
 
-
-
-Create table [System_PositionLog]
-(
-	[Id] int not null IDENTITY(1,1),
-	[PositionId] int null,
-	[Action] int null,
-	[ModifiedDate] DateTime null,
-	[ModifiedUserId] int null,
-	[IsDeleted] bit null,
-	--constraint pk_PositionLog primary key(Id),
-)
-*/
---Create table [S_StaffLog]
---(
---	[Id] int not null IDENTITY(1,1),
---	[StaffId] int null,
---	[Action] int null,
---	[ModifiedDate] DateTime null,
---	[ModifiedUserId] int null,
---	[IsDeleted] bit null,
---	constraint pk_StaffLog primary key(Id),
---	--constraint fk_StaffLog_Staff foreign key(StaffId) references [S_Staff](Id),
---)
-
---drop table [D_Device]
---drop table [D_Device_Specs]
---drop table [D_Device_Type]
---drop table [D_Shipment]
---drop table [S_UserLog]
---drop table [System_User]
---drop table [System_Decentralization]
---drop table [System_Staff]
---drop table [System_PositionLog]
---drop table [System_Position]
---drop table [System_UserLog]
---drop table [System_User]
---drop table [System_AccessRightsGroupdetail]
---drop table [System_AccessRightsGroup]
---drop table [System_AccessRights]
---drop table D_ManufacturerLog
---drop table D_Manufacturer
 
 --sp_rename 'ten_bang.ten_cot_cu', 'ten_cot_moi', 'COLUMN';
