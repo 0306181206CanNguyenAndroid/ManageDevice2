@@ -243,5 +243,25 @@ namespace DeviceManage
             }
 
         }
+
+        private void txtSdtGV_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtTimKiemGV_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (rdbPhone.Checked)
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+            }
+            
+        }
     }
 }

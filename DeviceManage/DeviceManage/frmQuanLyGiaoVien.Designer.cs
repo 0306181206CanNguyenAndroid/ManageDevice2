@@ -212,6 +212,7 @@
             this.txtTimKiemGV.Name = "txtTimKiemGV";
             this.txtTimKiemGV.Size = new System.Drawing.Size(462, 31);
             this.txtTimKiemGV.TabIndex = 10;
+            this.txtTimKiemGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTimKiemGV_KeyPress);
             // 
             // btnXoaGV
             // 
@@ -330,6 +331,7 @@
             this.txtSdtGV.Name = "txtSdtGV";
             this.txtSdtGV.Size = new System.Drawing.Size(178, 31);
             this.txtSdtGV.TabIndex = 7;
+            this.txtSdtGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSdtGV_KeyPress);
             // 
             // label4
             // 
