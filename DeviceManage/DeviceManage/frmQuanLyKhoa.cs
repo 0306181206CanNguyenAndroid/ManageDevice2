@@ -30,17 +30,22 @@ namespace DeviceManage
 
         private void dgvQlKhoa_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            if(dgvQlKhoa.SelectedCells.Count > 0)
             {
-                DataGridViewRow row = new DataGridViewRow();
-                row = dgvQlKhoa.Rows[e.RowIndex];
-                txtTenKhoa.Text = row.Cells[1].Value.ToString();
-                rtbKhoa.Text = row.Cells[2].Value.ToString();
-            }
-            catch
-            {
+                try
+                {
+                    DataGridViewRow row = new DataGridViewRow();
+                    row = dgvQlKhoa.Rows[e.RowIndex];
+                    txtTenKhoa.Text = row.Cells[1].Value.ToString();
+                    rtbKhoa.Text = dgvQlKhoa.SelectedCells[0].OwningRow.Cells["Description"].Value == null ? "" : dgvQlKhoa.SelectedCells[0].OwningRow.Cells["Description"].Value.ToString();
+                    txtTenKhoa.Text = dgvQlKhoa.SelectedCells[0].OwningRow.Cells["PositionName"].Value.ToString();
+                }
+                catch
+                {
 
+                }
             }
+            
         }
 
         private void btnThemKhoa_Click(object sender, EventArgs e)

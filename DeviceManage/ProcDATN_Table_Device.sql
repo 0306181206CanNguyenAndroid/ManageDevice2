@@ -324,3 +324,14 @@ as
 
 	end
 	go
+
+create proc Device_CheckDeviceInRoom(@id int)
+as 
+	begin
+		Select Id From [dbo].D_Device
+		where Id = @id and Id not in 
+		(
+			Select RoomId from [dbo].[D_DeviceRegistration]
+			where RoomId = @id and IsNull([IsDeleted],0) = 0
+		)
+	end

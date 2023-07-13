@@ -55,6 +55,24 @@ namespace DAO.DataLayer
 
             return objDeviceCol;
         }
+        public static bool CheckDeviceInRoom(int id)
+        {
+            //Device_CheckDeviceInRoom
+            using (SqlConnection connection = new SqlConnection(PathString.ConnectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("Device_CheckDeviceInRoom", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@id", id);
+
+                    
+                    int? Id = (int?)command.ExecuteScalar();
+                    return Id.HasValue;
+                }
+            }
+        }
 
         /// </summary> 
         public static List<DeviceModel> Device_SearchByKeyWord(string keyword)

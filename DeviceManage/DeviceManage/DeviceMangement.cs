@@ -131,7 +131,7 @@ namespace DeviceManage
         private void LoadDataGridView()
         {
 
-            listDevice = DeviceBus.SelectSkipAndTakeDynamicWhere(null, null, null, null, null, null, null, null, null, null, null, null, null, null, false, null, 10, 0, "Id desc");
+            listDevice = GetListDevice(10, 0);
             if (listDevice != null)
             {
                 foreach (DeviceModel device in listDevice)
@@ -152,9 +152,14 @@ namespace DeviceManage
 
         }
 
-        private void ReLoadDataGridView(List<DeviceModel> listData)
+        private List<DeviceModel> GetListDevice(int rows, int starRows)
         {
-            bs.DataSource = listData.ToList();
+            return DeviceBus.SelectSkipAndTakeDynamicWhere(null, null, null, null, null, null, null, null, null, null, null, null, null, null, false, null, rows, starRows, "Id desc");
+        }
+
+        private void ReLoadDataGridView(List<DeviceModel> list)
+        {
+            bs.DataSource = list;
             dtgvQlThietBi.DataSource = bs;
             GC.Collect();
         }
@@ -332,9 +337,9 @@ namespace DeviceManage
                 //DeviceBus.Update(device);
                 AddSpecsByType(device.DeviceTypeId, device.Id);
                 MessageBox.Show("Thành công! Vui lòng cập nhật thông số chi tiết thiết bị sớm!", "Thông Báo", MessageBoxButtons.OK);
-                listDevice.Add(DeviceBus.SelectByPrimaryKey(device.Id));
+                listDevice = GetListDevice(10, 0);
                 ReLoadDataGridView(listDevice);
-                currentDevice = null;
+                EmptyDevice();
             }
             catch (Exception ex)
             {
@@ -459,13 +464,30 @@ namespace DeviceManage
         private bool Check_Null()
         {
             if (txtTenTbi.Text.Trim() == "")
+            {
+                MessageClass.Message_CheckEmpty("Tên thiết bị", "Lưu ý");
                 return true;
+            }
+            if (ckb_isAddIntoRoom.Checked)
+            {
+                if(((RoomModel)cbPhong.SelectedItem).Name=="")
+                {
+                    MessageClass.Message_IsChosen("phòng!", "Lưu ý");
+                    return true;
+                }
+            }
             if (cbLoaiTbi.SelectedItem == null)
                 return true;
             if (cbNhaCungCap.SelectedItem == null)
                 return true;
             if (cbKhoa.SelectedItem == null)
                 return true;
+            if(dtp_DateBuy.Value < DateTime.Now)
+            {
+                MessageClass.Message_CheckData("Ngày mua", "Lưu ý");
+                return true;
+            }
+            
 
             return false;
         }
@@ -549,7 +571,33 @@ namespace DeviceManage
 
         private void btnXoaTbi_Click(object sender, EventArgs e)
         {
+            if(currentDevice!=null)
+            {
+                if (DeviceBus.CheckDeviceInRoom(currentDevice.Id))
+                {
+                    MessageBox.Show("Không thể xóa thiết bị đang sử dụng!", "Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                }
+                else
+                {
+                    DeviceBus.Update(currentDevice);
+                    listDevice = GetListDevice(10, 0);
+                    ReLoadDataGridView(listDevice);
+                    EmptyDevice();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Chưa chọn thiết bị!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+            }
+
+        }
+        private void EmptyDevice()
+        {
+            currentDevice = null;
+            txtPrice.Text = "0.0";
+            txtTenTbi.Text = "";
+            rtbGhiChuTbi.Text = "";
         }
 
         private void btn_Make_QR_Click(object sender, EventArgs e)
