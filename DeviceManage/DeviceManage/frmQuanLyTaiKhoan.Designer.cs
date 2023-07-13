@@ -225,6 +225,7 @@
             this.cbTeacher.Name = "cbTeacher";
             this.cbTeacher.Size = new System.Drawing.Size(195, 33);
             this.cbTeacher.TabIndex = 20;
+            this.cbTeacher.SelectedIndexChanged += new System.EventHandler(this.cbTeacher_SelectedIndexChanged);
             // 
             // lblTenTaiKhoan
             // 

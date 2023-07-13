@@ -237,5 +237,23 @@ namespace DeviceManage
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void cbTeacher_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbTeacher.SelectedIndex != -1)
+            {
+                TeacherModel teacher=(TeacherModel)cbTeacher.SelectedItem;
+                txtSDT.Text = teacher.Phone;
+                dtNgaySinh.Value = teacher.Birth;
+                if (teacher.Gender==true)
+                {
+                    rdNam.Checked= true;
+                }
+                else 
+                {
+                    rdNu.Checked= true;
+                }
+            }
+        }
     }
 }
