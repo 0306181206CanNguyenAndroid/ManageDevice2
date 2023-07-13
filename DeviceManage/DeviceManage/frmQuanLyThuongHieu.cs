@@ -21,6 +21,7 @@ namespace DeviceManage
         {
             InitializeComponent();
             dgvThuongHieu.AutoGenerateColumns = false;
+            //dgvThuongHieu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             LoginInUser = user;
         }
 
@@ -70,7 +71,7 @@ namespace DeviceManage
                 row = dgvThuongHieu.Rows[e.RowIndex];
 
                 txtTenThuongHieu.Text = row.Cells[1].Value.ToString();
-                rtbDiaChi.Text = row.Cells[2].Value.ToString();
+                rtbDiaChi.Text = row.Cells[2].Value == null ? "" : row.Cells[2].Value.ToString();
             }
             catch(Exception ex)
             {

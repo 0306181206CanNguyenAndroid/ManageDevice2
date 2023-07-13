@@ -12,6 +12,10 @@ namespace BUS.BusinessObject
 {
     public class DeviceBus : DeviceBusBase
     {
+        public static bool CheckDeviceInRoom(int id)
+        {
+            return DeviceDataLayer.CheckDeviceInRoom(id);
+        }
         public static List<DeviceModel> Search(string keyword)
         {
             return DeviceDataLayer.Device_SearchByKeyWord(keyword);
