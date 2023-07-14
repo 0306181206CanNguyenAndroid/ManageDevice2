@@ -19,5 +19,12 @@ namespace DeviceManage
         {
             InitializeComponent();
         }
+
+        private void frmQuanLyThanhLy_Load(object sender, EventArgs e)
+        {
+            cbTenTBThanhLy.DataSource = DeviceBus.SelectAllDynamicWhere(null, null, null, null, null, null, null,null,null,null,null,null,null,null,false,4); 
+            cbTenTBThanhLy.DisplayMember = "Name";
+            cbTenTBThanhLy.ValueMember= "Id";
+        }
     }
 }

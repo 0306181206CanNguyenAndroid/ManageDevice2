@@ -30,7 +30,7 @@ namespace DAO.DataLayerBase
             conn.Close();
             return CreateTeachersModelfromDataTable(dt);
         }
-        public static void InsertTeacher(TeacherModel teacher) 
+        public static int InsertTeacher(TeacherModel teacher) 
         {
             SqlConnection conn = new SqlConnection(PathString.ConnectionString);
             SqlCommand cmd = new SqlCommand("InsertTeacher", conn);
@@ -49,8 +49,9 @@ namespace DAO.DataLayerBase
             cmd.Parameters.AddWithValue("@IsDeleted", teacher.IsDeleted);
             cmd.Parameters.AddWithValue("@Status", teacher.Status);
             conn.Open();
-            cmd.ExecuteNonQuery();
+           int teacherid=(int) cmd.ExecuteScalar();
             conn.Close();
+            return teacherid;
         }
         public static void UpdateTeacher(TeacherModel teacher)
         {
@@ -153,7 +154,7 @@ namespace DAO.DataLayerBase
                 cmd.Parameters.AddWithValue("@Id", Id);
                 cmd.ExecuteNonQuery();
 
-                SqlCommand cmd1 = new SqlCommand("update System_Decentralization set IsDeleted=1 where TeacherId=@Id", conn);
+                SqlCommand cmd1 = new SqlCommand("update [System_User] set IsDeleted=1 where TeacherId=@Id", conn);
                 //cmd.CommandType=CommandType.StoredProcedure;
                 cmd1.Parameters.AddWithValue("@Id", Id);
                 cmd1.ExecuteNonQuery();

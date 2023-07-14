@@ -3,21 +3,7 @@
 use Devicement
 go
 
-Create table [System_User]
-(
-	[Id] int not null IDENTITY(1,1),
-	[UserName] varchar(50) null,
-	[Pass] varchar(100) null,
-	[Name] nvarchar(100) null,
-	[Image] nvarchar(200) null,
-	[AccessRightsGroup] int null,
-	[CreatedDate] DateTime null,
-	[CreatedUserId] int null,
-	[IsDeleted] bit null,
-	[Status] int null,
-	constraint pk_User primary key(Id),
-	--constraint fk_User_User foreign key(CreatedUserId) references [System_User](Id),
-)
+
 
 create table [D_Device_Type]
 (
@@ -375,6 +361,25 @@ Create table D_Report
 	--constraint fk_Report_User foreign key(CreatedUserId) references [System_User](Id),
 )
 
+-------------thêm teacherId vào bảng user-----------------
+go
+Create table [System_User]
+(
+	[Id] int not null IDENTITY(1,1),
+	[TeacherId] int null,
+	[UserName] varchar(50) null,
+	[Pass] varchar(100) null,
+	[Name] nvarchar(100) null,
+	[Image] nvarchar(200) null,
+	[AccessRightsGroup] int null,
+	[CreatedDate] DateTime null,
+	[CreatedUserId] int null,
+	[IsDeleted] bit null,
+	[Status] int null,
+	constraint pk_User primary key(Id),
+	--constraint fk_User_User foreign key(CreatedUserId) references [System_User](Id),
+)
+
 /*
 
 Create table [D_Liquidation]
@@ -433,3 +438,7 @@ Create table D_NotificationInbox
 
 
 --sp_rename 'ten_bang.ten_cot_cu', 'ten_cot_moi', 'COLUMN';
+
+
+
+

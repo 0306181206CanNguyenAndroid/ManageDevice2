@@ -1,5 +1,4 @@
-﻿Use Devicement
-go
+﻿
 
 SET ANSI_NULLS ON
 GO
@@ -95,32 +94,7 @@ go
 --thêm xóa sửa Giáo viên
 
 
-go
-create proc InsertTeacher
-	
-	@FirstName nvarchar(40) null,
-	@LastName nvarchar(20) null,
-	@FullName nvarchar(60) null,
-	@Birth Datetime null,
-	@Gender bit,
-	@Address nvarchar(200) null,
-	--Image nvarchar(200) null,
-	@Phone varchar(20) null,
-	@Email varchar(50) null,
-	@CreatedDate DateTime null,
-	@CreatedUserId int null,
-	@PositionId int null,
-	@IsDeleted bit null,
-	@Status int null
-	as
-begin
-	SET NOCOUNT ON;
-	declare @Id int;
-	insert into S_Teacher(FirstName,LastName,FullName,Birth,Gender,Address,Phone,Email,CreatedDate,CreatedUserId,PositionId,IsDeleted,Status)
-	values (@FirstName,@LastName,@FullName,@Birth,@Gender,@Address,@Phone,@Email,@CreatedDate,@CreatedUserId,@PositionId,@IsDeleted,@Status)
-	set @Id = SCOPE_IDENTITY()
-	return @Id
-end
+
 go
 create proc UpdateTeacher
 	@Id int,
@@ -162,26 +136,7 @@ end
 
 
 	
-go 
-create proc InsertUser
-@UserName varchar(50) null,
-@Pass varchar(100) null,
-@Name nvarchar(100) null,
---Image nvarchar(200) null,
---AccessRightsGroup int null,
-@CreatedDate DateTime null,
-@CreatedUserId int null,
-@IsDeleted bit null,
-@Status int null
-as
-begin
-	SET NOCOUNT ON;
-	declare @Id int;
-	insert into [System_User](UserName,Pass,Name,CreatedDate,CreatedUserId,IsDeleted,Status)
-	values(@UserName,@Pass,@Name,@CreatedDate,@CreatedUserId,@IsDeleted,@Status)
-	set @Id = SCOPE_IDENTITY()
-	return @Id
-end
+
 	
 	--tìm kiếm phòng theo tên
 go
@@ -295,7 +250,7 @@ begin
 end
 
 
-----------------------------sửa proc------------------------------------
+
 
 
 go 
@@ -307,7 +262,7 @@ begin
 	where d.TeacherId=t.Id and d.UserId=u.Id and ISNULL(d.IsDeleted,0)=0
 end
 go
-------------------------Thêm proc --------------------
+
 
 create proc Teacher_GetTeacherByUserId(@id int, @isDeleted bit)
 as
@@ -317,3 +272,79 @@ as
 	UserID = @id
 	end
 go
+
+------------------------sửa proc ngày 14/7--------------------------------------
+
+
+
+go
+create proc InsertTeacher
+	
+	@FirstName nvarchar(40) null,
+	@LastName nvarchar(20) null,
+	@FullName nvarchar(60) null,
+	@Birth Datetime null,
+	@Gender bit,
+	@Address nvarchar(200) null,
+	--Image nvarchar(200) null,
+	@Phone varchar(20) null,
+	@Email varchar(50) null,
+	@CreatedDate DateTime null,
+	@CreatedUserId int null,
+	@PositionId int null,
+	@IsDeleted bit null,
+	@Status int null
+	as
+begin
+	SET NOCOUNT ON;
+	insert into S_Teacher(FirstName,LastName,FullName,Birth,Gender,Address,Phone,Email,CreatedDate,CreatedUserId,PositionId,IsDeleted,Status)
+	values (@FirstName,@LastName,@FullName,@Birth,@Gender,@Address,@Phone,@Email,@CreatedDate,@CreatedUserId,@PositionId,@IsDeleted,@Status)
+	select MAX(Id) from S_Teacher
+end
+
+go 
+create proc RoomManager_Inser(
+	@RoomId int null,
+	@TeacherId int null,
+	@CreatedDate DateTime null,
+	@CreatedUserId int null,
+	@IsDeleted bit null)
+as
+begin
+	SET NOCOUNT ON;
+	insert into [S_RoomManager](RoomId,TeacherId,CreatedDate,CreatedUserId,IsDeleted)
+	values (@RoomId,@TeacherId,@CreatedDate,@CreatedUserId,@IsDeleted)
+	select MAX(Id) from [S_RoomManager]
+END
+
+
+go 
+create proc InsertUser
+@TeacherId int null,
+@UserName varchar(50) null,
+@Pass varchar(100) null,
+@Name nvarchar(100) null,
+--Image nvarchar(200) null,
+--AccessRightsGroup int null,
+@CreatedDate DateTime null,
+@CreatedUserId int null,
+@IsDeleted bit null,
+@Status int null
+as
+begin
+	SET NOCOUNT ON;
+	declare @Id int;
+	insert into [System_User](TeacherId,UserName,Pass,Name,CreatedDate,CreatedUserId,IsDeleted,Status)
+	values(@TeacherId,@UserName,@Pass,@Name,@CreatedDate,@CreatedUserId,@IsDeleted,@Status)
+	set @Id = SCOPE_IDENTITY()
+	return @Id
+end
+
+go
+create proc GetAllUser
+as
+begin
+	select u.Id,u.TeacherId,t.FullName,t.Gender,t.Phone,t.Birth,u.UserName,u.Pass,u.[Status] 
+	from [System_User] u,S_Teacher t 
+	where u.TeacherId=t.Id and ISNULL(u.IsDeleted,0)=0
+end

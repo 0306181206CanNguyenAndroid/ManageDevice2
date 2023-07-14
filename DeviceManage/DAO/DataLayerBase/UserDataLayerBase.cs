@@ -528,6 +528,7 @@ namespace DAO.DataLayerBase
             SqlConnection conn = new SqlConnection(PathString.ConnectionString);
             SqlCommand cmd = new SqlCommand("InsertUser", conn);
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@TeacherId", user.TeacherId);
             cmd.Parameters.AddWithValue("@UserName", user.UserName);
             cmd.Parameters.AddWithValue("@Pass", user.Pass);
             cmd.Parameters.AddWithValue("@Name", user.Name);
@@ -565,14 +566,14 @@ namespace DAO.DataLayerBase
                 }
             }
         }
-        public static bool CheckName(string Name)
+        public static bool CheckTeacherId(int TeacherId)
         {
             using (SqlConnection conn = new SqlConnection(PathString.ConnectionString))
             {
-                string sql = "select COUNT(*) from [System_User] where Name =@Name and IsDeleted=0";
+                string sql = "select COUNT(*) from [System_User] where TeacherId=@TeacherId and IsDeleted=0";
                 SqlCommand cmd = new SqlCommand(sql, conn);
 
-                cmd.Parameters.AddWithValue("@Name", Name);
+                cmd.Parameters.AddWithValue("@TeacherId", TeacherId);
                 conn.Open();
                 int count = (int)cmd.ExecuteScalar();
                 conn.Close();
@@ -586,6 +587,58 @@ namespace DAO.DataLayerBase
                     return false;
                 }
             }
+        }
+
+        public static DataTable GetAllUser()
+        {
+            SqlConnection conn = new SqlConnection(PathString.ConnectionString);
+            SqlCommand cmd = new SqlCommand("GetAllUser", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            conn.Open();
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            conn.Close();
+            return dt;
+        }
+
+        public static DataTable SearchUser(string keyword)
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection connection = new SqlConnection(PathString.ConnectionString))
+            {
+                SqlCommand cmd = new SqlCommand("SearchUser", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Name", keyword);
+                connection.Open();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public static void UpdateUser(UserModel user)
+        {
+            SqlConnection conn = new SqlConnection(PathString.ConnectionString);
+            SqlCommand cmd = new SqlCommand("InsertUser", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@UserId",user.Id);
+            //cmd.Parameters.AddWithValue("@TeacherId", user.TeacherId);
+            cmd.Parameters.AddWithValue("@UserName", user.UserName);
+            cmd.Parameters.AddWithValue("@Pass", user.Pass);
+            cmd.Parameters.AddWithValue("@Name", user.Name);
+            //cmd.Parameters.AddWithValue("@image", image);
+            //cmd.Parameters.AddWithValue("@accessRightsGroup", accessRightsGroup);
+            cmd.Parameters.AddWithValue("@CreatedDate", user.CreatedDate);
+            //cmd.Parameters.AddWithValue("@modifiedDate", modifiedDate);
+            cmd.Parameters.AddWithValue("@CreatedUserId", user.CreatedUserId);
+            //cmd.Parameters.AddWithValue("@modifiedUserId", modifiedUserId);
+            cmd.Parameters.AddWithValue("@IsDeleted", user.IsDeleted);
+            cmd.Parameters.AddWithValue("@Status", user.Status);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
         }
 
         public static void Delete(int id)
@@ -723,7 +776,6 @@ namespace DAO.DataLayerBase
                 user.CreatedUserId = (int)dr["CreatedUserId"];
             else
                 user.CreatedUserId = null;
-
             return user;
         }
 

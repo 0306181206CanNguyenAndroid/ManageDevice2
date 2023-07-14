@@ -20,45 +20,23 @@ namespace DeviceManage
             InitializeComponent();
             LoginInUser = user;
 
-            CkbSua.Checked = false;
-            txtTenDangNhap.Visible = false;
-            txtMatKhauMoi.Visible = false;
-            lblMatKhauCu.Visible = false;
-            lblMatKhauMoi.Visible = false;
-            btnCapNhatUser.Visible = false;
-            CkbSua.Visible = false;
-            btnSuaTk.Enabled = false;
-            btnSuaTk.BackColor = System.Drawing.Color.LightGray;
-            dgvTaiKhoan.AutoGenerateColumns = false;
+           
+            
+            //dgvTaiKhoan.AutoGenerateColumns = false;
 
 
-            dgvTaiKhoan.AutoGenerateColumns = false;
+            //dgvTaiKhoan.AutoGenerateColumns = false;
             dgvTaiKhoan.CellFormatting += dgvTaiKhoan_CellFormatting;
             dtNgaySinh.CustomFormat = "dd/MM/yyyy";
-            
+
+            btnSuaTk.Enabled = false;
+            btnSuaTk.BackColor = System.Drawing.Color.LightGray;
+
         }
 
         private void CkbMatKhau_CheckedChanged(object sender, EventArgs e)
         {
-            if (CkbSua.Checked)
-            {
-                txtMatKhauMoi.Visible
-                    = true;
-                txtTenDangNhap.Visible = true;
-                lblMatKhauCu.Visible = true;
-                lblMatKhauMoi.Visible = true;
-                btnCapNhatUser.Visible = true;
-                //btnCapNhatUser.BackColor = System.Drawing.Color.Lime;
-            }
-            else
-            {
-                txtTenDangNhap.Visible = false;
-                txtMatKhauMoi.Visible = false;
-                lblMatKhauCu.Visible = false;
-                lblMatKhauMoi.Visible = false;
-                btnCapNhatUser.Visible = false;
-
-            }
+            
         }
 
         private void frmQuanLyTaiKhoan_Load(object sender, EventArgs e)
@@ -67,17 +45,15 @@ namespace DeviceManage
             cbTeacher.DisplayMember = "FullName";
             cbTeacher.ValueMember = "Id";
 
-            cbTenTaiKhoan.DataSource = UserBus.SelectAll();
-            cbTenTaiKhoan.DisplayMember = "Name";
-            cbTenTaiKhoan.ValueMember = "Id";
-            dgvTaiKhoan.DataSource = DecentralizationBus.GetAllDecentralization();
+          
+            dgvTaiKhoan.DataSource = UserBus.GetAllUser();
         }
 
-        private void btnTaoTk_Click(object sender, EventArgs e)
-        {
-            frmTaoTaiKhoan frmTaoTaiKhoan = new frmTaoTaiKhoan(LoginInUser);
-            frmTaoTaiKhoan.Show();
-        }
+        //private void btnTaoTk_Click(object sender, EventArgs e)
+        //{
+        //    frmTaoTaiKhoan frmTaoTaiKhoan = new frmTaoTaiKhoan(LoginInUser);
+        //    frmTaoTaiKhoan.Show();
+        //}
 
         private void dgvTaiKhoan_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -85,7 +61,7 @@ namespace DeviceManage
             {
                 DataGridViewRow row = new DataGridViewRow();
                 row = dgvTaiKhoan.Rows[e.RowIndex];
-                cbTeacher.Text = row.Cells["TeacherName"].Value.ToString();
+                cbTeacher.Text = row.Cells["FullName"].Value.ToString();
                 bool currentGender = (bool)dgvTaiKhoan.Rows[e.RowIndex].Cells["TeacherGender"].Value;
                 if (currentGender)
                 {
@@ -95,13 +71,25 @@ namespace DeviceManage
                 {
                     rdNu.Checked = true;
                 }
-                txtSDT.Text = row.Cells["TeacherPhone"].Value.ToString();
-                dtNgaySinh.Text = row.Cells["TeacherBirth"].Value.ToString();
-                cbTenTaiKhoan.Text = row.Cells["NameUser"].Value.ToString();
+                txtSDT.Text = row.Cells["Phone"].Value.ToString();
+                dtNgaySinh.Text = row.Cells["Birth"].Value.ToString();
+                txtTenDangNhap.Text = row.Cells["UserName"].Value.ToString();
+                txtMatKhau.Text = row.Cells["Pass"].Value.ToString();
+                //cbQuyen.Text = row.Cells["Status"].Value.ToString();
+                int status = Convert.ToInt32(row.Cells["Status"].Value);
+                if (status == 1)
+                {
+                    cbQuyen.Text = "Admin";
+                }
+                else if (status == 0)
+                {
+                    cbQuyen.Text = "Giáo Viên";
+                }
+                else
+                {
+                    cbQuyen.Text = string.Empty;
+                }
 
-                CkbSua.Visible = true;
-                btnSuaTk.Enabled = true;
-                btnSuaTk.BackColor = System.Drawing.Color.Transparent;
 
             }
             catch
@@ -129,73 +117,105 @@ namespace DeviceManage
                     }
                 }
             }
+            if (e.ColumnIndex == dgvTaiKhoan.Columns["Pass"].Index)
+            {
+                if (e.Value != null)
+                {
+                    string password = e.Value.ToString();
+                    e.Value = new string('*', password.Length);
+                }
+            }
+            if (e.ColumnIndex == dgvTaiKhoan.Columns["Status"].Index)
+            {
+                if (e.Value != null)
+                {
+                    string status = e.Value.ToString(); 
+                    if(status=="1")
+                    {
+                        e.Value = "Admin";
+                        e.FormattingApplied = true;
+                    }
+                    else
+                    {
+                        e.Value = "Giáo Viên";
+                        e.FormattingApplied = false;
+                    }
+                }
+            }
+
         }
 
         private void btnThemTk_Click(object sender, EventArgs e)
         {
-            DecentralizationModel decentralizationModel = new DecentralizationModel();
-            decentralizationModel.TeacherId = (int)cbTeacher.SelectedValue;
-            decentralizationModel.UserId = (int)cbTenTaiKhoan.SelectedValue;
-            decentralizationModel.CreatedDate = DateTime.Now;
-            decentralizationModel.CreatedUserId = LoginInUser.Id;
-            decentralizationModel.IsDeleted = false;
             try
             {
-                DecentralizationBus.InSertDecentralization(decentralizationModel);
-                MessageBox.Show("Tạo Thành Công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                dgvTaiKhoan.DataSource = DecentralizationBus.GetAllDecentralization();
+                if (!Check())
+                {
+
+                    MessageBox.Show("Thông Tin Không Được Trống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    int status = 0;
+                    if (cbQuyen.SelectedItem.ToString() == "Admin")
+                    {
+                        status = 1;
+                    }
+                    TeacherModel teacher=(TeacherModel)cbTeacher.SelectedItem;
+                    UserModel user = new UserModel();
+                    user.TeacherId = (int)cbTeacher.SelectedValue;
+                    user.CreatedDate = DateTime.Now;
+                    user.CreatedUserId = LoginInUser.Id;
+                    user.IsDeleted = false;
+                    user.Status = status;
+                    user.UserName = txtTenDangNhap.Text;
+                    user.Pass = SettingClass.GetMD5(txtMatKhau.Text);
+                    user.Name = teacher.FullName;
+                    
+                    UserBus.InsertUser(user);
+                    MessageBox.Show("Tạo Thành Công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dgvTaiKhoan.DataSource = UserBus.GetAllUser();
+                    txtTenDangNhap.Text = "";
+                    txtMatKhau.Text = "";
+                    //cbQuyen.SelectedIndex = 0;
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
 
         }
 
         private void btnSuaTk_Click(object sender, EventArgs e)
         {
 
-            DecentralizationModel decentralizationModel = new DecentralizationModel();
-            int Id = Convert.ToInt32(dgvTaiKhoan.CurrentRow.Cells[0].Value);
-            decentralizationModel.Id = Id;
-            decentralizationModel.TeacherId = (int)cbTeacher.SelectedValue;
-            decentralizationModel.UserId = (int)cbTenTaiKhoan.SelectedValue;
-            decentralizationModel.CreatedDate = DateTime.Now;
-            decentralizationModel.CreatedUserId = LoginInUser.Id;
-            decentralizationModel.IsDeleted = false;
-            try
-            {
-                DecentralizationBus.UpdateDecentralization(decentralizationModel);
-                MessageBox.Show("Cập Nhật Thành Công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                dgvTaiKhoan.DataSource = DecentralizationBus.GetAllDecentralization();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
-        private void btnCapNhatUser_Click(object sender, EventArgs e)
-        {
             try
             {
-                if (txtTenDangNhap.Text == "" || txtMatKhauMoi.Text == "")
+                if (txtTenDangNhap.Text == "" || txtMatKhau.Text == "")
                 {
                     MessageBox.Show("Thông Tin Không Được Trống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    int Id = Convert.ToInt32(dgvTaiKhoan.CurrentRow.Cells["UserId"].Value);
+                    int status = 0;
+                    if (cbQuyen.SelectedItem.ToString() == "Admin")
+                    {
+                        status = 1;
+                    }
+                    int Id = Convert.ToInt32(dgvTaiKhoan.CurrentRow.Cells["Id"].Value);
                     UserModel user = new UserModel();
                     user.Id = Id;
                     user.UserName = txtTenDangNhap.Text;
-                    user.Pass = SettingClass.GetMD5(txtMatKhauMoi.Text);
+                    user.Pass = SettingClass.GetMD5(txtMatKhau.Text);
                     user.CreatedDate = DateTime.Now;
                     user.CreatedUserId = LoginInUser.Id;
                     user.IsDeleted = false;
+                    user.Status = status;
                     DecentralizationBus.UpdateUserNameAndPass(user);
                     MessageBox.Show("Cập Nhật Thành Công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dgvTaiKhoan.DataSource = UserBus.GetAllUser();
                 }
 
             }
@@ -203,9 +223,38 @@ namespace DeviceManage
             {
                 MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
         }
+
+        //private void btnCapNhatUser_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (txtTenDangNhap.Text == "" || txtMatKhau.Text == "")
+        //        {
+        //            MessageBox.Show("Thông Tin Không Được Trống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //        else
+        //        {
+        //            int Id = Convert.ToInt32(dgvTaiKhoan.CurrentRow.Cells["UserId"].Value);
+        //            UserModel user = new UserModel();
+        //            user.Id = Id;
+        //            user.UserName = txtTenDangNhap.Text;
+        //            user.Pass = SettingClass.GetMD5(txtMatKhau.Text);
+        //            user.CreatedDate = DateTime.Now;
+        //            user.CreatedUserId = LoginInUser.Id;
+        //            user.IsDeleted = false;
+        //            DecentralizationBus.UpdateUserNameAndPass(user);
+        //            MessageBox.Show("Cập Nhật Thành Công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        }
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+
+
+        //}
 
         private void btnThuHoiTK_Click(object sender, EventArgs e)
         {
@@ -214,7 +263,7 @@ namespace DeviceManage
                 if (dgvTaiKhoan.SelectedRows.Count > 0)
                 {
                     int rowIndex = dgvTaiKhoan.SelectedRows[0].Index;
-                    int Id = Int32.Parse(dgvTaiKhoan.Rows[rowIndex].Cells["UserId"].Value.ToString());
+                    int Id = Int32.Parse(dgvTaiKhoan.Rows[rowIndex].Cells["Id"].Value.ToString());
 
                     CurrencyManager currencyManager = (CurrencyManager)BindingContext[dgvTaiKhoan.DataSource];
                     currencyManager.SuspendBinding();
@@ -225,8 +274,7 @@ namespace DeviceManage
                         DecentralizationBus.DeleteDecentralization(Id);
                         dgvTaiKhoan.Rows[rowIndex].Visible = false;
                         MessageBox.Show("Thu Hồi Thành Công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        dgvTaiKhoan.DataSource = DecentralizationBus.GetAllDecentralization();
+                        dgvTaiKhoan.DataSource = UserBus.GetAllUser();
                     }
                 }
 
@@ -253,6 +301,55 @@ namespace DeviceManage
                 {
                     rdNu.Checked= true;
                 }
+            }
+        }
+
+        private bool Check()
+        {
+            if (txtTenDangNhap.Text.Trim() == "")
+            {
+                return false;
+            }
+            if (txtMatKhau.Text.Trim() == "" || txtMatKhau.Text.Length <= 6)
+            {
+                return false;
+            }
+            if (cbQuyen.SelectedIndex == -1)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private void btnTimKiemTk_Click(object sender, EventArgs e)
+        {
+            string Name = txtTimKiem.Text;
+            if (txtTimKiem.Text == "")
+            {
+                MessageBox.Show("Nhập Thông Tin Cần Tìm", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                DataTable result = UserBus.SearchUser(Name);
+                dgvTaiKhoan.DataSource = result;
+
+            }
+        }
+
+        private void ckSuaTk_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckSuaTk.Checked)
+            {
+                cbTeacher.Enabled = false;
+                btnSuaTk.Enabled = true;
+                btnSuaTk.BackColor = System.Drawing.Color.Transparent;
+
+            }
+            else
+            {
+                btnSuaTk.Enabled=false;
+                cbTeacher.Enabled=true;
+                btnSuaTk.BackColor = System.Drawing.Color.LightGray;
             }
         }
     }

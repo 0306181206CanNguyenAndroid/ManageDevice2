@@ -54,15 +54,24 @@ namespace BUS.BusinessOjectBase
             {
                 throw new Exception("Tên Tài Khoản Đã Tồn Tại");
             }
-            else if(UserDataLayer.CheckName(user.Name)) 
+            else if(UserDataLayer.CheckTeacherId(user.TeacherId) )
             { 
-                throw new Exception("Tên Hiển Thị Đã Tồn Tại");
+                throw new Exception("Tên Giáo Viên Đã Tồn Tại");
             }
             else
             {
                 UserDataLayer.InsertUser(user);
             } 
         }
+
+        public static DataTable GetAllUser()
+        {
+            return UserDataLayer.GetAllUser();
+        }
         
+        public static DataTable SearchUser(string keyword)
+        {
+            return UserDataLayer.SearchUser(keyword);
+        }
     }
 }

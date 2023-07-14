@@ -365,9 +365,9 @@ namespace DAO.DataLayerBase
               object image = objSystemUser.Image;
               object accessRightsGroup = objSystemUser.AccessRightsGroup;
               object createdDate = objSystemUser.CreatedDate;
-              object modifiedDate = objSystemUser.ModifiedDate;
+              
               object createdUserId = objSystemUser.CreatedUserId;
-              object modifiedUserId = objSystemUser.ModifiedUserId;
+             
               object status = objSystemUser.Status;
 
               if (String.IsNullOrEmpty(objSystemUser.UserName))
@@ -388,14 +388,12 @@ namespace DAO.DataLayerBase
               if (objSystemUser.CreatedDate == null)
                   createdDate = System.DBNull.Value;
 
-              if (objSystemUser.ModifiedDate == null)
-                  modifiedDate = System.DBNull.Value;
+              
 
               if (objSystemUser.CreatedUserId == null)
                   createdUserId = System.DBNull.Value;
 
-              if (objSystemUser.ModifiedUserId == null)
-                  modifiedUserId = System.DBNull.Value;
+             
 
               if (objSystemUser.Status == null)
                   status = System.DBNull.Value;
@@ -421,9 +419,9 @@ namespace DAO.DataLayerBase
                       command.Parameters.AddWithValue("@image", image);
                       command.Parameters.AddWithValue("@accessRightsGroup", accessRightsGroup);
                       command.Parameters.AddWithValue("@createdDate", createdDate);
-                      command.Parameters.AddWithValue("@modifiedDate", modifiedDate);
+                     
                       command.Parameters.AddWithValue("@createdUserId", createdUserId);
-                      command.Parameters.AddWithValue("@modifiedUserId", modifiedUserId);
+                      
                       command.Parameters.AddWithValue("@isDeleted", objSystemUser.IsDeleted);
                       command.Parameters.AddWithValue("@status", status);
 
@@ -501,21 +499,13 @@ namespace DAO.DataLayerBase
               else
                   command.Parameters.AddWithValue("@createdDate", System.DBNull.Value);
 
-              if(modifiedDate != null)
-                  command.Parameters.AddWithValue("@modifiedDate", modifiedDate);
-              else
-                  command.Parameters.AddWithValue("@modifiedDate", System.DBNull.Value);
-
+             
               if(createdUserId != null)
                   command.Parameters.AddWithValue("@createdUserId", createdUserId);
               else
                   command.Parameters.AddWithValue("@createdUserId", System.DBNull.Value);
 
-              if(modifiedUserId != null)
-                  command.Parameters.AddWithValue("@modifiedUserId", modifiedUserId);
-              else
-                  command.Parameters.AddWithValue("@modifiedUserId", System.DBNull.Value);
-
+             
               if(isDeleted != null)
                   command.Parameters.AddWithValue("@isDeleted", isDeleted);
               else
@@ -567,20 +557,13 @@ namespace DAO.DataLayerBase
              else
                  objSystemUser.CreatedDate = null;
 
-             if (dr["ModifiedDate"] != System.DBNull.Value)
-                 objSystemUser.ModifiedDate = (DateTime)dr["ModifiedDate"];
-             else
-                 objSystemUser.ModifiedDate = null;
-
+           
              if (dr["CreatedUserId"] != System.DBNull.Value)
                  objSystemUser.CreatedUserId = (int)dr["CreatedUserId"];
              else
                  objSystemUser.CreatedUserId = null;
 
-             if (dr["ModifiedUserId"] != System.DBNull.Value)
-                 objSystemUser.ModifiedUserId = (int)dr["ModifiedUserId"];
-             else
-                 objSystemUser.ModifiedUserId = null;
+            
              if (dr["IsDeleted"] != System.DBNull.Value)
                  objSystemUser.IsDeleted = (bool)dr["IsDeleted"];
              else
