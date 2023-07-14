@@ -98,7 +98,8 @@
 		on DeviceInfo.Id = [Room].DeviceId
 		left join
 		(
-			Select fix.DeviceId, err.[ErrorCode] as [ErrorName], err.[Description] as [ErrorDescription], err.Solution as [Remediation] from [D_DeviceError] err, [D_Malfunction] fix
+			Select fix.DeviceId, err.[ErrorCode] as [ErrorName], err.[Description] as [ErrorDescription], err.Solution as [Remediation] 
+			from [D_DeviceError] err, [D_Malfunction] fix
 			where err.Id = fix.ErrorId
 		) as error
 		on error.DeviceId = DeviceInfo.Id
@@ -109,4 +110,12 @@
 end
 	go
 
+
 	
+create proc [dbo].[User_SelectByPrimaryKey](@Id int)
+as
+begin 
+select*from [System_User]
+where Id = @Id
+end
+go

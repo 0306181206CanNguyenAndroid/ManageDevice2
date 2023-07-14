@@ -30,8 +30,8 @@ namespace DeviceManage
 
         private void btnXemNhapThietBiTheoNgay_Click(object sender, EventArgs e)
         {
-            DateTime tuNgay = Convert.ToDateTime(dtTuNgay.Text);
-            DateTime denNgay=Convert.ToDateTime(dtDenNgay.Text);
+            DateTime tuNgay = dtTuNgay.Value;
+            DateTime denNgay=dtDenNgay.Value;
             HienThongKeNhapThietBiTheoNgay(tuNgay, denNgay.AddDays(1).AddSeconds(-1));
         }
 
@@ -55,7 +55,7 @@ namespace DeviceManage
                     a.DeviceName = "Máy Tính Asus";
                     a.Device_TypeName = "Máy Tính";
                     a.Name = "Nguyễn Trọng Cần";
-                    a.NgayNhap=DateTime.Now;
+                    a.NgayNhap=DateTime.Now.Date;
                     a.Soluong = 2;
                     a.TongGia = 2000000;
                     danhsach.Add(a);
@@ -65,8 +65,8 @@ namespace DeviceManage
                 var reportDataSource = new ReportDataSource("ThongKeNhapThietBiTheoNgayDataset", danhsach);
                 this.rptThongKeNhapThietBiTheoNgay.LocalReport.DataSources.Clear();
                 this.rptThongKeNhapThietBiTheoNgay.LocalReport.DataSources.Add(reportDataSource);
-                this.rptThongKeNhapThietBiTheoNgay.LocalReport.SetParameters(new ReportParameter("prTuNgay", tuNgay.ToString("MM/dd/yyyy")));
-                this.rptThongKeNhapThietBiTheoNgay.LocalReport.SetParameters(new ReportParameter("prDenNgay", denNgay.ToString("MM/dd/yyyy")));
+                this.rptThongKeNhapThietBiTheoNgay.LocalReport.SetParameters(new ReportParameter("prTuNgay", tuNgay.ToString("dd/MM/yyyy")));
+                this.rptThongKeNhapThietBiTheoNgay.LocalReport.SetParameters(new ReportParameter("prDenNgay", denNgay.ToString("dd/MM/yyyy")));
                 this.rptThongKeNhapThietBiTheoNgay.RefreshReport();
             }
         }

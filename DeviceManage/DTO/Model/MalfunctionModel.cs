@@ -12,8 +12,10 @@ namespace DTO.Model
         public MalfunctionModel() { }
         public string TeacherName { get; set; }
         public string DeviceName { get; set; }
-        public int RoomId { get; set; }
+        public int? RoomId { get; set; }
         public string RoomName { get; set; }
+        public string Solution{ get; set; }
+
         public List<DeviceErrorModel> listError { get; set; }
     }
 }

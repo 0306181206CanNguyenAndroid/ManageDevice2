@@ -27,6 +27,10 @@ namespace BUS.BusinessOjectBase
             return DeviceDataLayer.SelectByPrimaryKey(id);
         }
 
+        public static string GetInfoDevice(int id)
+        {
+            return DeviceDataLayer.GetInfoDevice(id);
+        }
         /// <summary>
         /// Gets the total number of records in the Device table
         /// </summary>

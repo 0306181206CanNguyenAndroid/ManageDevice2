@@ -29,7 +29,7 @@ namespace DeviceManage
         public static void Message_CheckEmpty(string content, string title)
         {
             MessageBox.Show(content + " không được trống!", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            MessageBox.Show("Chưa chọn phòng", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //MessageBox.Show("Chưa chọn phòng", title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         public static void Message_IsChosen(string content, string title)
         {

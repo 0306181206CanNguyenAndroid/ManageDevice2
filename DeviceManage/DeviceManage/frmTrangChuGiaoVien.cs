@@ -73,14 +73,14 @@ namespace DeviceManage
 
         private void btnQLPhongMay_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmQuanLyPhongMay(LoginInUser));
+            OpenChildForm(new frmQuanLyPhongMay(LoginInUser.Id));
             lbl_text.Text = btnQLPhongMay.Text;
         }
 
         private void btnQlThietBi_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new DeviceMangement());
-            lbl_text.Text = btnQlThietBi.Text;
+            //OpenChildForm(new DeviceMangement());
+            //lbl_text.Text = btnQlThietBi.Text;
         }
 
         private void btnQlThanhLy_Click(object sender, EventArgs e)
@@ -110,6 +110,11 @@ namespace DeviceManage
             {
                 e.Cancel = true;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

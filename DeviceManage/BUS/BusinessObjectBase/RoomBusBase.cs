@@ -21,6 +21,15 @@ namespace BUS.BusinessOjectBase
         {
             return RoomDAO.SelectByPrimaryKey(id);
         }
+        //
+        public static RoomModel SelectRoomByDevice(int id)
+        {
+            return RoomDAO.SelectRoomByDevice(id);
+        }
+        public static RoomModel SelectByTeacherId(int id)
+        {
+            return RoomDAO.SelectByTeacherId(id);
+        }
         public static void InSertRoom(RoomModel room)
         {
             if (RoomDAO.CheckIdRoom(room.Code))

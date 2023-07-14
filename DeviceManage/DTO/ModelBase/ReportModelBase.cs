@@ -9,7 +9,8 @@ namespace DTO.ModelBase
     public class ReportModelBase
     {
         public int Id { get; set; }
-        public int MalfunctionId { get; set; }
+        //public int MalfunctionId { get; set; }
+        public int DeviceId { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
         public string Note { get; set; }

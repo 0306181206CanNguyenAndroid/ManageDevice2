@@ -27,6 +27,40 @@ namespace DAO.DataLayerBase
         /// <summary>
         /// Selects a record by primary key(s)
         /// </summary> 
+        public static string GetInfoDevice(int id)
+        {
+            string storedProcName = "[dbo].[GetInfoDevice]";
+            string info = "";
+
+            using (SqlConnection connection = new SqlConnection(PathString.ConnectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(storedProcName, connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    // parameters
+                    command.Parameters.AddWithValue("@id", id);
+
+                    using (SqlDataAdapter da = new SqlDataAdapter(command))
+                    {
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+
+                        if (dt != null)
+                        {
+                            if (dt.Rows.Count > 0)
+                            {
+                                info = dt.Rows[0]["Info"] == System.DBNull.Value ? "" : dt.Rows[0]["Info"].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+
+            return info;
+        }
         public static DeviceModel SelectByPrimaryKey(int id)
         {
             DeviceModel objDevice = null;

@@ -28,6 +28,7 @@ namespace DeviceManage
 
         //private UserModel tkql;
         //Các cài đặt mặt định của form
+        
 
 
         //Khai báo các class lấy dl cho form
@@ -273,13 +274,19 @@ namespace DeviceManage
                             txtPrice.Text = de.Price.ToString();
                             txtTenTbi.Text = de.Name;
                             rtbGhiChuTbi.Text = de.Note;
-                            if (String.IsNullOrEmpty(de.Image))
+                            var r = RoomBus.SelectRoomByDevice(de.Id);
+                            
+                            if (r != null)
+                                cbPhong.SelectedValue = r.Id;
+                            else
+                                cbPhong.SelectedIndex = 0;
+                            try
+                            {
+                                ptb_Device.Image = Image.FromFile(SettingClass.path_Folder_Image_Device + de.Image);                                
+                            }
+                            catch(Exception ex)
                             {
                                 ptb_Device.Image = Image.FromFile(SettingClass.path_NoImage_Default);
-                            }
-                            else
-                            {
-                                ptb_Device.Image = Image.FromFile(SettingClass.path_Folder_Image_Device + de.Image);
                             }
                             ptb_Device.Tag = de.Image;
 
@@ -470,19 +477,28 @@ namespace DeviceManage
             }
             if (ckb_isAddIntoRoom.Checked)
             {
-                if(((RoomModel)cbPhong.SelectedItem).Name=="")
+                if(((int?)cbPhong.SelectedValue)==null)
                 {
                     MessageClass.Message_IsChosen("phòng!", "Lưu ý");
                     return true;
                 }
             }
-            if (cbLoaiTbi.SelectedItem == null)
+            if ((int?)cbLoaiTbi.SelectedValue == null)
+            {
+                MessageClass.Message_CheckEmpty("Loại thiết bị", "Lưu ý");
                 return true;
-            if (cbNhaCungCap.SelectedItem == null)
+            }
+            if ((int?)cbNhaCungCap.SelectedValue == null)
+            {
+                MessageClass.Message_CheckEmpty("Thương hiệu", "Lưu ý");
                 return true;
-            if (cbKhoa.SelectedItem == null)
+            }
+            if ((int?)cbKhoa.SelectedValue == null)
+            {
+                MessageClass.Message_CheckEmpty("Khoa", "Lưu ý");
                 return true;
-            if(dtp_DateBuy.Value < DateTime.Now)
+            }
+            if (dtp_DateBuy.Value > DateTime.Now)
             {
                 MessageClass.Message_CheckData("Ngày mua", "Lưu ý");
                 return true;
@@ -506,6 +522,7 @@ namespace DeviceManage
                 Stream stream = null;
                 if ((stream = open.OpenFile()) != null)
                 {
+
                     ptb_Device.Image = Image.FromStream(stream);
                     ptb_Device.Tag = Path.GetFileName(open.FileName);
                 }
@@ -518,6 +535,8 @@ namespace DeviceManage
 
         private void btnSuaTbi_Click(object sender, EventArgs e)
         {
+            if (Check_Null())
+                return;
             DeviceModel device = GetDeviceInfo();
             if (device.Image != null)
             {

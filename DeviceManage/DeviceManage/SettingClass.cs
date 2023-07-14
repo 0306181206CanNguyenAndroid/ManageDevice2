@@ -27,6 +27,10 @@ namespace DeviceManage
         public static int Status_Error =1;
         public static int Status_Nomal =0;
         public static int Status_Fixing =2;
+        public static int Status_Fixed =3;
+        public static int Status_Error_Serious = 2;
+        public static int Status_Error_VerySerious = 3;
+        public static int Status_Error_Broken = 4;
         #endregion
         public static string GetMD5(string chuoi)
         {
