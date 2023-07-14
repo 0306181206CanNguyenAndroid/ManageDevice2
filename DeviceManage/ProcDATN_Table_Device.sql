@@ -335,3 +335,126 @@ as
 			where RoomId = @id and IsNull([IsDeleted],0) = 0
 		)
 	end
+
+create proc GetInfoDevice(@id int)
+as 
+begin
+	SELECT 
+				---Cột chứa Tất cả Thông tin Cấu hình Thiết bị---
+				(   
+					SELECT dt.[Info] +';' AS [text()]
+						FROM 
+						(
+						----Gom thông tin cấu hình thành 1 cột (tên cấu hỉnh + giá trị)----
+							Select ddt.DeviceId as 'Id', CONCAT_WS(': ',ddt.NameSpecs,ddt.[Description]) as 'Info'
+							from [dbo].[D_DeviceDetail] ddt, [dbo].[D_DeviceType_Specs] dtp
+							where Isnull(ddt.IsDeleted,0) = 0
+							Group By ddt.DeviceId, CONCAT_WS(': ',ddt.NameSpecs,ddt.[Description])
+						) as dt
+					WHERE dt.Id=d.ID
+					ORDER BY dt.Id
+					FOR XML PATH('')
+				) [Info]
+				FROM D_Device d
+				where d.Id = @id
+end
+
+
+create proc [dbo].[Device_SelectSkipAndTakeWhereDynamic_BrokenOrNot](
+	@id int = null,
+	@name nvarchar(100) = null,
+	@description nvarchar(100) = null,
+	@brandId int = null,
+	@deviceTypeId int = null,
+	@facultyId int = null,
+	@shipmentId int = null,
+	@qr_code varchar(100) = null,
+	@note varchar(100) = null,
+	@image varchar(100) = null,
+	@price money = null,
+	@warrantyPeriod datetime = null,
+	@createdDate datetime = null,
+	@createdUserId int = null,
+	@isDeleted bit = null,
+	@status int = null,
+	@sort varchar(50) = null,
+	@numberOfRows int,
+	@start int)
+	as 
+		begin
+		SET NOCOUNT ON;
+		select * from [dbo].[D_Device]
+		where (@id IS null or [Id] = @id) and
+		(@DeviceTypeId is null or [DeviceTypeId] = @DeviceTypeId) and
+		(@name is null or [Name] = @name) and
+		(@brandId is null or [brandId] = @brandId) and
+		(@facultyId is null or [FacultyId] = @facultyId) and
+		(@shipmentId is null or [shipmentId] = @shipmentId) and
+		(@qr_code is null or [QR_Code] = @qr_code) and
+		(@note is null or [Note] = @note) and
+		(@image is null or [Image] = @image) and
+		(@price is null or [Price] = @price) and
+		(@description is null or [Description] = @description) and
+		(@warrantyPeriod is null or [WarrantyPeriod] = @warrantyPeriod) and
+		(@createdDate is null or [CreatedDate] = @createdDate) and
+		(@createdUserId is null or [CreatedUserId] = @createdUserId) and
+		(@isDeleted is null or ISNULL([IsDeleted],0) = @isDeleted) and
+		(@status is null  or (ISNULL([Status],0) = @status and ISNULL([Status],0) != 4) or (@status = 4 and ISNULL([Status],0) = 4))
+		order by 
+		case when (@sort is null or @sort = 'Id') then [Id] end,
+		case when (@sort = 'Id desc') then [Id] end desc,
+		case when @sort = 'Price' then [Price] end,
+		case when @sort = 'Price desc' then [Price] end desc,
+		case when @sort = 'Name' then [Name] end,
+		case when @sort = 'Name desc' then [Name] end desc,
+		case when @sort = 'CreatedUserId' then [CreatedUserId] end,
+		case when @sort = 'brandId' then [brandId] end,
+		case when @sort = 'IsDeleted' then [IsDeleted] end,
+		case when @sort = 'Status' then [Status] end
+		offset   @start ROWS    -- skip s rows
+		FETCH NEXT @numberOfRows ROWS ONLY; -- take n rows
+		end
+		go
+
+create proc [dbo].[Device_SelectAllWhereDynamic_BrokenOrNot]
+	(
+	@id int = null,
+	@name nvarchar(100) = null,
+	@description nvarchar(100) = null,
+	@brandId int = null,
+	@deviceTypeId int = null,
+	@facultyId int = null,
+	@shipmentId int = null,
+	@qr_code varchar(100) = null,
+	@note varchar(100) = null,
+	@image varchar(100) = null,
+	@price money = null,
+	@warrantyPeriod datetime = null,
+	@createdDate datetime = null,
+	@createdUserId int = null,
+	@isDeleted bit = null,
+	@status int = null
+	)
+	as 
+		begin
+		SET NOCOUNT ON;
+		select * from [dbo].[D_Device]
+		where (@id IS null or [Id] = @id) and
+		(@DeviceTypeId is null or [DeviceTypeId] = @DeviceTypeId) and
+		(@name is null or [Name] = @name) and
+		(@brandId is null or [brandId] = @brandId) and
+		(@facultyId is null or [FacultyId] = @facultyId) and
+		(@shipmentId is null or [shipmentId] = @shipmentId) and
+		(@qr_code is null or [QR_Code] = @qr_code) and
+		(@note is null or [Note] = @note) and
+		(@image is null or [Image] = @image) and
+		(@price is null or [Price] = @price) and
+		(@description is null or [Description] = @description) and
+		(@warrantyPeriod is null or [WarrantyPeriod] = @warrantyPeriod) and
+		(@createdDate is null or [CreatedDate] = @createdDate) and
+		(@createdUserId is null or [CreatedUserId] = @createdUserId) and
+		(@isDeleted is null or ISNULL([IsDeleted],0) = @isDeleted) and
+		(@status is null  or (ISNULL([Status],0) = @status and ISNULL([Status],0) != 4) or (@status = 4 and ISNULL([Status],0) = 4))
+		order by [Name]
+		end
+go
