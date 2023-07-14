@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DeviceManage
 {
@@ -37,6 +38,9 @@ namespace DeviceManage
             cbChucVu.DisplayMember = "Name";
             cbChucVu.ValueMember = "Id";
 
+            cbPhong.DataSource=RoomBus.GetRoomAfterDelete();
+            cbPhong.DisplayMember = "Name";
+            cbPhong.ValueMember= "Id";
             //dgvGiaoVien.DataSource = TeacherBus.GetAllTeachers();
             dgvGiaoVien.DataSource = TeacherBus.GetTeachersAfterDelete();
 
@@ -94,17 +98,23 @@ namespace DeviceManage
                 teacher.IsDeleted = false;
                 teacher.Status = 0;
 
-                TeacherBus.InsertTeacher(teacher);
-                //txtHoGV.Text = "";
-                //txtTenGV.Text = "";
-                //txtEmail.Text = "";
-                //txtSdtGV.Text = "";
-                //rtbDiaChiGv.Text = "";
+                teacher.Id= TeacherBus.InsertTeacher(teacher);
+                ///Lấy Id room
+                
+                RoomManagerModel roomManager = new RoomManagerModel();
+                roomManager.RoomId=(int)cbPhong.SelectedValue;
+                roomManager.TeacherId= teacher.Id;
+                roomManager.CreatedUserId = LoginInUser.Id;
+                roomManager.CreatedDate= DateTime.Now;
+                roomManager.IsDeleted = false;
+                RoomManagerBus.Insert_RoomManager(roomManager);
                 dtNgaySinhGV.Value = DateTime.Now;
                 cbChucVu.SelectedIndex = 0;
                 rdNam.Checked = true;
                 //dgvGiaoVien.DataSource = TeacherBus.GetAllTeachers();
                 dgvGiaoVien.DataSource = TeacherBus.GetTeachersAfterDelete();
+                
+                MessageBox.Show("Tạo Thành Công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             catch (Exception ex)

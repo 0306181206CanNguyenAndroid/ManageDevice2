@@ -64,6 +64,7 @@
     <Compile Include="BusinessObjectBase\LocationBusBase.cs" />
     <Compile Include="BusinessObjectBase\PositionBusBase.cs" />
     <Compile Include="BusinessObjectBase\RoomBusBase.cs" />
+    <Compile Include="BusinessObjectBase\RoomManagerBusBase.cs" />
     <Compile Include="BusinessObjectBase\ShipmentBusBase.cs" />
     <Compile Include="BusinessObjectBase\ShipmentDetailBusBase.cs" />
     <Compile Include="BusinessObjectBase\SpecsBusBase.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="BusinessObject\LocationBus.cs" />
     <Compile Include="BusinessObject\PositionBus.cs" />
     <Compile Include="BusinessObject\RoomBus.cs" />
+    <Compile Include="BusinessObject\RoomManagerBus.cs" />
     <Compile Include="BusinessObject\ShipmentBus.cs" />
     <Compile Include="BusinessObject\ShipmentDetailBus.cs" />
     <Compile Include="BusinessObject\SpecsBus.cs" />

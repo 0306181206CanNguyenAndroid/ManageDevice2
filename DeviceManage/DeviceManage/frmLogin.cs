@@ -18,8 +18,8 @@ namespace DeviceManage
         public frmLogin()
         {
             InitializeComponent();
-            txtTenDangNhap.Text = "Admin";
-            txtMatKhau.Text = "1234567";
+            //txtTenDangNhap.Text = "Admin";
+            //txtMatKhau.Text = "1234567";
         }
         private void T_logout(object sender, Action_LogoutSuccessEventArgs e)
         {
@@ -40,9 +40,7 @@ namespace DeviceManage
                 UserModel user = DecentralizationBus.GetUserByUserName_Pass(UserName, Pass);
                 if (user != null)
                 {
-                    int UserId=user.Id;
-                    if(DecentralizationBus.CheckUserId(UserId))
-                    {
+                        int UserId=user.Id;
                         int Status = DecentralizationBus.GetStatusByUserId(UserId);
                         this.Hide();
                         if (Status == 1) {
@@ -61,11 +59,8 @@ namespace DeviceManage
                             frmTrangChuGiaoVien.ShowDialog();
                             
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Bạn Không Có Quyền Đăng Nhập");
-                    }
+                    
+                    
                 }
                 else
                 {
