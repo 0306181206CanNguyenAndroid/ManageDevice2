@@ -6,19 +6,13 @@ using System.Threading.Tasks;
 
 namespace DTO.ModelBase
 {
-    public class UserModelBase
+    public class RoomManagerModelBase
     {
         public int Id { get; set; }
+        public int RoomId { get; set; }
         public int TeacherId { get; set; }
-        public string UserName { get; set; }
-        public string Name { get; set; }
-        public string Pass { get; set; }
-        public string Image { get; set; }
-        public int? AccessRightsGroup { get; set; }
         public DateTime? CreatedDate { get; set; }
         public int? CreatedUserId { get; set; }
         public bool IsDeleted { get; set; }
-        public int? Status { get; set; }
-
     }
 }

@@ -31,12 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.gbTaiKhoan = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnCapNhatUser = new System.Windows.Forms.Button();
-            this.cbTenTaiKhoan = new System.Windows.Forms.ComboBox();
-            this.lblTenTK = new System.Windows.Forms.Label();
-            this.CkbSua = new System.Windows.Forms.CheckBox();
+            this.cbQuyen = new System.Windows.Forms.ComboBox();
+            this.lblQuyen = new System.Windows.Forms.Label();
             this.lblMatKhauCu = new System.Windows.Forms.Label();
-            this.txtMatKhauMoi = new System.Windows.Forms.TextBox();
+            this.txtMatKhau = new System.Windows.Forms.TextBox();
             this.lblMatKhauMoi = new System.Windows.Forms.Label();
             this.txtTenDangNhap = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -49,7 +47,6 @@
             this.lblNgaysinh = new System.Windows.Forms.Label();
             this.dtNgaySinh = new System.Windows.Forms.DateTimePicker();
             this.rdNu = new System.Windows.Forms.RadioButton();
-            this.btnTaoTk = new System.Windows.Forms.Button();
             this.btnThuHoiTK = new System.Windows.Forms.Button();
             this.gbTiemKim = new System.Windows.Forms.GroupBox();
             this.btnTimKiemTk = new System.Windows.Forms.Button();
@@ -59,13 +56,15 @@
             this.dgvTaiKhoan = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TeacherId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TeacherName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TeacherGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TeacherPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TeacherBirth = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Birth = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.ckSuaTk = new System.Windows.Forms.CheckBox();
             this.gbTaiKhoan.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -78,7 +77,6 @@
             this.gbTaiKhoan.BackColor = System.Drawing.Color.Transparent;
             this.gbTaiKhoan.Controls.Add(this.groupBox2);
             this.gbTaiKhoan.Controls.Add(this.groupBox1);
-            this.gbTaiKhoan.Controls.Add(this.btnTaoTk);
             this.gbTaiKhoan.Controls.Add(this.btnThuHoiTK);
             this.gbTaiKhoan.Controls.Add(this.gbTiemKim);
             this.gbTaiKhoan.Controls.Add(this.btnSuaTk);
@@ -97,12 +95,11 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnCapNhatUser);
-            this.groupBox2.Controls.Add(this.cbTenTaiKhoan);
-            this.groupBox2.Controls.Add(this.lblTenTK);
-            this.groupBox2.Controls.Add(this.CkbSua);
+            this.groupBox2.Controls.Add(this.ckSuaTk);
+            this.groupBox2.Controls.Add(this.cbQuyen);
+            this.groupBox2.Controls.Add(this.lblQuyen);
             this.groupBox2.Controls.Add(this.lblMatKhauCu);
-            this.groupBox2.Controls.Add(this.txtMatKhauMoi);
+            this.groupBox2.Controls.Add(this.txtMatKhau);
             this.groupBox2.Controls.Add(this.lblMatKhauMoi);
             this.groupBox2.Controls.Add(this.txtTenDangNhap);
             this.groupBox2.Location = new System.Drawing.Point(482, 30);
@@ -112,85 +109,59 @@
             this.groupBox2.Size = new System.Drawing.Size(420, 246);
             this.groupBox2.TabIndex = 25;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Thông Tin Tài Khoản";
+            this.groupBox2.Text = "Tạo Tài Khoản";
             // 
-            // btnCapNhatUser
+            // cbQuyen
             // 
-            this.btnCapNhatUser.BackColor = System.Drawing.Color.Transparent;
-            this.btnCapNhatUser.BackgroundImage = global::DeviceManage.Properties.Resources.edit_user;
-            this.btnCapNhatUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnCapNhatUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCapNhatUser.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnCapNhatUser.Location = new System.Drawing.Point(127, 198);
-            this.btnCapNhatUser.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnCapNhatUser.Name = "btnCapNhatUser";
-            this.btnCapNhatUser.Size = new System.Drawing.Size(121, 40);
-            this.btnCapNhatUser.TabIndex = 26;
-            this.toolTip1.SetToolTip(this.btnCapNhatUser, "Sửa User");
-            this.btnCapNhatUser.UseVisualStyleBackColor = false;
-            this.btnCapNhatUser.Click += new System.EventHandler(this.btnCapNhatUser_Click);
+            this.cbQuyen.FormattingEnabled = true;
+            this.cbQuyen.Items.AddRange(new object[] {
+            "Admin",
+            "Giáo Viên"});
+            this.cbQuyen.Location = new System.Drawing.Point(190, 143);
+            this.cbQuyen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbQuyen.Name = "cbQuyen";
+            this.cbQuyen.Size = new System.Drawing.Size(195, 33);
+            this.cbQuyen.TabIndex = 19;
             // 
-            // cbTenTaiKhoan
+            // lblQuyen
             // 
-            this.cbTenTaiKhoan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTenTaiKhoan.FormattingEnabled = true;
-            this.cbTenTaiKhoan.Location = new System.Drawing.Point(190, 24);
-            this.cbTenTaiKhoan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbTenTaiKhoan.Name = "cbTenTaiKhoan";
-            this.cbTenTaiKhoan.Size = new System.Drawing.Size(195, 33);
-            this.cbTenTaiKhoan.TabIndex = 22;
-            // 
-            // lblTenTK
-            // 
-            this.lblTenTK.AutoSize = true;
-            this.lblTenTK.Location = new System.Drawing.Point(24, 30);
-            this.lblTenTK.Name = "lblTenTK";
-            this.lblTenTK.Size = new System.Drawing.Size(134, 25);
-            this.lblTenTK.TabIndex = 9;
-            this.lblTenTK.Text = "Tên Tài Khoản :";
-            // 
-            // CkbSua
-            // 
-            this.CkbSua.AutoSize = true;
-            this.CkbSua.Location = new System.Drawing.Point(24, 71);
-            this.CkbSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.CkbSua.Name = "CkbSua";
-            this.CkbSua.Size = new System.Drawing.Size(235, 29);
-            this.CkbSua.TabIndex = 19;
-            this.CkbSua.Text = "Đổi UserName và Pass ?";
-            this.CkbSua.UseVisualStyleBackColor = true;
-            this.CkbSua.CheckedChanged += new System.EventHandler(this.CkbMatKhau_CheckedChanged);
+            this.lblQuyen.AutoSize = true;
+            this.lblQuyen.Location = new System.Drawing.Point(24, 151);
+            this.lblQuyen.Name = "lblQuyen";
+            this.lblQuyen.Size = new System.Drawing.Size(76, 25);
+            this.lblQuyen.TabIndex = 20;
+            this.lblQuyen.Text = "Quyền :";
             // 
             // lblMatKhauCu
             // 
             this.lblMatKhauCu.AutoSize = true;
-            this.lblMatKhauCu.Location = new System.Drawing.Point(24, 111);
+            this.lblMatKhauCu.Location = new System.Drawing.Point(24, 32);
             this.lblMatKhauCu.Name = "lblMatKhauCu";
             this.lblMatKhauCu.Size = new System.Drawing.Size(148, 25);
             this.lblMatKhauCu.TabIndex = 11;
             this.lblMatKhauCu.Text = "Tên Đăng Nhập :";
             // 
-            // txtMatKhauMoi
+            // txtMatKhau
             // 
-            this.txtMatKhauMoi.Location = new System.Drawing.Point(190, 154);
-            this.txtMatKhauMoi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtMatKhauMoi.Name = "txtMatKhauMoi";
-            this.txtMatKhauMoi.Size = new System.Drawing.Size(195, 31);
-            this.txtMatKhauMoi.TabIndex = 18;
-            this.txtMatKhauMoi.UseSystemPasswordChar = true;
+            this.txtMatKhau.Location = new System.Drawing.Point(190, 80);
+            this.txtMatKhau.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtMatKhau.Name = "txtMatKhau";
+            this.txtMatKhau.Size = new System.Drawing.Size(195, 31);
+            this.txtMatKhau.TabIndex = 18;
+            this.txtMatKhau.UseSystemPasswordChar = true;
             // 
             // lblMatKhauMoi
             // 
             this.lblMatKhauMoi.AutoSize = true;
-            this.lblMatKhauMoi.Location = new System.Drawing.Point(24, 158);
+            this.lblMatKhauMoi.Location = new System.Drawing.Point(24, 86);
             this.lblMatKhauMoi.Name = "lblMatKhauMoi";
-            this.lblMatKhauMoi.Size = new System.Drawing.Size(138, 25);
+            this.lblMatKhauMoi.Size = new System.Drawing.Size(100, 25);
             this.lblMatKhauMoi.TabIndex = 17;
-            this.lblMatKhauMoi.Text = "Mật Khẩu Mới :";
+            this.lblMatKhauMoi.Text = "Mật Khẩu :";
             // 
             // txtTenDangNhap
             // 
-            this.txtTenDangNhap.Location = new System.Drawing.Point(190, 106);
+            this.txtTenDangNhap.Location = new System.Drawing.Point(190, 24);
             this.txtTenDangNhap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTenDangNhap.Name = "txtTenDangNhap";
             this.txtTenDangNhap.Size = new System.Drawing.Size(195, 31);
@@ -232,9 +203,9 @@
             this.lblTenTaiKhoan.AutoSize = true;
             this.lblTenTaiKhoan.Location = new System.Drawing.Point(10, 30);
             this.lblTenTaiKhoan.Name = "lblTenTaiKhoan";
-            this.lblTenTaiKhoan.Size = new System.Drawing.Size(142, 25);
+            this.lblTenTaiKhoan.Size = new System.Drawing.Size(136, 25);
             this.lblTenTaiKhoan.TabIndex = 0;
-            this.lblTenTaiKhoan.Text = "Tên Nhân Viên :";
+            this.lblTenTaiKhoan.Text = "Tên Giáo Viên :";
             // 
             // lblGioitinh
             // 
@@ -305,22 +276,6 @@
             this.rdNu.Text = "Nữ";
             this.rdNu.UseVisualStyleBackColor = true;
             // 
-            // btnTaoTk
-            // 
-            this.btnTaoTk.BackColor = System.Drawing.Color.Transparent;
-            this.btnTaoTk.BackgroundImage = global::DeviceManage.Properties.Resources.add_user2;
-            this.btnTaoTk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnTaoTk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTaoTk.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnTaoTk.Location = new System.Drawing.Point(979, 305);
-            this.btnTaoTk.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnTaoTk.Name = "btnTaoTk";
-            this.btnTaoTk.Size = new System.Drawing.Size(121, 40);
-            this.btnTaoTk.TabIndex = 23;
-            this.toolTip1.SetToolTip(this.btnTaoTk, "Tạo Tài Khoản Mới");
-            this.btnTaoTk.UseVisualStyleBackColor = false;
-            this.btnTaoTk.Click += new System.EventHandler(this.btnTaoTk_Click);
-            // 
             // btnThuHoiTK
             // 
             this.btnThuHoiTK.BackColor = System.Drawing.Color.Transparent;
@@ -366,6 +321,7 @@
             this.btnTimKiemTk.TabIndex = 17;
             this.toolTip1.SetToolTip(this.btnTimKiemTk, "Tìm Kiếm");
             this.btnTimKiemTk.UseVisualStyleBackColor = false;
+            this.btnTimKiemTk.Click += new System.EventHandler(this.btnTimKiemTk_Click);
             // 
             // txtTimKiem
             // 
@@ -415,12 +371,13 @@
             this.dgvTaiKhoan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.TeacherId,
-            this.TeacherName,
+            this.FullName,
             this.TeacherGender,
-            this.TeacherPhone,
-            this.TeacherBirth,
-            this.UserId,
-            this.NameUser});
+            this.Phone,
+            this.Birth,
+            this.UserName,
+            this.Pass,
+            this.Status});
             this.dgvTaiKhoan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvTaiKhoan.Location = new System.Drawing.Point(0, 396);
             this.dgvTaiKhoan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -434,7 +391,6 @@
             // 
             // Id
             // 
-            this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Id.DataPropertyName = "Id";
             this.Id.HeaderText = "Id";
             this.Id.MinimumWidth = 8;
@@ -444,7 +400,6 @@
             // 
             // TeacherId
             // 
-            this.TeacherId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.TeacherId.DataPropertyName = "TeacherId";
             this.TeacherId.HeaderText = "TeacherId";
             this.TeacherId.MinimumWidth = 8;
@@ -452,63 +407,72 @@
             this.TeacherId.ReadOnly = true;
             this.TeacherId.Visible = false;
             // 
-            // TeacherName
+            // FullName
             // 
-            this.TeacherName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TeacherName.DataPropertyName = "TeacherName";
-            this.TeacherName.HeaderText = "Tên Giáo Viên";
-            this.TeacherName.MinimumWidth = 8;
-            this.TeacherName.Name = "TeacherName";
-            this.TeacherName.ReadOnly = true;
+            this.FullName.DataPropertyName = "FullName";
+            this.FullName.HeaderText = "Tên Giáo Viên";
+            this.FullName.MinimumWidth = 8;
+            this.FullName.Name = "FullName";
+            this.FullName.ReadOnly = true;
             // 
             // TeacherGender
             // 
-            this.TeacherGender.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TeacherGender.DataPropertyName = "TeacherGender";
-            this.TeacherGender.FillWeight = 50F;
+            this.TeacherGender.DataPropertyName = "Gender";
             this.TeacherGender.HeaderText = "Giới Tính";
             this.TeacherGender.MinimumWidth = 8;
             this.TeacherGender.Name = "TeacherGender";
             this.TeacherGender.ReadOnly = true;
             // 
-            // TeacherPhone
+            // Phone
             // 
-            this.TeacherPhone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TeacherPhone.DataPropertyName = "TeacherPhone";
-            this.TeacherPhone.FillWeight = 80F;
-            this.TeacherPhone.HeaderText = "Số Điện Thoại";
-            this.TeacherPhone.MinimumWidth = 8;
-            this.TeacherPhone.Name = "TeacherPhone";
-            this.TeacherPhone.ReadOnly = true;
+            this.Phone.DataPropertyName = "Phone";
+            this.Phone.HeaderText = "Số Điện Thoại";
+            this.Phone.MinimumWidth = 8;
+            this.Phone.Name = "Phone";
+            this.Phone.ReadOnly = true;
             // 
-            // TeacherBirth
+            // Birth
             // 
-            this.TeacherBirth.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TeacherBirth.DataPropertyName = "TeacherBirth";
-            this.TeacherBirth.FillWeight = 50F;
-            this.TeacherBirth.HeaderText = "Ngày Sinh";
-            this.TeacherBirth.MinimumWidth = 8;
-            this.TeacherBirth.Name = "TeacherBirth";
-            this.TeacherBirth.ReadOnly = true;
+            this.Birth.DataPropertyName = "Birth";
+            this.Birth.HeaderText = "Ngày Sinh";
+            this.Birth.MinimumWidth = 8;
+            this.Birth.Name = "Birth";
+            this.Birth.ReadOnly = true;
             // 
-            // UserId
+            // UserName
             // 
-            this.UserId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.UserId.DataPropertyName = "UserId";
-            this.UserId.HeaderText = "UserId";
-            this.UserId.MinimumWidth = 8;
-            this.UserId.Name = "UserId";
-            this.UserId.ReadOnly = true;
-            this.UserId.Visible = false;
+            this.UserName.DataPropertyName = "UserName";
+            this.UserName.HeaderText = "Tên Đăng Nhập";
+            this.UserName.MinimumWidth = 8;
+            this.UserName.Name = "UserName";
+            this.UserName.ReadOnly = true;
             // 
-            // NameUser
+            // Pass
             // 
-            this.NameUser.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NameUser.DataPropertyName = "NameUser";
-            this.NameUser.HeaderText = "Tài Khoản";
-            this.NameUser.MinimumWidth = 8;
-            this.NameUser.Name = "NameUser";
-            this.NameUser.ReadOnly = true;
+            this.Pass.DataPropertyName = "Pass";
+            this.Pass.HeaderText = "Pass";
+            this.Pass.MinimumWidth = 8;
+            this.Pass.Name = "Pass";
+            this.Pass.ReadOnly = true;
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.HeaderText = "Quyền";
+            this.Status.MinimumWidth = 8;
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            // 
+            // ckSuaTk
+            // 
+            this.ckSuaTk.AutoSize = true;
+            this.ckSuaTk.Location = new System.Drawing.Point(29, 197);
+            this.ckSuaTk.Name = "ckSuaTk";
+            this.ckSuaTk.Size = new System.Drawing.Size(157, 29);
+            this.ckSuaTk.TabIndex = 21;
+            this.ckSuaTk.Text = "Sửa tài khoản?";
+            this.ckSuaTk.UseVisualStyleBackColor = true;
+            this.ckSuaTk.CheckedChanged += new System.EventHandler(this.ckSuaTk_CheckedChanged);
             // 
             // frmQuanLyTaiKhoan
             // 
@@ -546,31 +510,30 @@
         private System.Windows.Forms.Label lblSdt;
         private System.Windows.Forms.TextBox txtTenDangNhap;
         private System.Windows.Forms.Label lblMatKhauCu;
-        private System.Windows.Forms.Label lblTenTK;
         private System.Windows.Forms.Button btnThemTk;
         private System.Windows.Forms.Button btnSuaTk;
         private System.Windows.Forms.GroupBox gbTiemKim;
         private System.Windows.Forms.TextBox txtTimKiem;
         private System.Windows.Forms.Button btnTimKiemTk;
         private System.Windows.Forms.DataGridView dgvTaiKhoan;
-        private System.Windows.Forms.TextBox txtMatKhauMoi;
+        private System.Windows.Forms.TextBox txtMatKhau;
         private System.Windows.Forms.Label lblMatKhauMoi;
-        private System.Windows.Forms.CheckBox CkbSua;
         private System.Windows.Forms.Button btnThuHoiTK;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ComboBox cbTeacher;
-        private System.Windows.Forms.ComboBox cbTenTaiKhoan;
-        private System.Windows.Forms.Button btnTaoTk;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnCapNhatUser;
+        private System.Windows.Forms.ComboBox cbQuyen;
+        private System.Windows.Forms.Label lblQuyen;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn TeacherId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TeacherName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
         private System.Windows.Forms.DataGridViewTextBoxColumn TeacherGender;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TeacherPhone;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TeacherBirth;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UserId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NameUser;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Phone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Birth;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.CheckBox ckSuaTk;
     }
 }

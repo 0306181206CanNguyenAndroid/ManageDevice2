@@ -193,7 +193,7 @@ namespace DAO.DataLayerBase
         {
             using (SqlConnection conn = new SqlConnection(PathString.ConnectionString))
             {
-                string sql = "select COUNT(*) from [System_Decentralization] where [TeacherId] = @TeacherId and IsDeleted=0";
+                string sql = "select COUNT(*) from [System_User] where [TeacherId] = @TeacherId and IsDeleted=0";
                 SqlCommand cmd = new SqlCommand(sql, conn);
 
                 cmd.Parameters.AddWithValue("@TeacherId", TeacherId);
@@ -281,7 +281,7 @@ namespace DAO.DataLayerBase
             cmd.Parameters.AddWithValue("@CreatedUserId", user.CreatedUserId);
             //cmd.Parameters.AddWithValue("@modifiedUserId", modifiedUserId);
             cmd.Parameters.AddWithValue("@IsDeleted", user.IsDeleted);
-            //cmd.Parameters.AddWithValue("@Status", user.Status);
+            cmd.Parameters.AddWithValue("@Status", user.Status);
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();
@@ -318,11 +318,11 @@ namespace DAO.DataLayerBase
                 cmd.Parameters.AddWithValue("@Id", Id);
                 cmd.ExecuteNonQuery();
 
-                SqlCommand cmd1 = new SqlCommand("update System_Decentralization set IsDeleted=1 where UserId=@Id", conn);
-                //cmd.CommandType=CommandType.StoredProcedure;
-                cmd1.Parameters.AddWithValue("@Id", Id);
-                cmd1.ExecuteNonQuery();
-                conn.Close();
+                //SqlCommand cmd1 = new SqlCommand("update System_Decentralization set IsDeleted=1 where UserId=@Id", conn);
+                ////cmd.CommandType=CommandType.StoredProcedure;
+                //cmd1.Parameters.AddWithValue("@Id", Id);
+                //cmd1.ExecuteNonQuery();
+                //conn.Close();
             }
         }
 

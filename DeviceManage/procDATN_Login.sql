@@ -1,13 +1,4 @@
-go
-create proc [dbo].[GetUserByUserName_Pass](
-@UserName varchar(50),
-@Pass varchar(100)
-)
-as
-begin
-	select * from [System_User]
-	where UserName=@UserName and Pass=@Pass
-end
+﻿
 
 go
 create proc [dbo].[GetStatusByUserId](
@@ -63,7 +54,7 @@ begin
 	set @Id=SCOPE_IDENTITY()
 	return @Id
 end
------------------------------------sua proc-----------------------
+
 go 
 create proc Update_Decentralization(
 	@Id int null,
@@ -83,8 +74,19 @@ begin
 	return @Id
 end
 
-----------------------------------them proc-------------------------
 
+
+
+
+create proc Brand_SelectById(@Id int)
+as 
+begin
+	Select* from [D_Brand]
+	where Id = @Id
+end
+go
+
+----------------------------------------------sửa proc ngày 14/7-----------------------
 go 
 create proc UpdateUserNameAndPass(
 @UserId int null,
@@ -95,23 +97,39 @@ create proc UpdateUserNameAndPass(
 --AccessRightsGroup int null,
 @CreatedDate DateTime null,
 @CreatedUserId int null,
-@IsDeleted bit null
---@Status int null)
-)
+@IsDeleted bit null,
+@Status int null)
+
 as
 begin
 	SET NOCOUNT ON;
 	update [System_User]
-	set UserName=@UserName,Pass=@Pass,CreatedDate=@CreatedDate,CreatedUserId=@CreatedUserId,IsDeleted=@IsDeleted
+	set UserName=@UserName,Pass=@Pass,CreatedDate=@CreatedDate,CreatedUserId=@CreatedUserId,IsDeleted=@IsDeleted,[Status]=@Status
 	where Id=@UserId
 	set @UserId = SCOPE_IDENTITY()
 	return @UserId
 end
 
-create proc Brand_SelectById(@Id int)
-as 
+go
+create proc [dbo].[GetUserByUserName_Pass](
+@UserName varchar(50),
+@Pass varchar(100)
+)
+as
 begin
-	Select* from [D_Brand]
-	where Id = @Id
+	select * from [System_User]
+	where UserName=@UserName and Pass=@Pass and ISNULL(IsDeleted,0)=0
 end
 go
+CREATE PROCEDURE SearchUser
+    @Name NVARCHAR(100)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT u.Id, u.TeacherId, t.FullName, t.Gender, t.Phone, t.Birth, u.UserName, u.Pass, u.[Status] 
+    FROM [System_User] u
+    INNER JOIN S_Teacher t ON u.TeacherId = t.Id
+    WHERE (u.UserName LIKE '%' + @Name + '%' OR u.[Name] LIKE '%' + @Name + '%')
+        AND u.[IsDeleted] = 0
+END

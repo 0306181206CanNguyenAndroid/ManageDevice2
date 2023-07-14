@@ -70,6 +70,8 @@
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PositionName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.cbPhong = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGiaoVien)).BeginInit();
@@ -82,10 +84,10 @@
             this.btnQlChucVu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnQlChucVu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQlChucVu.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnQlChucVu.Location = new System.Drawing.Point(1001, 111);
+            this.btnQlChucVu.Location = new System.Drawing.Point(1182, 94);
             this.btnQlChucVu.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.btnQlChucVu.Name = "btnQlChucVu";
-            this.btnQlChucVu.Size = new System.Drawing.Size(175, 40);
+            this.btnQlChucVu.Size = new System.Drawing.Size(121, 40);
             this.btnQlChucVu.TabIndex = 18;
             this.toolTip1.SetToolTip(this.btnQlChucVu, "Quản lý Chức Vụ");
             this.btnQlChucVu.UseVisualStyleBackColor = false;
@@ -104,6 +106,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.cbPhong);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.btnXoaGV);
             this.groupBox1.Controls.Add(this.btnSuaGv);
@@ -132,7 +136,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(1313, 394);
+            this.groupBox1.Size = new System.Drawing.Size(1539, 394);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Giáo Viên";
@@ -439,7 +443,7 @@
             this.dgvGiaoVien.ReadOnly = true;
             this.dgvGiaoVien.RowHeadersWidth = 62;
             this.dgvGiaoVien.RowTemplate.Height = 25;
-            this.dgvGiaoVien.Size = new System.Drawing.Size(1313, 200);
+            this.dgvGiaoVien.Size = new System.Drawing.Size(1539, 200);
             this.dgvGiaoVien.TabIndex = 13;
             this.dgvGiaoVien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGiaoVien_CellClick);
             // 
@@ -544,11 +548,28 @@
             this.PositionName.ReadOnly = true;
             this.PositionName.Width = 150;
             // 
+            // cbPhong
+            // 
+            this.cbPhong.FormattingEnabled = true;
+            this.cbPhong.Location = new System.Drawing.Point(1023, 106);
+            this.cbPhong.Name = "cbPhong";
+            this.cbPhong.Size = new System.Drawing.Size(121, 33);
+            this.cbPhong.TabIndex = 32;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(848, 109);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(146, 25);
+            this.label8.TabIndex = 33;
+            this.label8.Text = "Quản Lý Phòng:";
+            // 
             // frmQuanLyGiaoVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1313, 628);
+            this.ClientSize = new System.Drawing.Size(1539, 628);
             this.Controls.Add(this.dgvGiaoVien);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -607,5 +628,7 @@
         private System.Windows.Forms.RadioButton rdbLastName;
         private System.Windows.Forms.RadioButton rdbFirstName;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cbPhong;
     }
 }
