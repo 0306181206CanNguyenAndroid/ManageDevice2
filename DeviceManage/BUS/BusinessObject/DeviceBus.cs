@@ -33,16 +33,16 @@ namespace BUS.BusinessObject
         public static List<DeviceModel> GetAllDeviceInRoom(int roomId)
         {
             List<DeviceModel> list = DeviceDataLayer.GetAllDeviceInRoom(roomId);
-            if(list.Count > 0)
+            if (list.Count > 0)
             {
-                foreach(DeviceModel d in list)
+                foreach (DeviceModel d in list)
                 {
                     try
                     {
                         LocationModel lm = LocationBus.SelectByPrimaryKey(d.LocationId.Value);
                         d.LocationName = lm.Name;
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         d.LocationName = "Trong";
                     }

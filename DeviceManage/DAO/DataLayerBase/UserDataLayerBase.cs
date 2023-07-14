@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using DTO.ModelBase;
 using System.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Windows.Forms;
 
 namespace DAO.DataLayerBase
 {
@@ -187,7 +188,7 @@ namespace DAO.DataLayerBase
             }
             catch(Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
 
             return user;
@@ -693,15 +694,15 @@ namespace DAO.DataLayerBase
             else
                 user.Name = "";
 
-            if (dr["AccessRightsGroup"] != System.DBNull.Value)
-                user.AccessRightsGroup = (int)dr["AccessRightsGroup"];
-            else
-                user.AccessRightsGroup = null;
+            //if (dr["AccessRightsGroup"] != System.DBNull.Value)
+            //    user.AccessRightsGroup = (int)dr["AccessRightsGroup"];
+            //else
+            //    user.AccessRightsGroup = null;
 
-            if (dr["Image"] != System.DBNull.Value)
-                user.Image = dr["Image"].ToString();
-            else
-                user.Image = null;
+            //if (dr["Image"] != System.DBNull.Value)
+            //    user.Image = dr["Image"].ToString();
+            //else
+            //    user.Image = null;
 
             if (dr["Status"] != System.DBNull.Value)
                 user.Status = (int)dr["Status"];
@@ -722,16 +723,6 @@ namespace DAO.DataLayerBase
                 user.CreatedUserId = (int)dr["CreatedUserId"];
             else
                 user.CreatedUserId = null;
-
-            if (dr["ModifiedDate"] != System.DBNull.Value)
-                user.ModifiedDate = (DateTime)dr["ModifiedDate"];
-            else
-                user.ModifiedDate = null;
-
-            if (dr["ModifiedUserId"] != System.DBNull.Value)
-                user.ModifiedUserId = (int)dr["ModifiedUserId"];
-            else
-                user.ModifiedUserId = null;
 
             return user;
         }

@@ -19,6 +19,7 @@ namespace DTO.Model
         public int? RoomId { get; set; }
         public int? LocationId { get; set; }
         public string LocationName { get; set; }
+        public string Info { get; set; }
 
         public List<DeviceDetailModel> deviceDetail { get; set; }
     }

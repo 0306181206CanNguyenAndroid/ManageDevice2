@@ -13,177 +13,167 @@ namespace DeviceManage
     public partial class frmQuanLyPhongMay : Form
     {
         //private int selectedRowIndex;
-        public UserModel LoginLoginInUser;
-        public frmQuanLyPhongMay(UserModel loginLoginInUser)
+        public UserModel LoginLoginInUser = null;
+        public int teacherId = 1;
+        public TeacherModel GV = null;
+        private List<DeviceModel> listDevice = null;
+        private BindingSource bs = new BindingSource();
+        public frmQuanLyPhongMay(int id)
         {
             InitializeComponent();
             dgvPhongMay.AutoGenerateColumns = false;
-            LoginLoginInUser = loginLoginInUser;
+            LoginLoginInUser = UserBus.SelectByPrimaryKey(id);
+            if (LoginLoginInUser.Status == 1)
+                teacherId = 0;
+            else
+            {
+                teacherId = 1;
+                GV = TeacherBus.SelectTeacherByUserId(LoginLoginInUser.Id, false);
+            }
+            //dgvPhongMay.DataSource = RoomBus.GetAllRoom();
+            //dgvPhongMay.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            cb_Room.DisplayMember = "Name";
+            cb_Room.ValueMember = "Id";
+            if (teacherId == 0)
+            {
+                cb_Room.DataSource = RoomBus.GetRoomAfterDelete();
+            }
+            else
+            {
+                cb_Room.DataSource = RoomBus.SelectByTeacherId(teacherId);
+            }
+
+            LoadDanhSachThietBi((int)cb_Room.SelectedValue);
+            LoadDataGrid();
+            //dgvPhongMay.DataSource = RoomBus.GetRoomAfterDelete();
+
+
+        }
+
+        private void LoadDataGrid()
+        {
+            bs.DataSource = listDevice;
+            dgvPhongMay.DataSource = bs;
+        }
+
+        private void LoadDanhSachThietBi(int roomId)
+        {
+            listDevice = DeviceBus.GetAllDeviceInRoom(roomId);
         }
 
         private void frmQuanLyPhongMay_Load(object sender, EventArgs e)
         {
-            //dgvPhongMay.DataSource = RoomBus.GetAllRoom();
-            dgvPhongMay.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            cb_Room.DataSource = RoomBus.GetRoomAfterDelete();
-            //dgvPhongMay.DataSource = RoomBus.GetRoomAfterDelete();
+            
         }
 
         private void btnThemPhong_Click(object sender, EventArgs e)
         {
-            //RoomModel roomModel = new RoomModel();
-            //roomModel.Code = txtMaPhong.Text;
-            //roomModel.Name = txtTenPhong.Text;
-            //roomModel.Description = rtbGhiChuPhong.Text;
-            //roomModel.CreatedDate = DateTime.Now;
-            //roomModel.CreatedUserId = 1;
-            //roomModel.IsDeleted = false;
-            //roomModel.Status = 0;
-            //int deviceQuantity;
-            //if (int.TryParse(txtSoLuongTB.Text, out deviceQuantity))
-            //{
-            //    roomModel.DeviceQuantity = deviceQuantity;
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Số Lượng Thiết Bị Phải là Số Nguyên", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
-            //try
-            //{
-            //    if (txtMaPhong.Text == "" || txtTenPhong.Text == "" || rtbGhiChuPhong.Text == "" || txtSoLuongTB.Text == "")
-            //    {
-            //        MessageBox.Show("Thông Tin Không Được Trống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-            //    else
-            //    {
-            //        RoomBus.InSertRoom(roomModel);
-            //        MessageBox.Show("Thêm Thành Công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //        //dgvPhongMay.DataSource = RoomBus.GetAllRoom();
-            //        dgvPhongMay.DataSource = RoomBus.GetRoomAfterDelete();
-            //    }
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-
+            
 
         }
 
         private void dgvPhongMay_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //try
-            //{
-            //    DataGridViewRow row = new DataGridViewRow();
-            //    row = dgvPhongMay.Rows[e.RowIndex];
-            //    txtMaPhong.Text = row.Cells[1].Value.ToString();
-            //    txtTenPhong.Text = row.Cells[2].Value.ToString();
-            //    txtSoLuongTB.Text = row.Cells[4].Value.ToString();
-            //    rtbGhiChuPhong.Text = row.Cells[3].Value.ToString();
-            //    selectedRowIndex = e.RowIndex;
-            //}
-            //catch
-            //{
+            int deviceId = (int)dgvPhongMay.SelectedCells[0].OwningRow.Cells["Id"].Value;
+            int col = dgvPhongMay.SelectedCells[0].ColumnIndex;
+            //Người dùng nhấn nút xem trên Grid
 
-            //}
+            if (dgvPhongMay.Columns[col] == dgvPhongMay.Columns["UsingStatus"])
+            {
+                //MessageBox.Show("Báo cáo lỗi");
+
+                Report f = new Report(LoginLoginInUser, DeviceBus.SelectByPrimaryKey(deviceId));
+                f.report += F_report;
+                f.Show();
+            }
+            else
+            {
+                foreach (DeviceModel de in listDevice)
+                {
+                    if (de.Id == deviceId)
+                    {
+                        
+                    }
+                }
+            }
+        }
+
+        private void F_report(object sender, Action_ReportSuccessEventArgs e)
+        {
+            //throw new NotImplementedException();
+            LoadDanhSachThietBi((int)cb_Room.SelectedValue);
+            LoadDataGrid();
         }
 
         private void btnSuaPhong_Click(object sender, EventArgs e)
         {
-            //    DataGridViewRow row = dgvPhongMay.Rows[selectedRowIndex];
-            //    int Id = int.Parse(row.Cells[0].Value.ToString());
-            //    RoomModel roomModel = new RoomModel();
-            //    roomModel.Id = Id;
-            //    roomModel.Code = txtMaPhong.Text;
-            //    roomModel.Name = txtTenPhong.Text;
-            //    roomModel.Description = rtbGhiChuPhong.Text;
-            //    roomModel.CreatedDate = DateTime.Now;
-            //    roomModel.CreatedUserId = 1;
-            //    roomModel.IsDeleted = false;
-            //    roomModel.Status = 0;
-            //    int deviceQuantity;
-            //    if (int.TryParse(txtSoLuongTB.Text, out deviceQuantity))
-            //    {
-            //        roomModel.DeviceQuantity = deviceQuantity;
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Số Lượng Thiết Bị Phải là Số Nguyên", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        return;
-            //    }
-            //    try
-            //    {
-            //        if (txtMaPhong.Text == "" || txtTenPhong.Text == "" || rtbGhiChuPhong.Text == "" || txtSoLuongTB.Text == "")
-            //        {
-            //            MessageBox.Show("Thông Tin Không Được Trống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        }
-            //        else
-            //        {
-            //            RoomBus.UpdateRoom(roomModel);
-            //            MessageBox.Show("Cập Nhật Thành Công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //            //dgvPhongMay.DataSource = RoomBus.GetAllRoom();
-            //            dgvPhongMay.DataSource = RoomBus.GetRoomAfterDelete();
-            //            txtMaPhong.Text = "";
-            //            txtTenPhong.Text = "";
-            //            rtbGhiChuPhong.Text = "";
-            //            txtSoLuongTB.Text = "";
-            //        }
-
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
+            
         }
 
         private void btnXoaPhong_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (dgvPhongMay.SelectedRows.Count > 0)
-                {
-                    int rowIndex = dgvPhongMay.SelectedRows[0].Index;
-                    int Id = Int32.Parse(dgvPhongMay.Rows[rowIndex].Cells["ID"].Value.ToString());
-
-                    CurrencyManager currencyManager = (CurrencyManager)BindingContext[dgvPhongMay.DataSource];
-                    currencyManager.SuspendBinding();
-                    DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Xóa", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
-                    {
-                        //dgvPhongMay.CurrentCell = dgvPhongMay.Rows[0].Cells[0];
-                        RoomBus.DeleteRoom(Id);
-                        dgvPhongMay.Rows[rowIndex].Visible = false;
-                        MessageBox.Show("Xóa Thành Công");
-                        //txtMaPhong.Text = "";
-                        //txtTenPhong.Text = "";
-                        //txtSoLuongTB.Text = "";
-                        //rtbGhiChuPhong.Text = "";
-                        dgvPhongMay.DataSource = RoomBus.GetRoomAfterDelete();
-                    }
-                }
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            
         }
 
         private void btnTimKiemPhong_Click(object sender, EventArgs e)
         {
-            string Name = txtTiemKiemPhong.Text;
-            if (txtTiemKiemPhong.Text == "")
+            
+        }
+
+        private void btn_ViewDevice_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cb_Room_SelectedValueChanged(object sender, EventArgs e)
+        {
+            LoadDanhSachThietBi((int)(cb_Room.SelectedValue==null ? 0 : cb_Room.SelectedValue));
+            LoadDataGrid();
+        }
+
+        private void dgvPhongMay_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == dgvPhongMay.Columns["Status"].Index)
             {
-                MessageBox.Show("Nhập Thông Tin Cần Tìm", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (e.Value != null)
+                {
+                    int? gender = (int?)e.Value;
+                    if (gender != null)
+                    {
+                        e.Value = gender == 0 ? "Còn tốt" : gender == 1 ? "Chờ bảo trì" : gender == 2 ? "Bảo trì" : "Cũ";
+                    }
+                    else
+                    {
+                        e.Value = "Mới";
+                    }
+                }
             }
-            else
+        }
+
+        private void dgvPhongMay_MouseHover(object sender, EventArgs e)
+        {
+            DataGridView.HitTestInfo info = dgvPhongMay.HitTest(dgvPhongMay.PointToClient(Cursor.Position).X, dgvPhongMay.PointToClient(Cursor.Position).Y);
+            if(info.Type==DataGridViewHitTestType.Cell)
             {
-                DataTable result = RoomBus.SearchRoomByName(Name);
-                dgvPhongMay.DataSource = result;
-                //txtTiemKiemPhong.Text = "";
+                DataGridViewRow currentRow = dgvPhongMay.Rows[info.RowIndex];
+                ToolTip ttp = new ToolTip();
+                ttp.SetToolTip(dgvPhongMay, "" + currentRow);
+                dgvPhongMay.Show();
+            }
+        }
+
+        private void dgvPhongMay_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                int? id = (int?) dgvPhongMay.Rows[e.RowIndex].Cells["Id"].Value;
+                
+                if(id != null)
+                {
+                    string tooltiptext = DeviceBus.GetInfoDevice(id.Value);
+                    t.ToolTipTitle = tooltiptext;
+                    t.SetToolTip(dgvPhongMay, tooltiptext);
+                }
             }
         }
     }

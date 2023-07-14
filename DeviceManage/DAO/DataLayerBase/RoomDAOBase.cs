@@ -45,6 +45,34 @@ namespace DAO.DataLayerBase
             conn.Close();
             return dt;
         }
+        public static RoomModel SelectRoomByDevice(int id)
+        {
+            SqlConnection conn = new SqlConnection(PathString.ConnectionString);
+            SqlCommand cmd = new SqlCommand("[dbo].[SelectRoomByDevice]", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@id", id);
+            conn.Open();
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            conn.Close();
+            return dt != null && dt.Rows.Count > 0 ? CreateRoomFromDataRowShared(dt.Rows[0]) : null;
+        }
+        public static RoomModel SelectByTeacherId(int id)
+        {
+            SqlConnection conn = new SqlConnection(PathString.ConnectionString);
+            SqlCommand cmd = new SqlCommand("[dbo].[Room_SelectByTeacherId]", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@id", id);
+            conn.Open();
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            conn.Close();
+            return dt != null && dt.Rows.Count > 0 ? CreateRoomFromDataRowShared(dt.Rows[0]) : null;
+        }
 
         public static void InsertRoom(RoomModel room)
         {

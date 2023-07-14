@@ -45,6 +45,7 @@
             this.lbl_text = new System.Windows.Forms.Label();
             this.panel_Body = new System.Windows.Forms.Panel();
             this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel_Left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Logo)).BeginInit();
             this.panel_Top.SuspendLayout();
@@ -199,7 +200,7 @@
             this.btnQLTaiKhoan.Name = "btnQLTaiKhoan";
             this.btnQLTaiKhoan.Size = new System.Drawing.Size(279, 56);
             this.btnQLTaiKhoan.TabIndex = 1;
-            this.btnQLTaiKhoan.Text = "Quản lý Tài Khoản";
+            this.btnQLTaiKhoan.Text = "Quản lý Sửa Chửa";
             this.btnQLTaiKhoan.UseVisualStyleBackColor = false;
             this.btnQLTaiKhoan.Click += new System.EventHandler(this.btnQLTaiKhoan_Click);
             // 
@@ -271,6 +272,7 @@
             // 
             // panel_Body
             // 
+            this.panel_Body.Controls.Add(this.button1);
             this.panel_Body.Controls.Add(this.pictureBox);
             this.panel_Body.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_Body.Location = new System.Drawing.Point(279, 50);
@@ -291,6 +293,21 @@
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(147, 124);
+            this.button1.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(165, 117);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "QUẢN LÝ \r\nSỬA CHỬA";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // frmTrangChu
             // 
@@ -336,5 +353,6 @@
         private System.Windows.Forms.Label lblNameUser;
         private System.Windows.Forms.PictureBox userImage;
         private System.Windows.Forms.Button btnBaoCaoThongKe;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -188,6 +188,32 @@ as
 	end
 	go
 
+	-------------------add---------------------
+	create proc [dbo].[Room_SelectByTeacherId](@id int)
+	as 
+	begin
+	SET NOCOUNT ON;
+		select* from [dbo].[D_Room] 
+		where [Id] in 
+		(
+			select [RoomId] from [dbo].[S_RoomManager]
+			where TeacherId = @id
+		)
+	end
+	go
 
+	use devicement
+	go
+	create proc SelectRoomByDevice(@id int)
+	as 
+	begin
+	Select * from D_Room
+	where Id in 
+	(
+		Select RoomId from [dbo].[D_DeviceRegistration]
+		where [DeviceId] = @id
+	)
+	end
+	go
 --end Room
 

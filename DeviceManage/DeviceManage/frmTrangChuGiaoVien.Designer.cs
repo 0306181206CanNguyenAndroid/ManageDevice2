@@ -30,7 +30,6 @@
         {
             this.panel_Left = new System.Windows.Forms.Panel();
             this.btnQlThanhLy = new System.Windows.Forms.Button();
-            this.btnQlThietBi = new System.Windows.Forms.Button();
             this.btnQLPhongMay = new System.Windows.Forms.Button();
             this.pictureBox_Logo = new System.Windows.Forms.PictureBox();
             this.panel_Top = new System.Windows.Forms.Panel();
@@ -39,6 +38,7 @@
             this.lbl_text = new System.Windows.Forms.Label();
             this.panel_Body = new System.Windows.Forms.Panel();
             this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.btnReport = new System.Windows.Forms.Button();
             this.panel_Left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Logo)).BeginInit();
             this.panel_Top.SuspendLayout();
@@ -50,8 +50,8 @@
             // panel_Left
             // 
             this.panel_Left.BackColor = System.Drawing.Color.Blue;
+            this.panel_Left.Controls.Add(this.btnReport);
             this.panel_Left.Controls.Add(this.btnQlThanhLy);
-            this.panel_Left.Controls.Add(this.btnQlThietBi);
             this.panel_Left.Controls.Add(this.btnQLPhongMay);
             this.panel_Left.Controls.Add(this.pictureBox_Logo);
             this.panel_Left.Dock = System.Windows.Forms.DockStyle.Left;
@@ -68,7 +68,7 @@
             this.btnQlThanhLy.BackColor = System.Drawing.Color.Blue;
             this.btnQlThanhLy.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnQlThanhLy.ForeColor = System.Drawing.Color.White;
-            this.btnQlThanhLy.Location = new System.Drawing.Point(0, 258);
+            this.btnQlThanhLy.Location = new System.Drawing.Point(0, 216);
             this.btnQlThanhLy.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.btnQlThanhLy.Name = "btnQlThanhLy";
             this.btnQlThanhLy.Size = new System.Drawing.Size(279, 38);
@@ -76,20 +76,6 @@
             this.btnQlThanhLy.Text = "Quản Lý Thanh Lý";
             this.btnQlThanhLy.UseVisualStyleBackColor = false;
             this.btnQlThanhLy.Click += new System.EventHandler(this.btnQlThanhLy_Click);
-            // 
-            // btnQlThietBi
-            // 
-            this.btnQlThietBi.BackColor = System.Drawing.Color.Blue;
-            this.btnQlThietBi.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnQlThietBi.ForeColor = System.Drawing.Color.White;
-            this.btnQlThietBi.Location = new System.Drawing.Point(0, 216);
-            this.btnQlThietBi.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
-            this.btnQlThietBi.Name = "btnQlThietBi";
-            this.btnQlThietBi.Size = new System.Drawing.Size(279, 42);
-            this.btnQlThietBi.TabIndex = 3;
-            this.btnQlThietBi.Text = "Quản Lý Thiết Bị";
-            this.btnQlThietBi.UseVisualStyleBackColor = false;
-            this.btnQlThietBi.Click += new System.EventHandler(this.btnQlThietBi_Click);
             // 
             // btnQLPhongMay
             // 
@@ -192,6 +178,20 @@
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
             // 
+            // btnReport
+            // 
+            this.btnReport.BackColor = System.Drawing.Color.Blue;
+            this.btnReport.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReport.ForeColor = System.Drawing.Color.White;
+            this.btnReport.Location = new System.Drawing.Point(0, 254);
+            this.btnReport.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(279, 38);
+            this.btnReport.TabIndex = 7;
+            this.btnReport.Text = "Danh sách báo cáo ";
+            this.btnReport.UseVisualStyleBackColor = false;
+            this.btnReport.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmTrangChuGiaoVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -225,10 +225,10 @@
         private System.Windows.Forms.Label lbl_text;
         private System.Windows.Forms.Button btnQLPhongMay;
         private System.Windows.Forms.PictureBox pictureBox;
-        private System.Windows.Forms.Button btnQlThietBi;
         private System.Windows.Forms.Button btnQlThanhLy;
         private System.Windows.Forms.Label lblNameUser;
         private System.Windows.Forms.PictureBox userImage;
         private System.Windows.Forms.PictureBox pictureBox_Logo;
+        private System.Windows.Forms.Button btnReport;
     }
 }
