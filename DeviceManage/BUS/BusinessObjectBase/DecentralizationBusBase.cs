@@ -77,11 +77,9 @@ namespace BUS.BusinessOjectBase
 
         public static void DeleteDecentralization(int Id)
         {
-            bool checkUserId = DecentralizationDAO.CheckIdUser(Id);
-            if(checkUserId)
-            {
+           
                 DecentralizationDAO.DeleteDecentralization(Id);
-            }
+            
         }
 
 

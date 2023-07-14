@@ -16,38 +16,40 @@ namespace BUS.BusinessOjectBase
         {
             return TeacherDAO.GetData();
         }
-        public static void InsertTeacher(TeacherModel teacher)
+        public static int InsertTeacher(TeacherModel teacher)
         {
             if(!TeacherDAO.IsValidFirstName(teacher.FirstName))
             {
                 MessageBox.Show("Họ Không Được Chứa Số và Không Để Trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return 0;
             }
             if(!TeacherDAO.IsValidLastName(teacher.LastName))
             {
                 MessageBox.Show("Tên Không Được Chứa Số và Không Để Trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return 0;
             }
             if (!TeacherDAO.IsValidBirth(teacher.Birth))
             {
                 MessageBox.Show("Ngày Sinh Không Hợp Lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return 0;
             }
             if (!TeacherDAO.IsValidPhone(teacher.Phone))
             {
                 MessageBox.Show("Số Điện Thoại Không Hợp Lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return 0;
             }
             if (!TeacherDAO.IsValidEmail(teacher.Email))
             {
                 MessageBox.Show("Định Dạng Email Không Hợp Lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return 0;
             }
             else
             {
-                TeacherDAO.InsertTeacher(teacher);
-                MessageBox.Show("Thêm Thành Công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Thêm Thành Công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+               return TeacherDAO.InsertTeacher(teacher);
+                
             }
+            
         }
         public static void UpdateTeacher(TeacherModel teacher)
         {
